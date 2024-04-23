@@ -17,7 +17,14 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
   void initState() {
     // TODO: implement initState
     InitAnimation();
-    GoRouter.of(context).push(AppRouter.splashView);
+    Future.delayed(
+      const Duration(seconds: 2),
+        (){
+          GoRouter.of(context).push(AppRouter.onBoarding);
+        }
+
+    );
+
   }
   @override
   void dispose() {
@@ -26,22 +33,7 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
     controller.dispose();
   }
 
-  void InitAnimation() {
-     controller=AnimationController(
-      vsync: this,
-    duration:const  Duration(
-      seconds: 1
-    ),
 
-    );
-    sliderAnimation=Tween<Offset>(
-      begin: const Offset(0, 6),
-      end:const Offset(0, -1),
-
-    ).animate(CurvedAnimation(parent: controller,
-        curve: Curves.easeOut));
-    controller.forward();
-  }
   Widget build(BuildContext context) {
     return  Padding(
       padding: const EdgeInsets.all(20.0),
@@ -84,5 +76,21 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
         ],
       ),
     );
+  }
+  void InitAnimation() {
+    controller=AnimationController(
+      vsync: this,
+      duration:const  Duration(
+          seconds: 1
+      ),
+
+    );
+    sliderAnimation=Tween<Offset>(
+      begin: const Offset(0, 6),
+      end:const Offset(0, -1),
+
+    ).animate(CurvedAnimation(parent: controller,
+        curve: Curves.easeOut));
+    controller.forward();
   }
 }

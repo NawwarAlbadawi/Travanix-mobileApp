@@ -2,6 +2,10 @@
 class Assets {
   Assets._();
 
+  static const String imagesBestPlace = 'assets/images/Best_place.png';
+  static const String imagesDestination = 'assets/images/Destination.png';
+  static const String imagesMap = 'assets/images/Map.png';
   static const String imagesSplashViewImage = 'assets/images/splashViewImage.png';
+  static const String imagesWorld = 'assets/images/World.png';
 
 }
