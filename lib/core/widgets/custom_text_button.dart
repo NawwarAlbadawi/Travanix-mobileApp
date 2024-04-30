@@ -3,15 +3,16 @@ import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
 class CustomTextButton extends StatelessWidget {
   const CustomTextButton({
-    super.key,  this.textColor, required this.text,
+    super.key,  this.textColor, required this.text, required this.onPressed,
   });
   final String  text;
   final Color ? textColor;
+  final Function () onPressed;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: (){},
+      onPressed: onPressed,
 
       style: TextButton.styleFrom(
           shadowColor: Colors.black,

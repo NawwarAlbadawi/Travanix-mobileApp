@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
+import 'package:travanix/core/utils/cache_service.dart';
 import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/generated/assets.dart';
 class SplashViewBody extends StatefulWidget {
@@ -20,8 +21,15 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
     Future.delayed(
       const Duration(seconds: 2),
         (){
-          GoRouter.of(context).push(AppRouter.onBoarding);
-        }
+        if(CacheHelper.getFromCacheHelper('onBoarding')!=null)
+          {
+
+            GoRouter.of(context).pushReplacement(AppRouter.loginScreen);
+          }
+        else
+          {
+          GoRouter.of(context).push(AppRouter.onBoarding);}
+          }
 
     );
 

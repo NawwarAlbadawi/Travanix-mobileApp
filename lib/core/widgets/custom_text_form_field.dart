@@ -8,7 +8,7 @@ class CustomTextFormField extends StatelessWidget {
   final Widget ? suffix;
   final Function (String ) ? onChange;
   final Function (String) ? onFieldSubmitted;
-  final String Function  ( String?s )?  validator;
+  final String ? Function  ( String? )?  validator;
   final TextEditingController controller;
   final bool ? isPassword;
   final String hintText;

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:travanix/Features/authentication/widgets/password_form_field.dart';
 import 'package:travanix/Features/authentication/widgets/second_way_of_login.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
+import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/custom_material_button.dart';
 import 'package:travanix/core/widgets/custom_text_button.dart';
 import 'package:travanix/core/widgets/custom_text_form_field.dart';
@@ -59,8 +61,9 @@ class LoginScreenBody extends StatelessWidget {
                 const  SizedBox(height: 20,),
                 PasswordFormField(),
                 const   SizedBox(height: 20,),
-                const  CustomTextButton(
+                  CustomTextButton(
                   text: 'Forget Password ?',
+                  onPressed: (){},
 
                 ),
                 SizedBox(
@@ -78,7 +81,11 @@ class LoginScreenBody extends StatelessWidget {
                   children: [
                     Text('Don''\'t have an Account ? ',
                       style: AppTextStyles.styleRegular16(context),),
-                    const CustomTextButton(text: 'Register Now',
+                     CustomTextButton(
+                      onPressed: (){
+                        GoRouter.of(context).push(AppRouter.registerScreen);
+                      },
+                      text: 'Register Now',
                       textColor: basicColor,)
                   ],
                 ),
