@@ -13,7 +13,7 @@ class PageViewItem extends StatelessWidget {
     return   Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Spacer(),
+        const Spacer(),
         Image(
           image: AssetImage(
               item.image
@@ -22,7 +22,6 @@ class PageViewItem extends StatelessWidget {
           height: 300,
         ),
         const Spacer(),
-
         Text(
           '${item.title}',
           style: AppTextStyles.styleSemiBold20(context).copyWith(

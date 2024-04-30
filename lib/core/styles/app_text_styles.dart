@@ -70,7 +70,7 @@ abstract class AppTextStyles {
 
   static TextStyle styleSemiBold24(BuildContext context) {
     return TextStyle(
-      color: const Color(0xFF4EB7F2),
+      color: navyBlueColor,
       fontSize: getResponsiveFontSize(context, fontSize: 24),
       fontFamily: 'Montserrat',
       fontWeight: FontWeight.w600,
@@ -83,6 +83,14 @@ abstract class AppTextStyles {
       fontSize: getResponsiveFontSize(context, fontSize: 14),
       fontFamily: 'Montserrat',
       fontWeight: FontWeight.w400,
+    );
+  }
+  static TextStyle styleMedium14(BuildContext context) {
+    return TextStyle(
+      color: navyBlueColor,
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
+      fontFamily: 'Montserrat',
+      fontWeight: FontWeight.w500,
     );
   }
 
