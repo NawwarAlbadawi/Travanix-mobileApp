@@ -40,6 +40,14 @@ dependencies:
   font_awesome_flutter: ^10.7.0
   flutter_bloc: ^8.1.5
   shared_preferences: ^2.2.3
+  conditional_builder_null_safety: ^0.0.6
+  simple_circular_progress_bar: ^1.0.2
+  custom_progress_indicator: ^0.0.1
+  firebase_core: ^2.30.1
+  firebase_auth: ^4.19.4
+  email_auth: ^2.0.0
+  email_otp: ^2.1.2
+  custom_indicator: any
 
 dev_dependencies:
   flutter_test:
@@ -79,10 +87,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Exo
+      fonts:
+         - asset: assets/font/Exo-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

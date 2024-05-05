@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "655439647266",
+    "project_id": "travanix-mobileapp",
+    "storage_bucket": "travanix-mobileapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655439647266:android:929ff247f7a1d9081d307b",
+        "android_client_info": {
+          "package_name": "com.example.travanix"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACFZCqEH21Jx3SeJLQwiddi9XCFf-LzYA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

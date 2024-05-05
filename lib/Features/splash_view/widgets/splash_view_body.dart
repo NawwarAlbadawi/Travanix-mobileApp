@@ -16,6 +16,7 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
   late AnimationController controller;
   @override
   void initState() {
+    super.initState();
     // TODO: implement initState
     InitAnimation();
     Future.delayed(
@@ -42,6 +43,7 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
   }
 
 
+  @override
   Widget build(BuildContext context) {
     return  Padding(
       padding: const EdgeInsets.all(20.0),
@@ -50,8 +52,17 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
 
-          const Image(image:
-          AssetImage(Assets.imagesSplashViewImage)),
+          SizedBox(
+            height: MediaQuery.sizeOf(context).height*.3,
+            child: const  AspectRatio(
+              aspectRatio:0.8,
+              child:  Image(image:
+              AssetImage(Assets.imagesLogo),
+                  fit: BoxFit.cover,
+              ),
+            ),
+          ),
+       const SizedBox(height: 30,),
           AnimatedBuilder(
             animation: controller,
 
@@ -69,6 +80,8 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
                       fit: BoxFit.cover,
                       child: Text('Travanix',
                         style: AppTextStyles.styleSemiBold20(context).copyWith(
+                          color: Colors.white,
+                           fontFamily: 'Exo'
 
                         ),
                         textAlign: TextAlign.center,

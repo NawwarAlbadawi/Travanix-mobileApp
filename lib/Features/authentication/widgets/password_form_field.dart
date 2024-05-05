@@ -28,13 +28,14 @@ class PasswordFormField extends StatelessWidget {
                   ChangePasswordSecureCubit.get(context).changePasswordVisibility();
                 },
               ),
+              textInputType: TextInputType.visiblePassword,
               validator: (string)
               {
                 if(string!.isEmpty)
                 {
                   return 'Password must Not be Empty';
                 }
-                return 'dsfr';
+
               },
 
             );
