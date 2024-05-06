@@ -1,7 +1,9 @@
 
+import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:toastification/toastification.dart';
 import 'package:travanix/Features/authentication/data/cubit/otp/otp_cubit.dart';
 import 'package:travanix/Features/authentication/widgets/otp_item.dart';
 import 'package:travanix/core/styles/app_colors.dart';
@@ -47,6 +49,7 @@ class _OTPBodyState extends State<OTPBody> {
           if(state is VerifyOTPSuccess)
             {
               GoRouter.of(context).pushReplacement(AppRouter.loginScreen);
+
             }
         },
         builder: (context,state){

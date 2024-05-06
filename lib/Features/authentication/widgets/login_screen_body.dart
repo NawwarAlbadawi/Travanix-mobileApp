@@ -3,6 +3,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 import 'package:custom_indicator/custom_indicator.dart';
 import 'package:travanix/Features/authentication/widgets/password_form_field.dart';
@@ -13,6 +14,7 @@ import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/custom_material_button.dart';
 import 'package:travanix/core/widgets/custom_text_button.dart';
 import 'package:travanix/core/widgets/custom_text_form_field.dart';
+import 'package:travanix/core/widgets/custom_toast.dart';
 import 'package:travanix/generated/assets.dart';
 class LoginScreenBody extends StatefulWidget {
    LoginScreenBody({super.key});
@@ -113,6 +115,7 @@ class _LoginScreenBodyState extends State<LoginScreenBody> with SingleTickerProv
                           onPressed: (){
                             if(formKey.currentState!.validate())
                               {
+                                GoRouter.of(context).push(AppRouter.travanixLayoutView);
 
                               }
                           },
@@ -152,6 +155,7 @@ class _LoginScreenBodyState extends State<LoginScreenBody> with SingleTickerProv
                         style: AppTextStyles.styleRegular16(context),),
                        CustomTextButton(
                         onPressed: (){
+
                           GoRouter.of(context).push(AppRouter.registerScreen);
                         },
                         text: 'Register Now',

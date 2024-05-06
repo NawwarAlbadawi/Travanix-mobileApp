@@ -47,6 +47,11 @@ dependencies:
   firebase_auth: ^4.19.4
   email_auth: ^2.0.0
   email_otp: ^2.1.2
+  flash: ^3.1.0
+  toastification: ^2.0.0
+  overlay_support: ^2.1.0
+  dot_navigation_bar: ^1.0.2
+  crystal_navigation_bar: ^1.0.0
   custom_indicator: any
 
 dev_dependencies:

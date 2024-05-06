@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:toastification/toastification.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/custom_material_button.dart';
@@ -133,6 +134,17 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     if(formKey.currentState!.validate())
                       {
                         GoRouter.of(context).push(AppRouter.otpScreen,extra: emailController.text );
+                        toastification.show(
+                            title: Text('OK'),
+                            backgroundColor: Colors.red,
+                          applyBlurEffect: true,
+                          showProgressBar: false,
+                          style: ToastificationStyle.flat,
+                          autoCloseDuration:const Duration(seconds: 2),
+                          dragToClose: true,
+
+                        );
+
                       }
 
                   },

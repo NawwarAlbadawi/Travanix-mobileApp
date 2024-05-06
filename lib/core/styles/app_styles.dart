@@ -14,7 +14,7 @@ import 'package:travanix/core/styles/app_colors.dart';
 
     ),
    fontFamily: 'Exo',
-   visualDensity: VisualDensity.standard,
+ visualDensity: VisualDensity.adaptivePlatformDensity,
 
 
 
