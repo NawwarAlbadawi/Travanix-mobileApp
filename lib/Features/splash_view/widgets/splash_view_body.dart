@@ -22,7 +22,7 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
     Future.delayed(
       const Duration(seconds: 2),
         (){
-        if(CacheHelper.getFromCacheHelper('onBoarding')!=null)
+        if(false)
           {
 
             GoRouter.of(context).pushReplacement(AppRouter.loginScreen);

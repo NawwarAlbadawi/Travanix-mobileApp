@@ -52,6 +52,9 @@ dependencies:
   overlay_support: ^2.1.0
   dot_navigation_bar: ^1.0.2
   crystal_navigation_bar: ^1.0.0
+  iconly: ^1.0.1
+  device_preview: ^1.1.0
+  expandable_page_view: ^1.0.17
   custom_indicator: any
 
 dev_dependencies:

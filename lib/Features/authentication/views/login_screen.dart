@@ -9,7 +9,6 @@ class LoginScreenView extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: Colors.white,
 
-
     ));
 
     return  Scaffold(

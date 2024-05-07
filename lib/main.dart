@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,11 +13,12 @@ import 'package:travanix/core/utils/routers.dart';
 
 void main() async {
 WidgetsFlutterBinding.ensureInitialized();
-await Firebase.initializeApp();
-
-
+//await Firebase.initializeApp();
 await CacheHelper.initSharedPreferences();
-  runApp(const MyApp());
+  runApp( DevicePreview(
+    enabled: true,
+    builder: (context) => MyApp(), // Wrap your app
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -33,6 +35,9 @@ class MyApp extends StatelessWidget {
         ],
         child: SafeArea(
           child: MaterialApp.router(
+              useInheritedMediaQuery: true,
+              locale: DevicePreview.locale(context),
+              builder: DevicePreview.appBuilder,
 
             routerConfig:AppRouter.router ,
             debugShowCheckedModeBanner: false,

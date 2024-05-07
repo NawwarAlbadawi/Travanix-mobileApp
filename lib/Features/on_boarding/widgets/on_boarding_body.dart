@@ -1,4 +1,8 @@
+import 'package:expandable_page_view/expandable_page_view.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:travanix/Features/on_boarding/data/models.dart';
@@ -18,8 +22,8 @@ class OnBoardingBody extends StatefulWidget {
 
 class _OnBoardingBodyState extends State<OnBoardingBody> {
   List<OnBoardingModel>item=[
-    OnBoardingModel(title: 'DISCOVER NEW THINGS', image: Assets.imagesBestPlace, subTitle: 'Explore new things through our app.Discover initiary & other stuffs'),
-    OnBoardingModel(title: 'SHARE YOUR MOMENTS', image: Assets.imagesMap, subTitle: 'Share you trip initiary with others. Let''\'s hake the travel fun & enjoyable'),
+    OnBoardingModel(title: 'DISCOVER NEW THINGS', image: Assets.imagesHotel, subTitle: 'Explore new things through our app.Discover initiary & other stuffs'),
+    OnBoardingModel(title: 'SHARE YOUR MOMENTS', image: Assets.imagesMoment, subTitle: 'Share you trip initiary with others. Let''\'s hake the travel fun & enjoyable'),
     OnBoardingModel(title: 'Choose a Distination', image: Assets.imagesDestination, subTitle: 'Select a place for your trip easily and know the exact cost of the tour'),
   ];
   PageController controller=PageController();
@@ -30,71 +34,113 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
   Widget build(BuildContext context) {
     return  Padding(
       padding: const EdgeInsets.all(20.0),
-      child: Column(
+      child:
+
+          CustomScrollView(
+            slivers: [
+
+              SliverFillRemaining(
+               hasScrollBody: false,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
 
 
-        children: [
-          Expanded(
-            child: PageView.builder(
-              controller:controller ,
-              physics:const BouncingScrollPhysics(),
-              onPageChanged: (index){
+                  children: [
+                    ExpandablePageView(
+                      controller:controller ,
 
-                setState(() {
-                  pageIndex=index;
-                });
-              },
-              itemCount: item.length,
-                itemBuilder:
-            (context,index)
-            {
-              return  PageViewItem(
-              item: item[index]
-              );
-            }),
-          ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: CircularStepProgressIndicator(
-              totalSteps: 3,
-             selectedColor: basicColor,
-              currentStep: pageIndex+1,
-              width: 80,
-              height: 80,
-              child: FloatingActionButton(
-                onPressed: () async {
-                  if(pageIndex==2)
-                    {
-                     print(await CacheHelper.setInCacheHelper(value:true , key: 'onBoarding'));
-                      GoRouter.of(context).pushReplacement(AppRouter.loginScreen);
-                    }
-                  else
-                    {
-                  controller.nextPage(duration:const Duration(
-                    milliseconds: 100
-                  ), curve: Curves.easeInOutCirc);}
-                },
-                shape:const  OvalBorder(),
-                backgroundColor: Colors.transparent,
-                foregroundColor:Colors.transparent ,
-                elevation: 0,
 
-                child:const Icon(
-                  Icons.arrow_forward_ios,
-                  color: navyBlueColor,
-                  size: 30,
+
+                      //physics:const NeverScrollableScrollPhysics(),
+                      onPageChanged: (index){
+
+                        setState(() {
+                          pageIndex=index;
+                        });
+                      },
+                     children : List.generate(item.length, (index) =>  PageViewItem(
+                       item: item[index],
+                       pageIndex: pageIndex,
+                       controller: controller,
+
+                     ))
+
+                    ),
+                    Spacer(),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child:  SizedBox(
+                        height: 80,
+                        width: 80,
+                        child: CircularStepProgressIndicator(
+                          totalSteps: 3,
+                          selectedColor: basicColor,
+                          currentStep: pageIndex+1,
+                          width: 80,
+                          height: 80,
+                          child: FloatingActionButton(
+                            onPressed: () async {
+                              if(pageIndex==2)
+                              {
+                                print(await CacheHelper.setInCacheHelper(value:true , key: 'onBoarding'));
+                                GoRouter.of(context).pushReplacement(AppRouter.loginScreen);
+                              }
+                              else
+                              {
+                                controller.nextPage(duration:const Duration(
+                                    milliseconds: 100
+                                ), curve: Curves.easeInOutCirc);}
+                            },
+                            shape:const  OvalBorder(),
+                            backgroundColor: Colors.transparent,
+                            foregroundColor:Colors.transparent ,
+                            elevation: 0,
+
+                            child:const Icon(
+                              Icons.arrow_forward_ios,
+                              color: navyBlueColor,
+                              size: 30,
+                            ),
+                          ),
+
+                        ),
+                      ),
+                    )
+
+
+
+
+
+
+                  ],
                 ),
               ),
+              // SliverFillRemaining(
+              //   hasScrollBody: false,
+              //   child: IntrinsicHeight(
+              //     child: Column(children: [
+              //       Spacer(),
 
-            ),
+              //     ],),
+              //   ),
+              // )
+              // SliverToBoxAdapter(
+              //   child: Column(
+              //     children: [
+              //
+              //       const  SizedBox(
+              //         height: 5,
+              //       )
+              //     ],
+              //   ),
+              // )
+            ],
+
           ),
-        const  SizedBox(
-            height: 5,
-          )
 
 
-        ],
-      ),
+
+
     );
   }
 }
