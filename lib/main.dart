@@ -1,23 +1,24 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:overlay_support/overlay_support.dart';
-import 'package:toastification/toastification.dart';
-import 'package:travanix/Features/splash_view/views/splash_view.dart';
-import 'package:travanix/Features/travanix_layout/data/cubits/change_bottom_nav_bar_cubit.dart';
+
+import 'package:travanix/Features/travanix_layout/presentation/views_models/cubits/change_bottom_nav_bar_cubit.dart';
+
 import 'package:travanix/core/styles/app_styles.dart';
+import 'package:travanix/core/utils/api_services.dart';
 import 'package:travanix/core/utils/cache_service.dart';
 import 'package:travanix/core/utils/routers.dart';
 
 void main() async {
 WidgetsFlutterBinding.ensureInitialized();
 //await Firebase.initializeApp();
+DioHelper.initDio();
 await CacheHelper.initSharedPreferences();
   runApp( DevicePreview(
     enabled: true,
-    builder: (context) => MyApp(), // Wrap your app
+    builder: (context) =>const  MyApp(), // Wrap your app
   ));
 }
 

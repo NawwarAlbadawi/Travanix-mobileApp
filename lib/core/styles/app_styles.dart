@@ -11,6 +11,9 @@ import 'package:travanix/core/styles/app_colors.dart';
       elevation: 0.0,
       scrolledUnderElevation: 0.0,
       foregroundColor: Colors.white,
+      iconTheme:  IconThemeData(
+        color: basicColor
+      )
 
     ),
    fontFamily: 'Exo',

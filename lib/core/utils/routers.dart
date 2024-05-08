@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:travanix/Features/authentication/views/login_screen.dart';
-import 'package:travanix/Features/authentication/views/otp.dart';
-import 'package:travanix/Features/authentication/views/register.dart';
-import 'package:travanix/Features/home/views/home_view.dart';
+import 'package:travanix/Features/authentication/presentation/views/login_screen.dart';
+import 'package:travanix/Features/authentication/presentation/views/otp.dart';
+import 'package:travanix/Features/authentication/presentation/views/register.dart';
 
-import 'package:travanix/Features/on_boarding/views/on_boarding_view.dart';
+import 'package:travanix/Features/home/presentation/views/home_view.dart';
+
+import 'package:travanix/Features/on_boarding/presentation/views/on_boarding_view.dart';
+
+
 import 'package:travanix/Features/splash_view/views/splash_view.dart';
-import 'package:travanix/Features/travanix_layout/views/travanix_layout_view.dart';
+import 'package:travanix/Features/travanix_layout/presentation/views/travanix_layout_view.dart';
+
 
 abstract class AppRouter
 
