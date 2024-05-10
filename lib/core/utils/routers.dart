@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/authentication/presentation/views/login_screen.dart';
 import 'package:travanix/Features/authentication/presentation/views/otp.dart';
 import 'package:travanix/Features/authentication/presentation/views/register.dart';
+import 'package:travanix/Features/authentication/presentation/views/rest_password_using_email.dart';
+import 'package:travanix/Features/authentication/presentation/views/rest_password_view.dart';
 
 import 'package:travanix/Features/home/presentation/views/home_view.dart';
 
@@ -16,13 +19,25 @@ import 'package:travanix/Features/travanix_layout/presentation/views/travanix_la
 abstract class AppRouter
 
 {
-   static const splashView ='/';
-   static const onBoarding ='/OnBoarding';
-   static const loginScreen ='/loginScreen';
-   static const registerScreen ='/registerScreen';
-   static const otpScreen ='/otpScreen';
-   static const homeScreen ='/homeScreen';
-   static const travanixLayoutView='/travanixLayoutView';
+   static const String  splashView ='/';
+   static const String onBoarding ='/OnBoarding';
+   static const String loginScreen ='/loginScreen';
+   static const String registerScreen ='/registerScreen';
+   static const String otpScreen ='/otpScreen/:email/:fromWhere';
+   static const String homeScreen ='/homeScreen';
+   static const String travanixLayoutView='/travanixLayoutView';
+   static const String restPasswordUsingEmail ='/restPasswordUsingEmail';
+   static const String restPasswordView ='/restPasswordView';
+
+
+   static List<String>routerName=[
+     'loginScreen',
+     'registerScreen',
+     'otpScreen',
+     'homeScreen',
+    'restPasswordScreen'
+   ];
+
   static final  GoRouter router =  GoRouter(
     routes: <RouteBase>[
       GoRoute(
@@ -40,6 +55,7 @@ abstract class AppRouter
 
       ),
       GoRoute(
+        name: routerName[0],
         path:loginScreen ,
         builder: (BuildContext context, GoRouterState state) {
           return const LoginScreenView();
@@ -48,6 +64,7 @@ abstract class AppRouter
       ),
 
       GoRoute(
+        name: routerName[1],
         path:registerScreen ,
         builder: (BuildContext context, GoRouterState state) {
           return const RegisterView();
@@ -56,8 +73,12 @@ abstract class AppRouter
       ),
       GoRoute(
         path:otpScreen ,
+        name:routerName[2],
+
         builder: (BuildContext context, GoRouterState state) {
-          return  OTPScreen(email: state.extra as String);
+          return  OTPScreen(email: state.pathParameters['email'] !,fromWhere: state.pathParameters[
+            'fromWhere'
+          ]!,);
         },
 
       ),
@@ -75,6 +96,23 @@ abstract class AppRouter
         },
 
       ),
+      GoRoute(
+        path:restPasswordUsingEmail ,
+        name: routerName[4],
+        builder: (BuildContext context, GoRouterState state) {
+          return  const RestPasswordUsingEmail();
+        },
+
+      ),
+      GoRoute(
+        path:restPasswordView ,
+
+        builder: (BuildContext context, GoRouterState state) {
+          return  const RestPasswordView();
+        },
+
+      ),
+
     ],
 
   );

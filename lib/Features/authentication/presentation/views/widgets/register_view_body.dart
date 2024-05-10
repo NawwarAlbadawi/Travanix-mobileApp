@@ -18,9 +18,9 @@ class RegisterViewBody extends StatefulWidget {
 class _RegisterViewBodyState extends State<RegisterViewBody> {
   var  passwordController=TextEditingController();
   var  emailController=TextEditingController();
-   var  confirmPasswordController=TextEditingController();
+  var  confirmPasswordController=TextEditingController();
   var  nameController=TextEditingController();
-   Icon ? suffixIcon;
+  Icon ? suffixIcon;
   GlobalKey<FormState>  formKey=GlobalKey<FormState>();
 
   @override
@@ -133,7 +133,9 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   onPressed: (){
                     if(formKey.currentState!.validate())
                       {
-                        GoRouter.of(context).push(AppRouter.otpScreen,extra: emailController.text );
+                        GoRouter.of(context).pushNamed('otpScreen',pathParameters: {
+                          'email':emailController.text,
+                          'fromWhere':'fromSignUp'} );
                         toastification.show(
                             title: const Text('OK'),
                             backgroundColor: Colors.red,

@@ -5,6 +5,7 @@ class Assets {
   static const String fontExoRegular = 'assets/font/Exo-Regular.ttf';
   static const String imagesBestPlace = 'assets/images/Best_place.png';
   static const String imagesDestination = 'assets/images/Destination.png';
+  static const String imagesEmail = 'assets/images/email.png';
   static const String imagesFacebook = 'assets/images/facebook.png';
   static const String imagesGoogle = 'assets/images/google.png';
   static const String imagesHotel = 'assets/images/Hotel.png';
@@ -13,6 +14,7 @@ class Assets {
   static const String imagesMap = 'assets/images/Map.png';
   static const String imagesMoment = 'assets/images/moment.png';
   static const String imagesOTP = 'assets/images/OTP.png';
+  static const String imagesRestPassword = 'assets/images/restPassword.png';
   static const String imagesSignUp = 'assets/images/signUp.png';
   static const String imagesSplashViewImage = 'assets/images/splashViewImage.png';
   static const String imagesWorld = 'assets/images/World.png';

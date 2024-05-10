@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:travanix/Features/authentication/presentation/views/widgets/register_view_body.dart';
-import 'package:travanix/core/utils/routers.dart';
-
-class RegisterView extends StatelessWidget {
-  const RegisterView({super.key});
+import 'package:travanix/Features/authentication/presentation/views/widgets/rest_password_using_email_body.dart';
+class RestPasswordUsingEmail extends StatelessWidget {
+  const RestPasswordUsingEmail({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +15,7 @@ class RegisterView extends StatelessWidget {
           },
         ),
       ),
-      body:const  RegisterViewBody(),
+      body:const RestPasswordUsingEmailBody() ,
     );
   }
 }

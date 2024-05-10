@@ -77,7 +77,9 @@ class  LoginScreenBody extends StatelessWidget {
                   const   SizedBox(height: 20,),
                     CustomTextButton(
                     text: 'Forget Password ?',
-                    onPressed: (){},
+                    onPressed: (){
+                      GoRouter.of(context).push(AppRouter.restPasswordUsingEmail);
+                    },
 
                   ),
                    LoginButton(formKey: formKey,),

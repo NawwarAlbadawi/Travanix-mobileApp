@@ -45,7 +45,7 @@ class OTPItem extends StatelessWidget {
               if(value.length==1)
               {
 
-                if(index!=3)
+                if(index!=4)
                 {
                   FocusScope.of(context).nextFocus();}
                 }

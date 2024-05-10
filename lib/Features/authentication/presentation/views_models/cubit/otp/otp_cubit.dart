@@ -20,16 +20,12 @@ class OtpCubit extends Cubit<OtpState> {
         otpType: OTPType.digitsOnly
     );
 
+
  if( await  myAuth.sendOTP()==true)
    {
      print('hjgjg');
      emit(SendOTPSuccess());
    }
-
-
-
-
-
   }
   void verifyOTP({required String otp})async
   {

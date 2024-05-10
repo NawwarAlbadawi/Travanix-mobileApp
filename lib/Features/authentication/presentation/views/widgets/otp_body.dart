@@ -16,17 +16,19 @@ import 'package:travanix/core/widgets/custom_text_button.dart';
 import 'package:travanix/generated/assets.dart';
 
 class OTPBody extends StatefulWidget {
-  const OTPBody({super.key, required this.email});
+  const OTPBody({super.key, required this.email, required this.fromWhere});
   final  String email;
+  final String fromWhere;
 
   @override
   State<OTPBody> createState() {
-    return  _OTPBodyState(email: email);
+    return  _OTPBodyState(email: email,fromWhere);
   }
 }
 
 class _OTPBodyState extends State<OTPBody> {
   final String email;
+  final String fromWhere;
   final List<TextEditingController>controllers=[
     TextEditingController(),
     TextEditingController(),
@@ -36,7 +38,7 @@ class _OTPBodyState extends State<OTPBody> {
   ];
   
 
-   _OTPBodyState({required this.email});
+   _OTPBodyState(this.fromWhere, {required this.email});
   @override
   void initState() {
     // TODO: implement initState
@@ -46,13 +48,21 @@ class _OTPBodyState extends State<OTPBody> {
 
   @override
   Widget build(BuildContext context) {
+    print(email);
     return  BlocProvider(
       create: (context)=>OtpCubit()..sendOtp(email: email),
       child: BlocConsumer<OtpCubit,OtpState>(
         listener: (context,state){
           if(state is VerifyOTPSuccess)
             {
-              GoRouter.of(context).pushReplacement(AppRouter.loginScreen);
+              if(fromWhere =='fromSignUp')
+                {
+              GoRouter.of(context).pushReplacement(AppRouter.loginScreen);}
+              else
+                {
+
+                  GoRouter.of(context).pushReplacement(AppRouter.restPasswordView);
+                }
 
             }
         },
@@ -105,11 +115,12 @@ class _OTPBodyState extends State<OTPBody> {
                           {
                             otp+=controllers[i].text;
                           }
+
                         OtpCubit.get(context).verifyOTP(otp: otp);
 
                       },
                       text: 'Continue',
-                      radius: 10,
+                      radius: 15,
                     ),
                   ),
                   const SizedBox(height: 10),
