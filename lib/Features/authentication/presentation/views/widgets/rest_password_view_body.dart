@@ -108,7 +108,7 @@ class _RestPasswordViewBodyState extends State<RestPasswordViewBody> {
 
 
                   },
-                  text: 'Change Password',
+                  text: 'Rest password',
                   radius: 15,
                 ),
               )

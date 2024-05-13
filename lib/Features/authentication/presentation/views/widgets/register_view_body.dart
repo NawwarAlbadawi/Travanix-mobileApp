@@ -135,7 +135,10 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                       {
                         GoRouter.of(context).pushNamed('otpScreen',pathParameters: {
                           'email':emailController.text,
-                          'fromWhere':'fromSignUp'} );
+                          'fromWhere':'fromSignUp',
+                          'name':  nameController.text,
+                          'password':passwordController.text
+                        } );
                         toastification.show(
                             title: const Text('OK'),
                             backgroundColor: Colors.red,

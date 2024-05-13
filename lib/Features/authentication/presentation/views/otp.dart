@@ -5,9 +5,11 @@ import 'package:travanix/Features/authentication/presentation/views/widgets/otp_
 
 
 class OTPScreen extends StatelessWidget {
-  const OTPScreen({super.key, required this.email, required this.fromWhere});
+  const OTPScreen({super.key, required this.email, required this.fromWhere, this.name, this.password});
   final  String email;
   final String fromWhere;
+  final String ?name;
+  final String?password;
 
 
   @override
@@ -24,7 +26,7 @@ class OTPScreen extends StatelessWidget {
           },
         ),
       ),
-      body:OTPBody(email: email,fromWhere: fromWhere,) ,
+      body:OTPBody(email: email,fromWhere: fromWhere,name: name,password: password,) ,
     );
   }
 }

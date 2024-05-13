@@ -21,22 +21,16 @@ class LoginWayItem extends StatelessWidget {
       ),
       height: 45,
       child:  Row(
+        mainAxisAlignment: MainAxisAlignment.center,
 
         children: [
-          const   Spacer(),
-             AspectRatio(
-            aspectRatio:1,
-            child:  Image(
-              image: AssetImage(image),
-              fit: BoxFit.contain,
-
-
-            ),
-          ),
+             Image(
+               image: AssetImage(image),
+               fit: BoxFit.contain,),
           const   SizedBox(width: 10,),
           Text(text,
             style: AppTextStyles.styleBold16(context),),
-          const  Spacer()
+
         ],
       ),
     );

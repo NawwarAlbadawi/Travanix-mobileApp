@@ -4,16 +4,17 @@ import 'package:either_dart/either.dart';
 
 import 'package:travanix/Features/authentication/data/models/login_model.dart';
 import 'package:travanix/core/utils/api_services.dart';
+import 'package:travanix/core/utils/failure.dart';
 
 class LoginRepo{
 
-  Future<Either<String,LoginModel>>postLoginData({required String email,required String password}) async
+  Future<Either<Failure,LoginModel>>postLoginData({required String email,required String password}) async
   {
 
     try{
-     var data= await DioHelper.postData(url: 'login',
+     var data= await DioHelper.postData(url: 'touristLogin',
       data: {
-        "Email_address_or_Phone_number":email,
+        "Email_address":email,
         "Password":password
       }
       );
@@ -23,7 +24,11 @@ class LoginRepo{
     }
     catch(error)
     {
-return Left(error.toString());
+      if(error is DioException)
+        {
+          return Left(ServerFailure.fromDioError(error));
+        }
+return Left(ServerFailure(error.toString()));
     }
   }
 

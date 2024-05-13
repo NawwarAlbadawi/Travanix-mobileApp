@@ -1,5 +1,6 @@
 
 import 'package:dio/dio.dart';
+import 'package:travanix/constants.dart';
 
 class DioHelper {
   static late Dio dio;
@@ -7,7 +8,7 @@ class DioHelper {
   {
     dio=Dio(
       BaseOptions(
-        baseUrl: 'http://192.168.220.237:8001/api/',
+        baseUrl: 'http://${ip}:8001/api/',
 
       )
     );

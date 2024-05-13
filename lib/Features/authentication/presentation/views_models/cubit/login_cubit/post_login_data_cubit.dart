@@ -21,21 +21,20 @@ class PostLoginDataCubit extends Cubit<PostLoginDataState> {
   required String password}) async{
     repo=LoginRepo();
     emit(PostLoginDataLoadingState());
-    print(email);
+    print(password);
     var result=repo.postLoginData(email: email, password: password);
 
 
 
     result.fold(
         (error){
-print(error);
-          emit(PostLoginDataErrorState());
+ emit(PostLoginDataErrorState(errMessage: error.errMessage));
         }
             ,
         (loginModel){
           model=loginModel;
           print('post');
-          emit(PostLoginDataSuccessState());
+          emit(PostLoginDataSuccessState(model: model));
 
         }
 

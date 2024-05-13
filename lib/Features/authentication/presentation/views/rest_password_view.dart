@@ -6,19 +6,9 @@ class RestPasswordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar:  AppBar(
-        leading: IconButton(
-          icon:const Icon(
-            Icons.arrow_back_ios_new,
+    return const  Scaffold(
 
-          ),
-          onPressed:(){
-            GoRouter.of(context).pop();
-          },
-        ),
-      ),
-      body: const RestPasswordViewBody(),
+      body:  RestPasswordViewBody(),
     );
   }
 }

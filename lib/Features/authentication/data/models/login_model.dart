@@ -9,26 +9,24 @@ String loginModelToJson(LoginModel data) => json.encode(data.toJson());
 class LoginModel {
     LoginModel({
         required this.accessToken,
-        required this.pharmacyId,
+
         required this.message,
         required this.status,
     });
-
-    String accessToken;
-    int pharmacyId;
+    String ? accessToken;
     String message;
     int status;
 
     factory LoginModel.fromJson(Map<dynamic, dynamic> json) => LoginModel(
-        accessToken: json["access_token"],
-        pharmacyId: json["pharmacy_id"],
+        accessToken: json["access_token"]!=null?json["access_token"]:null,
+
         message: json["message"],
         status: json["status"],
     );
 
     Map<dynamic, dynamic> toJson() => {
         "access_token": accessToken,
-        "pharmacy_id": pharmacyId,
+
         "message": message,
         "status": status,
     };

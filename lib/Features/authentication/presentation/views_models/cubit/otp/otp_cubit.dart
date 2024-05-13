@@ -1,8 +1,8 @@
-import 'package:bloc/bloc.dart';
-import 'package:email_auth/email_auth.dart';
+
+
 import 'package:email_otp/email_otp.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
+
 
 part 'otp_state.dart';
 
@@ -31,7 +31,12 @@ class OtpCubit extends Cubit<OtpState> {
   {
   if(await myAuth.verifyOTP(otp: otp))
     {
+      print('adad');
       emit(VerifyOTPSuccess());
+    }
+  else
+    {
+      print('errri');
     }
   }
 }

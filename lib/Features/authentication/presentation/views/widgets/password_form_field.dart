@@ -6,7 +6,7 @@ import 'package:travanix/Features/authentication/presentation/views_models/cubit
 import 'package:travanix/core/widgets/custom_text_form_field.dart';
 class PasswordFormField extends StatelessWidget {
   const PasswordFormField({super.key});
-  static var   passwordController=TextEditingController();
+  static TextEditingController   passwordController=TextEditingController();
 
 
   @override

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/authentication/presentation/views/login_screen.dart';
 import 'package:travanix/Features/authentication/presentation/views/otp.dart';
+import 'package:travanix/Features/authentication/presentation/views/register_loading_view.dart';
 import 'package:travanix/Features/authentication/presentation/views/register.dart';
 import 'package:travanix/Features/authentication/presentation/views/rest_password_using_email.dart';
 import 'package:travanix/Features/authentication/presentation/views/rest_password_view.dart';
@@ -23,12 +24,12 @@ abstract class AppRouter
    static const String onBoarding ='/OnBoarding';
    static const String loginScreen ='/loginScreen';
    static const String registerScreen ='/registerScreen';
-   static const String otpScreen ='/otpScreen/:email/:fromWhere';
+   static const String otpScreen ='/otpScreen/:email/:fromWhere/:name/:password';
    static const String homeScreen ='/homeScreen';
    static const String travanixLayoutView='/travanixLayoutView';
    static const String restPasswordUsingEmail ='/restPasswordUsingEmail';
    static const String restPasswordView ='/restPasswordView';
-
+   static const String registerLoading ='/registerLoading/:name/:email/:password';
 
    static List<String>routerName=[
      'loginScreen',
@@ -77,8 +78,8 @@ abstract class AppRouter
 
         builder: (BuildContext context, GoRouterState state) {
           return  OTPScreen(email: state.pathParameters['email'] !,fromWhere: state.pathParameters[
-            'fromWhere'
-          ]!,);
+            'fromWhere']!,name:state.pathParameters['name']!,
+          password:state.pathParameters['password']! ,);
         },
 
       ),
@@ -109,6 +110,19 @@ abstract class AppRouter
 
         builder: (BuildContext context, GoRouterState state) {
           return  const RestPasswordView();
+        },
+
+      ),
+      GoRoute(
+        path:registerLoading ,
+        name: 'RegisterLoading',
+
+        builder: (BuildContext context, GoRouterState state) {
+          return   RegisterLoadingView(email: state.pathParameters['email']!,
+          name: state.pathParameters['name']!,
+          password: state.pathParameters['password']!,
+
+          );
         },
 
       ),

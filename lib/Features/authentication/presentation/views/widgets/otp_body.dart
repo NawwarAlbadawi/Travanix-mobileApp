@@ -1,34 +1,34 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
-
 import 'package:travanix/Features/authentication/presentation/views/widgets/otp_item.dart';
 import 'package:travanix/Features/authentication/presentation/views_models/cubit/otp/otp_cubit.dart';
-
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/custom_material_button.dart';
 import 'package:travanix/core/widgets/custom_text_button.dart';
 import 'package:travanix/generated/assets.dart';
-
 class OTPBody extends StatefulWidget {
-  const OTPBody({super.key, required this.email, required this.fromWhere});
+  const OTPBody({super.key, required this.email, required this.fromWhere, this.name, this.password});
   final  String email;
   final String fromWhere;
+  final String ?password;
+  final String ?name;
 
   @override
   State<OTPBody> createState() {
-    return  _OTPBodyState(email: email,fromWhere);
+    return   _OTPBodyState(email: email,fromWhere:  fromWhere,
+  password:password,
+   name:name);
   }
 }
 
 class _OTPBodyState extends State<OTPBody> {
   final String email;
   final String fromWhere;
+  final String ?password;
+  final String ?name;
   final List<TextEditingController>controllers=[
     TextEditingController(),
     TextEditingController(),
@@ -38,7 +38,7 @@ class _OTPBodyState extends State<OTPBody> {
   ];
   
 
-   _OTPBodyState(this.fromWhere, {required this.email});
+   _OTPBodyState({required this.fromWhere, this.password, this.name,required this.email});
   @override
   void initState() {
     // TODO: implement initState
@@ -48,7 +48,7 @@ class _OTPBodyState extends State<OTPBody> {
 
   @override
   Widget build(BuildContext context) {
-    print(email);
+
     return  BlocProvider(
       create: (context)=>OtpCubit()..sendOtp(email: email),
       child: BlocConsumer<OtpCubit,OtpState>(
@@ -57,7 +57,12 @@ class _OTPBodyState extends State<OTPBody> {
             {
               if(fromWhere =='fromSignUp')
                 {
-              GoRouter.of(context).pushReplacement(AppRouter.loginScreen);}
+                  print(password);
+              GoRouter.of(context).pushNamed('RegisterLoading',pathParameters: {
+                'email':email,
+                'name':name!,
+                'password':password!
+              });}
               else
                 {
 

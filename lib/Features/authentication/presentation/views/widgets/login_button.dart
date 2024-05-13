@@ -6,7 +6,8 @@ import 'package:overlay_support/overlay_support.dart';
 import 'package:travanix/Features/authentication/presentation/views/widgets/Custom_circle_Indicator.dart';
 import 'package:travanix/Features/authentication/presentation/views/widgets/login_screen_body.dart';
 import 'package:travanix/Features/authentication/presentation/views/widgets/password_form_field.dart';
-import 'package:travanix/Features/authentication/presentation/views_models/cubit/post_login_data_cubit.dart';
+import 'package:travanix/Features/authentication/presentation/views_models/cubit/login_cubit/post_login_data_cubit.dart';
+
 import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/custom_material_button.dart';
@@ -27,15 +28,23 @@ class LoginButton extends StatelessWidget {
         listener: (context, state) {
           if(state is PostLoginDataSuccessState)
             {
+              if(state.model.status==0)
+                {
+                  const  CustomToast().build(context: context,color: Colors.red,text: state.model.message);
+                }
+              else
+                {
+
 
               const  CustomToast().build(context: context,color: Colors.green,text: 'Welcome Back');
 
 
-              //GoRouter.of(context).pushReplacement(AppRouter.travanixLayoutView);
+              GoRouter.of(context).pushReplacement(AppRouter.travanixLayoutView);}
             }
           else if (state is PostLoginDataErrorState)
             {
-             const CustomToast().build(context: context,color: Colors.red,text: 'Error');
+
+             const CustomToast().build(context: context,color: Colors.red,text: state.errMessage);
 
             }
           // TODO: implement listener
@@ -53,6 +62,8 @@ class LoginButton extends StatelessWidget {
 
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
+                    print(LoginScreenBody.emailController);
+                    print(PasswordFormField.passwordController.text);
 
 
 
