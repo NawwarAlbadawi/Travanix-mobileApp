@@ -15,7 +15,7 @@ class RestPasswordUsingEmail extends StatelessWidget {
           },
         ),
       ),
-      body:const RestPasswordUsingEmailBody() ,
+      body: RestPasswordUsingEmailBody() ,
     );
   }
 }

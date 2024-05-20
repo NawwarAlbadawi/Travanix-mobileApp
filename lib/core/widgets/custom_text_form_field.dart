@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({super.key,  this.radius=20, required this.prefix, this.suffix, this.onChange, this.onFieldSubmitted, required this.controller,  this.isPassword=false, required this.hintText, this.validator,  this.textInputType=TextInputType.text});
+  const CustomTextFormField({super.key,  this.radius=20, required this.prefix, this.suffix, this.onChange, this.onFieldSubmitted, required this.controller,  this.isPassword=false, required this.hintText, this.validator,  this.textInputType=TextInputType.text, this.fillColor});
   final double radius;
   final Widget prefix;
   final Widget ? suffix;
@@ -14,11 +14,14 @@ class CustomTextFormField extends StatelessWidget {
   final bool ? isPassword;
   final String hintText;
   final TextInputType textInputType;
+  final Color? fillColor;
 
   @override
   Widget build(BuildContext context) {
     return  TextFormField(
       decoration: InputDecoration(
+        fillColor: fillColor,
+        filled: fillColor !=null? true:false,
 
         border: buildOutlineInputBorder(),
         prefixIcon:prefix,

@@ -28,12 +28,12 @@ class RegisterLoadingViewBody extends StatelessWidget {
           listener: (context,state){
             if(state is PostRegisterDataSuccess)
               {
-                GoRouter.of(context).pushReplacement(AppRouter.travanixLayoutView);
+                context.pushReplacement(AppRouter.travanixLayoutView);
               }
             else if(state is PostRegisterDataFail)
               {
                 const  CustomToast().build(context: context,color: Colors.red,text: state.errorMessage);
-                GoRouter.of(context).pushReplacement(AppRouter.registerScreen);
+                context.pushReplacement(AppRouter.registerScreen);
               }
           },
           builder: (context,state)

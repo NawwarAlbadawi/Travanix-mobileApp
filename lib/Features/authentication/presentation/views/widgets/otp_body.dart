@@ -8,6 +8,7 @@ import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/custom_material_button.dart';
 import 'package:travanix/core/widgets/custom_text_button.dart';
+import 'package:travanix/core/widgets/custom_toast.dart';
 import 'package:travanix/generated/assets.dart';
 class OTPBody extends StatefulWidget {
   const OTPBody({super.key, required this.email, required this.fromWhere, this.name, this.password});
@@ -57,8 +58,8 @@ class _OTPBodyState extends State<OTPBody> {
             {
               if(fromWhere =='fromSignUp')
                 {
-                  print(password);
-              GoRouter.of(context).pushNamed('RegisterLoading',pathParameters: {
+
+              context.goNamed('RegisterLoading',pathParameters: {
                 'email':email,
                 'name':name!,
                 'password':password!
@@ -66,9 +67,13 @@ class _OTPBodyState extends State<OTPBody> {
               else
                 {
 
-                  GoRouter.of(context).pushReplacement(AppRouter.restPasswordView);
+                  context.pushReplacement(AppRouter.restPasswordView);
                 }
 
+            }
+          else if(state is VerifyOTPError)
+            {
+             const  CustomToast().build(context: context, text: 'Invalid code', color: Colors.red);
             }
         },
         builder: (context,state){

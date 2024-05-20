@@ -14,8 +14,13 @@ class LoginWayItem extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
-              color: Colors.red
-          )
+              color: Colors.grey,
+
+
+
+
+          ),
+
 
 
       ),

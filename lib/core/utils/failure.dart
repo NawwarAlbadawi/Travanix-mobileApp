@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
+
 
 abstract class Failure{
   final String errMessage;
@@ -58,7 +58,7 @@ class ServerFailure extends Failure {
 
         return ServerFailure('Internal Server error, Please try later');
       } else  if (statusCode ==422){
-      return ServerFailure(response['message']);
+      return ServerFailure(response['message'].toString().substring(0,response['message'].toString().indexOf('.')));
     }
     else {return ServerFailure('Opps There was an Error, Please try again');}
   }

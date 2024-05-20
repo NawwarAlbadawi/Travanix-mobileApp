@@ -1,6 +1,7 @@
 
 
 
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -27,7 +28,7 @@ class  LoginScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding:  EdgeInsets.symmetric(horizontal: MediaQuery.sizeOf(context).width*.05),
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -66,7 +67,7 @@ class  LoginScreenBody extends StatelessWidget {
                     {
                       if(string!.isEmpty)
                       {
-                        return 'Email must Not be Empty';
+                        return 'Email is a required field';
                       }
                       return null;
                     },

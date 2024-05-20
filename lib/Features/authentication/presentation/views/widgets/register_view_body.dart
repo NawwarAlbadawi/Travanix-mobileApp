@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import 'package:toastification/toastification.dart';
+
 import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/custom_material_button.dart';
@@ -60,7 +60,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 {
                   if(string!.isEmpty)
                   {
-                    return 'Name must Not be Empty';
+                    return 'Name is a required field';
                   }
                   return null;
                 },
@@ -76,7 +76,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 {
                   if(string!.isEmpty)
                   {
-                    return 'Email must Not be Empty';
+                    return 'Email is a required field';
                   }
                   return null;
                 },
@@ -93,7 +93,11 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 {
                   if(value!.isEmpty)
                   {
-                    return 'Password must Not be Empty';
+                    return 'Password is a required field';
+                  }
+                  else if(value.length<8)
+                  {
+                    return 'Password must be at least 8 characters';
                   }
                   return null;
                 },
@@ -114,11 +118,11 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 {
                   if(string!.isEmpty)
                   {
-                    return ' Confirm Password must Not be Empty';
+                    return ' Confirm Password is a required field';
                   }
                   else if (string!=passwordController.text)
                     {
-                      return 'Confirm Password Doesn''\t Match';
+                      return 'Your password and confirmation password do not match';
                     }
                   return null;
                 },
@@ -139,16 +143,6 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                           'name':  nameController.text,
                           'password':passwordController.text
                         } );
-                        toastification.show(
-                            title: const Text('OK'),
-                            backgroundColor: Colors.red,
-                          applyBlurEffect: true,
-                          showProgressBar: false,
-                          style: ToastificationStyle.flat,
-                          autoCloseDuration:const Duration(seconds: 2),
-                          dragToClose: true,
-
-                        );
 
                       }
 

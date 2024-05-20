@@ -8,9 +8,11 @@ import 'package:travanix/Features/on_boarding/data/models.dart';
 import 'package:travanix/Features/on_boarding/presentation/views/widgets/page_view_item.dart';
 
 import 'package:travanix/core/styles/app_colors.dart';
+import 'package:travanix/core/styles/app_text_styles.dart';
 
 import 'package:travanix/core/utils/cache_service.dart';
 import 'package:travanix/core/utils/routers.dart';
+import 'package:travanix/core/widgets/custom_text_button.dart';
 import 'package:travanix/generated/assets.dart';
 class OnBoardingBody extends StatefulWidget {
   const OnBoardingBody({super.key});
@@ -66,44 +68,55 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
 
                     ),
                    const  Spacer(),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child:  SizedBox(
-                        height: 80,
-                        width: 80,
-                        child: CircularStepProgressIndicator(
-                          totalSteps: 3,
-                          selectedColor: basicColor,
-                          currentStep: pageIndex+1,
-                          width: 80,
-                          height: 80,
-                          child: FloatingActionButton(
-                            onPressed: () async {
-                              if(pageIndex==2)
-                              {
-                               await CacheHelper.setInCacheHelper(value:true , key: 'onBoarding');
-                                GoRouter.of(context).pushReplacement(AppRouter.loginScreen);
-                              }
-                              else
-                              {
-                                controller.nextPage(duration:const Duration(
-                                    milliseconds: 100
-                                ), curve: Curves.easeInOutCirc);}
-                            },
-                            shape:const  OvalBorder(),
-                            backgroundColor: Colors.transparent,
-                            foregroundColor:Colors.transparent ,
-                            elevation: 0,
 
-                            child:const Icon(
-                              Icons.arrow_forward_ios,
-                              color: navyBlueColor,
-                              size: 30,
+                    Row(
+                      children: [
+                        CustomTextButton(text: 'Skip',
+                            onPressed: () async{
+                              await setInCache(context);
+                            },
+                        textStyles:AppTextStyles.styleSemiBold16(context) ,),
+                        const Spacer(),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child:  SizedBox(
+                            height: 80,
+                            width: 80,
+                            child: CircularStepProgressIndicator(
+                              totalSteps: 3,
+                              selectedColor: basicColor,
+                              currentStep: pageIndex+1,
+                              width: 80,
+                              height: 80,
+                              child: FloatingActionButton(
+                                onPressed: () async {
+                                  if(pageIndex==2)
+                                  {
+                                   await setInCache(context);
+
+                                  }
+                                  else
+                                  {
+                                    controller.nextPage(duration:const Duration(
+                                        milliseconds: 100
+                                    ), curve: Curves.easeInOutCirc);}
+                                },
+                                shape:const  OvalBorder(),
+                                backgroundColor: Colors.transparent,
+                                foregroundColor:Colors.transparent ,
+                                elevation: 0,
+
+                                child:const Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: navyBlueColor,
+                                  size: 30,
+                                ),
+                              ),
+
                             ),
                           ),
-
                         ),
-                      ),
+                      ],
                     )
 
 
@@ -123,6 +136,12 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
 
 
     );
+  }
+
+  Future<void> setInCache(BuildContext context) async {
+     await CacheHelper.setInCacheHelper(value:true , key: 'onBoarding').then((value) {
+      context.pushReplacement(AppRouter.loginScreen);
+    } );
   }
 }
 

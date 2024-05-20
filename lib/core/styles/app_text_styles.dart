@@ -76,6 +76,14 @@ abstract class AppTextStyles {
       fontWeight: FontWeight.w600,
     );
   }
+  static TextStyle styleMedium24(BuildContext context) {
+    return TextStyle(
+      color: navyBlueColor,
+      fontSize: getResponsiveFontSize(context, fontSize: 24),
+
+      fontWeight: FontWeight.w500,
+    );
+  }
 
   static TextStyle styleRegular14(BuildContext context) {
     return TextStyle(
@@ -100,6 +108,14 @@ abstract class AppTextStyles {
       fontSize: getResponsiveFontSize(context, fontSize: 18),
 
       fontWeight: FontWeight.w600,
+    );
+  }
+  static TextStyle styleBold18(BuildContext context) {
+    return TextStyle(
+      color:navyBlueColor,
+      fontSize: getResponsiveFontSize(context, fontSize: 18),
+
+      fontWeight: FontWeight.bold,
     );
   }
   static TextStyle styleMedium18(BuildContext context) {

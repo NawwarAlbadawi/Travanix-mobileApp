@@ -29,11 +29,15 @@ class PasswordFormField extends StatelessWidget {
                 },
               ),
               textInputType: TextInputType.visiblePassword,
-              validator: (string)
+              validator: (value)
               {
-                if(string!.isEmpty)
+                if(value!.isEmpty)
                 {
-                  return 'Password must Not be Empty';
+                  return 'Password is a required field';
+                }
+                else if(value.length<8)
+                {
+                  return 'Password must be at least 8 characters';
                 }
                 return null;
 

@@ -14,3 +14,6 @@ final class SendOTPSuccess extends OtpState{
 final class VerifyOTPSuccess extends OtpState{
 
 }
+final class VerifyOTPError extends OtpState{
+
+}

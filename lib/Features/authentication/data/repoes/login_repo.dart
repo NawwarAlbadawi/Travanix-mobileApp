@@ -26,6 +26,7 @@ class LoginRepo{
     {
       if(error is DioException)
         {
+          print(error.toString());
           return Left(ServerFailure.fromDioError(error));
         }
 return Left(ServerFailure(error.toString()));

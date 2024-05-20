@@ -2,13 +2,14 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:overlay_support/overlay_support.dart';
+
 import 'package:travanix/Features/authentication/presentation/views/widgets/Custom_circle_Indicator.dart';
 import 'package:travanix/Features/authentication/presentation/views/widgets/login_screen_body.dart';
 import 'package:travanix/Features/authentication/presentation/views/widgets/password_form_field.dart';
 import 'package:travanix/Features/authentication/presentation/views_models/cubit/login_cubit/post_login_data_cubit.dart';
+import 'package:travanix/core/utils/cache_service.dart';
 
-import 'package:travanix/core/styles/app_text_styles.dart';
+
 import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/custom_material_button.dart';
 import 'package:travanix/core/widgets/custom_toast.dart';
@@ -25,7 +26,7 @@ class LoginButton extends StatelessWidget {
       create: (context) => PostLoginDataCubit(),
 
       child: BlocConsumer<PostLoginDataCubit, PostLoginDataState>(
-        listener: (context, state) {
+        listener: (context, state)  {
           if(state is PostLoginDataSuccessState)
             {
               if(state.model.status==0)
@@ -35,11 +36,11 @@ class LoginButton extends StatelessWidget {
               else
                 {
 
-
               const  CustomToast().build(context: context,color: Colors.green,text: 'Welcome Back');
-
-
-              GoRouter.of(context).pushReplacement(AppRouter.travanixLayoutView);}
+               CacheHelper.setInCacheHelper(value: state.model.accessToken, key:'token').then((value) {
+                 context.pushReplacement(AppRouter.travanixLayoutView);
+               });
+              }
             }
           else if (state is PostLoginDataErrorState)
             {
@@ -62,8 +63,7 @@ class LoginButton extends StatelessWidget {
 
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
-                    print(LoginScreenBody.emailController);
-                    print(PasswordFormField.passwordController.text);
+
 
 
 

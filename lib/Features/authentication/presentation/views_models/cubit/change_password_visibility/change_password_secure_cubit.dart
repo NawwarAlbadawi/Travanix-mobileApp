@@ -7,12 +7,12 @@ class ChangePasswordSecureCubit extends Cubit<ChangePasswordSecureState> {
 
   static  ChangePasswordSecureCubit get (context)=> BlocProvider.of(context);
 
-  IconData passwordIcon=Icons.remove_red_eye;
+  IconData passwordIcon=Icons.visibility_off_outlined;
   bool isVisible =true;
   IconData changePasswordVisibility()
   {
     isVisible=!isVisible;
-    if(isVisible)
+    if(!isVisible)
       {
         passwordIcon=Icons.remove_red_eye_outlined;
       }

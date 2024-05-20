@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:overlay_support/overlay_support.dart';
 
 import 'package:travanix/Features/travanix_layout/presentation/views_models/cubits/change_bottom_nav_bar_cubit.dart';
+import 'package:travanix/bloc_observer.dart';
 
 import 'package:travanix/core/styles/app_styles.dart';
 import 'package:travanix/core/utils/api_services.dart';
@@ -12,6 +13,7 @@ import 'package:travanix/core/utils/cache_service.dart';
 import 'package:travanix/core/utils/routers.dart';
 
 void main() async {
+  Bloc.observer = MyBlocObserver();
 WidgetsFlutterBinding.ensureInitialized();
 await Firebase.initializeApp();
 DioHelper.initDio();
