@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
-import 'package:travanix/generated/assets.dart';
+
 class LoginWayItem extends StatelessWidget {
   const LoginWayItem({super.key, required this.text, required this.image});
   final String text;

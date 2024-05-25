@@ -52,6 +52,14 @@ dependencies:
   custom_indicator: any
   dio: ^5.4.3+1
   either_dart: ^1.0.0
+  flutter_osm_plugin: ^1.0.5
+  pointer_interceptor: ^0.10.1+1
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.1
+  flutter_map_location_marker: ^8.0.8
+  url_launcher: ^6.2.6
+  location: ^6.0.2
+
 
 
 

@@ -8,10 +8,7 @@ class OnBoarding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor:Colors.white,
-        statusBarIconBrightness: Brightness.dark
-    ));
+
     return const SafeArea(
       child:  Scaffold(
 

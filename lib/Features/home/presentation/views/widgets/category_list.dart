@@ -6,10 +6,9 @@ class CategoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  SizedBox(
-      height:90,
+      height:MediaQuery.sizeOf(context).height*.15,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-
         itemBuilder: (context,index)=>const Padding(
           padding:  EdgeInsets.only(right: 10.0),
           child:  CategoryItem(),

@@ -15,7 +15,7 @@ import 'package:travanix/core/utils/routers.dart';
 void main() async {
   Bloc.observer = MyBlocObserver();
 WidgetsFlutterBinding.ensureInitialized();
-await Firebase.initializeApp();
+
 DioHelper.initDio();
 await CacheHelper.initSharedPreferences();
   runApp( DevicePreview(
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         ],
         child: SafeArea(
           child: MaterialApp.router(
-              useInheritedMediaQuery: true,
+
               locale: DevicePreview.locale(context),
               builder: DevicePreview.appBuilder,
 

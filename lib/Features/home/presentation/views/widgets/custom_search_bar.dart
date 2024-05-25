@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/widgets/custom_text_form_field.dart';
@@ -27,16 +28,19 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
           ),
         ),
         const Spacer(),
-        Container(
-          height:60 ,
-          width: 60,
+        GestureDetector(
+          onTap: (){},
+          child: Container(
+            height:60 ,
+            width: 60,
 
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: basicColor
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: basicColor
+            ),
+            child: const Icon(Icons.filter_list,
+              color: Colors.white,),
           ),
-          child: const Icon(Icons.filter_list,
-            color: Colors.white,),
         )
       ],
     );

@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 
  final appTheme=   ThemeData(
+    useMaterial3: false,
     scaffoldBackgroundColor: Colors.white,
     appBarTheme:const AppBarTheme(
       color: Colors.white,

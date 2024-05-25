@@ -20,8 +20,9 @@ class CustomNavBar extends StatelessWidget {
             // indicatorColor: Colors.white,
             selectedItemColor: basicColor,
             unselectedItemColor: Colors.white70,
-            backgroundColor: navyBlueColor,
+            backgroundColor:const Color(0xff0A0B2E),
             // outlineBorderColor: basicColor,
+            borderRadius: 25,
             splashColor: Colors.transparent,
             curve: Curves.decelerate,
             onTap: (index){
@@ -30,7 +31,7 @@ class CustomNavBar extends StatelessWidget {
             items: [
               /// Home
               CrystalNavigationBarItem(
-                icon: FontAwesomeIcons.home,
+                icon: FontAwesomeIcons.house,
 
               ),
 

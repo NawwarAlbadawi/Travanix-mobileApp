@@ -16,7 +16,7 @@ class RegisterRepo
         {
         var data= await DioHelper.postData(url: 'touristRegester',
           data: {
-            "name" : name,
+            "tourist_name" : name,
             "Email_address":email,
             "Password" :password
           
