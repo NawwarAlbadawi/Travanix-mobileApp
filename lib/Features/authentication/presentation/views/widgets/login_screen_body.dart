@@ -8,7 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/authentication/presentation/views/widgets/login_button.dart';
 import 'package:travanix/Features/authentication/presentation/views/widgets/password_form_field.dart';
 import 'package:travanix/Features/authentication/presentation/views/widgets/second_way_of_login.dart';
-import 'package:travanix/core/generated/assets.dart';
+
 
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
@@ -16,6 +16,7 @@ import 'package:travanix/core/utils/routers.dart';
 
 import 'package:travanix/core/widgets/custom_text_button.dart';
 import 'package:travanix/core/widgets/custom_text_form_field.dart';
+import 'package:travanix/generated/assets.dart';
 
 
 class  LoginScreenBody extends StatelessWidget {
@@ -52,8 +53,11 @@ class  LoginScreenBody extends StatelessWidget {
                     ),
                   ),
                  const SizedBox(height: 20,),
-                  Text('Let''\'s Get Started',style:
+                  Text('Welcome to Travanix',style:
                     AppTextStyles.styleSemiBold24(context), ),
+                  const SizedBox(height: 5,),
+                  Text('Log in to continue',style:AppTextStyles.styleSemiBold16(context) ,),
+
                   const   SizedBox(height: 20,),
                   CustomTextFormField(
                     prefix:const Icon(Icons.alternate_email_outlined,),
@@ -78,7 +82,7 @@ class  LoginScreenBody extends StatelessWidget {
                   const PasswordFormField(),
                   const   SizedBox(height: 20,),
                     CustomTextButton(
-                    text: 'Forget Password ?',
+                    text: 'Forgot Password ',
                     onPressed: (){
                       GoRouter.of(context).push(AppRouter.restPasswordUsingEmail);
                     },

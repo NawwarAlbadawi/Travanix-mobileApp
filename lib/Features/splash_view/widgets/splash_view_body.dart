@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
-import 'package:travanix/core/generated/assets.dart';
+
 import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/utils/cache_service.dart';
 
 import 'package:travanix/core/utils/routers.dart';
+import 'package:travanix/generated/assets.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -29,10 +30,10 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
               statusBarColor:Colors.white,
               statusBarIconBrightness: Brightness.dark
           ));
-        if(CacheHelper.getFromCacheHelper('onBoarding')!=null)
+        if(true)
 
           {
-            if(CacheHelper.getFromCacheHelper('token')!=null)
+            if(true)
               {
                 context.pushReplacement(AppRouter.travanixLayoutView);
               }
@@ -79,7 +80,6 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
        const SizedBox(height: 30,),
           AnimatedBuilder(
             animation: controller,
-
             builder: (context,widget)
             {
               return SlideTransition(

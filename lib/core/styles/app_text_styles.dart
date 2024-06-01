@@ -126,6 +126,15 @@ abstract class AppTextStyles {
       fontWeight: FontWeight.w500,
     );
   }
+
+  static  TextStyle styleBold35(BuildContext context)
+  {
+    return TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 35),
+        fontWeight: FontWeight.bold,
+        color: basicColor
+    );
+  }
 }
 
 // sacleFactor

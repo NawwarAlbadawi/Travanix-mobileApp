@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -9,6 +11,8 @@ import 'package:travanix/Features/authentication/presentation/views/rest_passwor
 import 'package:travanix/Features/authentication/presentation/views/rest_password_view.dart';
 
 import 'package:travanix/Features/home/presentation/views/home_view.dart';
+import 'package:travanix/Features/hotels/presentation/views/room_view.dart';
+import 'package:travanix/Features/map/presentation/views/map_view.dart';
 
 import 'package:travanix/Features/on_boarding/presentation/views/on_boarding_view.dart';
 
@@ -30,6 +34,8 @@ abstract class AppRouter
    static const String restPasswordUsingEmail ='/restPasswordUsingEmail';
    static const String restPasswordView ='/restPasswordView';
    static const String registerLoading ='/registerLoading/:name/:email/:password';
+   static const String mapView ='/mapView';
+   static const String roomView='/roomView';
 
    static List<String>routerName=[
      'loginScreen',
@@ -63,7 +69,6 @@ abstract class AppRouter
         },
 
       ),
-
       GoRoute(
         name: routerName[1],
         path:registerScreen ,
@@ -126,6 +131,20 @@ abstract class AppRouter
         },
 
       ),
+      GoRoute(
+        path: mapView,
+        builder: (BuildContext context, GoRouterState state) {
+          return const MapView();
+        },
+
+      ),
+      GoRoute(
+          path:roomView,
+        builder: (context,state)
+        {
+          return const  RoomView();
+        }
+      )
 
     ],
 

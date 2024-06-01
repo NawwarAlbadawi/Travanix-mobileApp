@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:travanix/core/generated/assets.dart';
+
 import 'package:travanix/core/styles/app_colors.dart';
+import 'package:travanix/generated/assets.dart';
 
 class TripItem extends StatelessWidget {
   const TripItem({super.key});
@@ -24,8 +25,9 @@ class TripItem extends StatelessWidget {
                   color: Colors.blueAccent,
                   borderRadius: BorderRadius.circular(20),
                   image: const DecorationImage(
+                    fit: BoxFit.cover,
                       image: AssetImage(
-                        Assets.imagesEmail,
+                        Assets.imagesTest,
 
                       ),
                   ),
@@ -40,7 +42,6 @@ class TripItem extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: CircleAvatar(
                 radius: MediaQuery.sizeOf(context).width*.045,
-
                 backgroundColor: Colors.white,
                 child: IconButton(
                   color: Colors.red,

@@ -2,7 +2,9 @@
 class Assets {
   Assets._();
 
+  static const String fontExoBold = 'assets/font/Exo-Bold.ttf';
   static const String fontExoRegular = 'assets/font/Exo-Regular.ttf';
+  static const String fontExoSemiBold = 'assets/font/Exo-SemiBold.ttf';
   static const String imagesBestPlace = 'assets/images/Best_place.png';
   static const String imagesDestination = 'assets/images/Destination.png';
   static const String imagesEmail = 'assets/images/email.png';
@@ -17,6 +19,8 @@ class Assets {
   static const String imagesRestPassword = 'assets/images/restPassword.png';
   static const String imagesSignUp = 'assets/images/signUp.png';
   static const String imagesSplashViewImage = 'assets/images/splashViewImage.png';
+  static const String imagesTest = 'assets/images/test.jpg';
+  static const String imagesTest2 = 'assets/images/test2.jpg';
   static const String imagesWorld = 'assets/images/World.png';
 
 }

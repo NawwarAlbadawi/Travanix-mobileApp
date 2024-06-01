@@ -1,7 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:travanix/Features/authentication/presentation/views/widgets/login_way_item.dart';
-import 'package:travanix/core/generated/assets.dart';
+import 'package:travanix/generated/assets.dart';
+
 
 
 class SecondWayOfLogin extends StatelessWidget {

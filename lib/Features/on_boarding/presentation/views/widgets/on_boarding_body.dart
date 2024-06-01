@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:travanix/Features/on_boarding/data/models.dart';
 import 'package:travanix/Features/on_boarding/presentation/views/widgets/page_view_item.dart';
-import 'package:travanix/core/generated/assets.dart';
+
 
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
@@ -14,6 +14,7 @@ import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/utils/cache_service.dart';
 import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/custom_text_button.dart';
+import 'package:travanix/generated/assets.dart';
 
 class OnBoardingBody extends StatefulWidget {
   const OnBoardingBody({super.key});
@@ -141,7 +142,7 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
 
   Future<void> setInCache(BuildContext context) async {
      await CacheHelper.setInCacheHelper(value:true , key: 'onBoarding').then((value) {
-      context.pushReplacement(AppRouter.loginScreen);
+        GoRouter.of(context).pushReplacement(AppRouter.loginScreen);
     } );
   }
 }

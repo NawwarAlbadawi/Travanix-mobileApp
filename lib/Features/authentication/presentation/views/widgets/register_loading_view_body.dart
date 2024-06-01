@@ -1,9 +1,7 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:travanix/Features/authentication/presentation/views/widgets/password_form_field.dart';
 import 'package:travanix/Features/authentication/presentation/views_models/cubit/register_cubit/post_register_data_cubit.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';

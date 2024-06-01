@@ -22,6 +22,8 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         fillColor: fillColor,
         filled: fillColor !=null? true:false,
+        prefixIconColor: basicColor,
+        suffixIconColor: navyBlueColor,
 
         border: buildOutlineInputBorder(),
         prefixIcon:prefix,
@@ -39,6 +41,8 @@ class CustomTextFormField extends StatelessWidget {
 
 
       ),
+      cursorRadius:const  Radius.circular(20),
+      cursorColor: navyBlueColor,
 
       onChanged: onChange,
       textInputAction: TextInputAction.next,

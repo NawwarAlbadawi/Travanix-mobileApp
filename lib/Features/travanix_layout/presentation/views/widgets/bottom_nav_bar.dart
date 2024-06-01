@@ -20,7 +20,7 @@ class CustomNavBar extends StatelessWidget {
             // indicatorColor: Colors.white,
             selectedItemColor: basicColor,
             unselectedItemColor: Colors.white70,
-            backgroundColor:const Color(0xff0A0B2E),
+            backgroundColor:navyBlueColor,
             // outlineBorderColor: basicColor,
             borderRadius: 25,
             splashColor: Colors.transparent,

@@ -38,7 +38,7 @@ class LoginButton extends StatelessWidget {
 
               const  CustomToast().build(context: context,color: Colors.green,text: 'Welcome Back');
                CacheHelper.setInCacheHelper(value: state.model.accessToken, key:'token').then((value) {
-                 context.pushReplacement(AppRouter.travanixLayoutView);
+                 GoRouter.of(context).pushReplacement(AppRouter.travanixLayoutView);
                });
               }
             }
@@ -71,7 +71,7 @@ class LoginButton extends StatelessWidget {
 
                   }
                 },
-                text: 'Login',
+                text: 'Log in',
                 radius: 15,),
             ),
           );
