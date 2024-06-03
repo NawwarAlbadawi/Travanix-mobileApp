@@ -16,7 +16,7 @@ class CategoryItem extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            GoRouter.of(context).push(AppRouter.roomView);
+            GoRouter.of(context).push(AppRouter.hotelView);
           },
           child: SizedBox(
             height: MediaQuery.sizeOf(context).height*.11,

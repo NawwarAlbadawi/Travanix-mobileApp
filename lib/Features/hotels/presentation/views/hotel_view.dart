@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconly/iconly.dart';
-import 'package:travanix/Features/hotels/presentation/views/widgets/book_room_bar.dart';
-import 'package:travanix/Features/hotels/presentation/views/widgets/room_view_body.dart';
+import 'package:travanix/Features/hotels/presentation/views/widgets/book_hotel_room_bar.dart';
+import 'package:travanix/Features/hotels/presentation/views/widgets/hotel_view_body.dart';
 
 class RoomView extends StatelessWidget {
   const RoomView({super.key});
@@ -21,7 +22,9 @@ class RoomView extends StatelessWidget {
 
             child: IconButton(
               icon:const  Icon(FontAwesomeIcons.arrowLeft),
-              onPressed: (){},
+              onPressed: (){
+                GoRouter.of(context).pop();
+              },
             ),
           ),
         ),
@@ -42,8 +45,8 @@ class RoomView extends StatelessWidget {
       ),
       extendBodyBehindAppBar: true,
 
-      body:const RoomViewBody(),
-      bottomNavigationBar: const BookRoomBar(),
+      body:const HotelViewBody(),
+      bottomNavigationBar: const BookHotelRoomBar(),
 
     );
   }

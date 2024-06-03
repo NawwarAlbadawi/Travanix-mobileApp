@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 
-class RoomDetailsBar extends StatelessWidget {
-  const RoomDetailsBar({super.key, required this.pageController});
+class HotelDetailsBar extends StatelessWidget {
+  const HotelDetailsBar({super.key, required this.pageController});
   final PageController pageController;
 
   @override

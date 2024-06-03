@@ -11,7 +11,8 @@ import 'package:travanix/Features/authentication/presentation/views/rest_passwor
 import 'package:travanix/Features/authentication/presentation/views/rest_password_view.dart';
 
 import 'package:travanix/Features/home/presentation/views/home_view.dart';
-import 'package:travanix/Features/hotels/presentation/views/room_view.dart';
+import 'package:travanix/Features/hotels/presentation/views/hotels_view.dart';
+import 'package:travanix/Features/hotels/presentation/views/hotel_view.dart';
 import 'package:travanix/Features/map/presentation/views/map_view.dart';
 
 import 'package:travanix/Features/on_boarding/presentation/views/on_boarding_view.dart';
@@ -36,6 +37,7 @@ abstract class AppRouter
    static const String registerLoading ='/registerLoading/:name/:email/:password';
    static const String mapView ='/mapView';
    static const String roomView='/roomView';
+   static const String hotelView='/hotelView';
 
    static List<String>routerName=[
      'loginScreen',
@@ -144,7 +146,15 @@ abstract class AppRouter
         {
           return const  RoomView();
         }
-      )
+      ),
+      GoRoute(
+          path:hotelView,
+          builder: (context,state)
+          {
+            return const  HotelsView();
+          }
+      ),
+
 
     ],
 

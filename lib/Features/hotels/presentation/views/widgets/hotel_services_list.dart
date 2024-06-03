@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travanix/core/styles/app_colors.dart';
-class RoomServicesList extends StatelessWidget {
-  const RoomServicesList({super.key});
+class HotelServicesList extends StatelessWidget {
+  const HotelServicesList({super.key});
 
   @override
   Widget build(BuildContext context) {

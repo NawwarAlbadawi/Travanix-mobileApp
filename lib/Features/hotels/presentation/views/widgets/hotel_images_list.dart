@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travanix/generated/assets.dart';
-class RoomImagesList extends StatelessWidget {
-  const RoomImagesList({super.key, required this.pageController});
+class HotelImagesList extends StatelessWidget {
+  const HotelImagesList({super.key, required this.pageController});
 
   final PageController pageController;
 
