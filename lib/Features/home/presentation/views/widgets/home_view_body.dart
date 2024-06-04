@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/home/presentation/views/widgets/category_list.dart';
 import 'package:travanix/Features/home/presentation/views/widgets/custom_search_bar.dart';
@@ -80,9 +81,9 @@ class _HomeViewBodyState extends State<HomeViewBody>  {
 
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(15),
-                      child:const  IgnorePointer(
+                      child:  IgnorePointer(
                         ignoring: true,
-                          child:  MapViewBody())),
+                          child:  MapViewBody(controller: MapController(),))),
                 ),
               ),
             ),

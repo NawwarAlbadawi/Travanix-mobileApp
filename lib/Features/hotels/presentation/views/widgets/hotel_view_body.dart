@@ -2,20 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
 
 import 'package:travanix/Features/hotels/presentation/views/widgets/hotel_images_list.dart';
 import 'package:travanix/Features/hotels/presentation/views/widgets/hotel_info.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 
-class HotelViewBody extends StatefulWidget {
-  const HotelViewBody({super.key});
+class HotelViewBody extends StatelessWidget {
+   const HotelViewBody({super.key, required this.hotelData, required this.pageController});
 
-  @override
-  State<HotelViewBody> createState() => _RoomViewBodyState();
-}
+  final HotelData hotelData;
 
-class _RoomViewBodyState extends State<HotelViewBody> {
-   PageController pageController = PageController();
+  final PageController pageController ;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +40,7 @@ class _RoomViewBodyState extends State<HotelViewBody> {
 
           ),
         ),
-        const  HotelInfo()
+          HotelInfo(hotelData: hotelData,)
 
       ],
     );

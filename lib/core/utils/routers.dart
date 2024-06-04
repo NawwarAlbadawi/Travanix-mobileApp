@@ -11,11 +11,13 @@ import 'package:travanix/Features/authentication/presentation/views/rest_passwor
 import 'package:travanix/Features/authentication/presentation/views/rest_password_view.dart';
 
 import 'package:travanix/Features/home/presentation/views/home_view.dart';
+import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
 import 'package:travanix/Features/hotels/presentation/views/hotels_view.dart';
 import 'package:travanix/Features/hotels/presentation/views/hotel_view.dart';
 import 'package:travanix/Features/map/presentation/views/map_view.dart';
 
 import 'package:travanix/Features/on_boarding/presentation/views/on_boarding_view.dart';
+import 'package:travanix/Features/room/presentation/views/room_view.dart';
 
 
 import 'package:travanix/Features/splash_view/views/splash_view.dart';
@@ -36,8 +38,10 @@ abstract class AppRouter
    static const String restPasswordView ='/restPasswordView';
    static const String registerLoading ='/registerLoading/:name/:email/:password';
    static const String mapView ='/mapView';
-   static const String roomView='/roomView';
    static const String hotelView='/hotelView';
+   static const String hotelsView='/hotelsView';
+   static const String roomView='/roomView';
+
 
    static List<String>routerName=[
      'loginScreen',
@@ -135,25 +139,43 @@ abstract class AppRouter
       ),
       GoRoute(
         path: mapView,
+        name: 'mapView',
+
         builder: (BuildContext context, GoRouterState state) {
-          return const MapView();
+
+          return  MapView(
+            longitude: state.uri.queryParameters['y']!=null?double.parse( state.uri.queryParameters['y']!):null,
+             latitude: state.uri.queryParameters['x']!=null ?double.parse( state.uri.queryParameters['x']!):null,
+             model: state.extra !=null?state.extra as HotelData :null,
+          );
         },
 
       ),
       GoRoute(
-          path:roomView,
+          path:hotelView,
         builder: (context,state)
         {
-          return const  RoomView();
+          return   HotelView(
+            hotelData: state.extra as HotelData,
+          );
         }
       ),
       GoRoute(
-          path:hotelView,
+          path:hotelsView,
           builder: (context,state)
           {
-            return const  HotelsView();
+            return const   HotelsView(
+            );
           }
       ),
+      GoRoute(
+          path:roomView,
+          builder: (context,state)
+          {
+            return const  RoomView();
+          }
+      ),
+
 
 
     ],

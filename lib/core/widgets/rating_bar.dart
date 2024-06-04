@@ -4,16 +4,17 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 
 class CustomRatingBar extends StatelessWidget {
-  const CustomRatingBar({super.key});
+  const CustomRatingBar({super.key, this.rating});
+  final double ? rating;
 
   @override
   Widget build(BuildContext context) {
     return  RatingBar(
-      initialRating: 3,
+      initialRating: rating??0,
       tapOnlyMode: true,
       direction: Axis.horizontal,
       allowHalfRating: true,
-      itemCount: 5,
+      itemCount: rating!.ceil(),
       ratingWidget: RatingWidget(
           full:const  Icon(Icons.star,
 

@@ -1,9 +1,11 @@
 
 import 'package:flutter/material.dart';
+import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
 import 'package:travanix/Features/hotels/presentation/views/widgets/hotel_info_body.dart';
 
 class HotelInfo extends StatelessWidget {
-  const HotelInfo({super.key});
+  const HotelInfo({super.key, required this.hotelData});
+  final HotelData hotelData;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +28,11 @@ class HotelInfo extends StatelessWidget {
               ),
               child: CustomScrollView(
                 controller: scroll,
-                slivers: const  [
+                slivers:   [
                   SliverToBoxAdapter(
-                    child: HotelInfoBody(),
+                    child: HotelInfoBody(
+                      hotelData: hotelData
+                    ),
                   ),
             
                 ],

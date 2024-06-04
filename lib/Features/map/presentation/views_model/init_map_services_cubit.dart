@@ -22,6 +22,7 @@ class InitMapCubit extends Cubit<InitMapState> {
     servicesEnabled = await location.serviceEnabled();
     if (!servicesEnabled) {
       servicesEnabled = await location.requestService();
+
     }
     permissionStatus = await location.hasPermission();
     if (permissionStatus == PermissionStatus.denied) {

@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:iconly/iconly.dart';
 
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/generated/assets.dart';
@@ -41,12 +42,12 @@ class TripItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: CircleAvatar(
-                radius: MediaQuery.sizeOf(context).width*.045,
+                radius: MediaQuery.sizeOf(context).width*.055,
                 backgroundColor: Colors.white,
                 child: IconButton(
                   color: Colors.red,
-                  icon:  Icon(FontAwesomeIcons.solidHeart,
-                    size:MediaQuery.sizeOf(context).width*.045,
+                  icon:  Icon(IconlyBold.heart,
+                    size:MediaQuery.sizeOf(context).width*.07,
 
                   ),
                   onPressed: (){},

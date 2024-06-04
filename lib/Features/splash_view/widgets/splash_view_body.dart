@@ -30,10 +30,10 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
               statusBarColor:Colors.white,
               statusBarIconBrightness: Brightness.dark
           ));
-        if(true)
+        if(CacheHelper.getFromCacheHelper('onBoarding')!=null)
 
           {
-            if(true)
+            if(CacheHelper.getFromCacheHelper('token')!=null)
               {
                 context.pushReplacement(AppRouter.travanixLayoutView);
               }

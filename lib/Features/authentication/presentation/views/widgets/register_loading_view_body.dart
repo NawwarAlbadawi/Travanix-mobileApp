@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/authentication/presentation/views_models/cubit/register_cubit/post_register_data_cubit.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
+import 'package:travanix/core/utils/cache_service.dart';
 import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/custom_toast.dart';
 
@@ -26,7 +27,11 @@ class RegisterLoadingViewBody extends StatelessWidget {
           listener: (context,state){
             if(state is PostRegisterDataSuccess)
               {
-                context.pushReplacement(AppRouter.travanixLayoutView);
+                const  CustomToast().build(context: context,color: Colors.green,text: 'Hello $name');
+                CacheHelper.setInCacheHelper(value: state.model.accessToken, key:'token').then((value) {
+                  GoRouter.of(context).pushReplacement(AppRouter.travanixLayoutView);
+                });
+
               }
             else if(state is PostRegisterDataFail)
               {

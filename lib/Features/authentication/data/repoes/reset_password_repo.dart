@@ -10,7 +10,7 @@ class ResetPasswordRepo {
   Future<Either<Failure,ResetPasswordModel>> resetPassword ({required String password,required String token })  async  {
     try{
     var data =await DioHelper.postData(url: 'touristChangePassword',
-    token: token,
+    accessToken: token,
     data: {
       'Password':password
     });
