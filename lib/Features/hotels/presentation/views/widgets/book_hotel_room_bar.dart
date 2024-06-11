@@ -8,13 +8,17 @@ class BookHotelRoomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-      padding: const EdgeInsets.all( 10.0),
-      child: CustomMaterialButton(onPressed: (){
-        GoRouter.of(context).push(AppRouter.roomView);
-      }, text:'Book Now',
-        radius: 15,
-        height: 50,
+    return  Container(
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10.0,right: 10,
+        bottom: 5),
+        child: CustomMaterialButton(onPressed: (){
+          GoRouter.of(context).push(AppRouter.roomView);
+        }, text:'Book Now',
+          radius: 15,
+          height: 50,
+        ),
       ),
     );
   }

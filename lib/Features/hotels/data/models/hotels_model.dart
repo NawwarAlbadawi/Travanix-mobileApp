@@ -36,7 +36,7 @@ class HotelData {
         required this.address,
         required this.coordinateX,
         required this.coordinateY,
-        required this.reviewsAboutHotel,
+
         required this.services,
         required this.nationName,
         required this.hotelName,
@@ -52,7 +52,7 @@ class HotelData {
     String address;
     double coordinateX;
     double coordinateY;
-    String reviewsAboutHotel;
+
     List<String> services;
     String nationName;
     String hotelName;
@@ -68,7 +68,7 @@ class HotelData {
         address: json["address"],
         coordinateX: json["coordinate_x"],
         coordinateY: json["coordinate_y"],
-        reviewsAboutHotel: json["reviews_about_hotel"],
+
         services: List<String>.from(json["services"].map((x) => x)),
         nationName: json["nation_name"],
         hotelName: json["hotel_name"],
@@ -85,7 +85,7 @@ class HotelData {
         "address": address,
         "coordinate_x": coordinateX,
         "coordinate_y": coordinateY,
-        "reviews_about_hotel": reviewsAboutHotel,
+
         "services": List<dynamic>.from(services.map((x) => x)),
         "nation_name": nationName,
         "hotel_name": hotelName,

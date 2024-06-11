@@ -1,7 +1,12 @@
 
+
 import 'package:flutter/material.dart';
 import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
+
 import 'package:travanix/Features/hotels/presentation/views/widgets/hotel_info_body.dart';
+
+import 'package:travanix/constants.dart';
+
 
 class HotelInfo extends StatelessWidget {
   const HotelInfo({super.key, required this.hotelData});
@@ -10,20 +15,28 @@ class HotelInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  DraggableScrollableSheet(
-      initialChildSize: 0.3,
+      initialChildSize: 0.36,
       expand: true,
-      maxChildSize: 0.6,
+      maxChildSize: 0.8,
+        minChildSize: 0.36,
 
 
         builder:(context,scroll)=> Container(
               height: MediaQuery.sizeOf(context).height,
               width: double.infinity,
-              decoration: const  BoxDecoration(
+              decoration:   BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(
+                  borderRadius:const  BorderRadius.only(
                     topLeft:Radius.circular(25),
                     topRight: Radius.circular(25),
+
+                  ),
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: basicRadius,
+
                   )
+                ]
 
               ),
               child: CustomScrollView(
@@ -34,7 +47,8 @@ class HotelInfo extends StatelessWidget {
                       hotelData: hotelData
                     ),
                   ),
-            
+
+
                 ],
               ),
             ));

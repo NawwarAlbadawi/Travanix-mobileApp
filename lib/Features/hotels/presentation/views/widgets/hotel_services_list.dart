@@ -13,15 +13,26 @@ class HotelServicesList extends StatelessWidget {
           itemCount: services.length,
           itemBuilder: (context,index)=> Padding(
             padding: const  EdgeInsets.symmetric(horizontal: 8.0),
-            child:  CircleAvatar(
-              radius: MediaQuery.sizeOf(context).height*0.04,
-              backgroundColor: greyColor,
-              foregroundColor: Colors.white,
-              child: Text(services[index],
-              style: AppTextStyles.styleMedium14(context).copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.bold
-              ),),
+            child:  AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: greyColor.withOpacity(0.3)),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Align(
+                    alignment: AlignmentDirectional.center,
+                    child: Text(services[index],
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.styleRegular12(context).copyWith(
+                      color:navyBlueColor,
+                      fontWeight: FontWeight.bold
+
+                    ),),
+                  ),
+                ),
+              ),
             ),
           )
       ),

@@ -15,13 +15,14 @@ class HotelsViewBody extends StatelessWidget {
       padding:  EdgeInsets.all(20.0),
       child:  SingleChildScrollView(
         child: Column(
+
           children: [
 
             CustomSearchBar(),
             HotelSList()
-        
-        
-        
+
+
+
           ],
         ),
       ),

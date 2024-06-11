@@ -11,13 +11,13 @@ class GetHotelsRepo {
   {
     try {
       var data = await DioHelper.getData(path: 'touristGetHotels');
-
-
-
       return Right(HotelsModel.fromJson( data.data));
     }
     catch (error) {
+      print(error.toString());
+
       if (error is DioException) {
+
         return Left(ServerFailure.fromDioError(error));
       }
       return Left(ServerFailure(error.toString()));

@@ -31,7 +31,12 @@ class HotelSList extends StatelessWidget {
 
                   itemCount: cubit.hotelsModel!.data.length);
             }, fallback: (context){
-              return const  Center(child: CircularProgressIndicator(),);
+              return Column(
+                children: [
+                  SizedBox(height: MediaQuery.sizeOf(context).height*0.3,),
+                  const Center(child: CircularProgressIndicator()),
+                ],
+              );
         });
 
 

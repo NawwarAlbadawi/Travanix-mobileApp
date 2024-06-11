@@ -5,11 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
+import 'package:travanix/constants.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/rating_bar.dart';
-import 'package:travanix/generated/assets.dart';
+
 
 class MapItemDetails extends StatelessWidget {
   const MapItemDetails({super.key, this.hotelData});
@@ -51,12 +52,11 @@ class MapItemDetails extends StatelessWidget {
                       SizedBox(
                         width: MediaQuery.sizeOf(context).width*.3,
                         child:  AspectRatio(
-                          aspectRatio: 1,
+                          aspectRatio: 0.8,
                           child:  ClipRRect(
                             borderRadius: BorderRadius.circular(12),
-                            child: const Image(image: AssetImage(
-                              Assets.imagesTest,
-
+                            child:  Image(image: NetworkImage(
+                                'http://$ip:8001${hotelData!.images[0]}'
                             ), fit: BoxFit.fill,),
                           ) ,
                         ),

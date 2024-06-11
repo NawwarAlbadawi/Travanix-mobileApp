@@ -21,13 +21,13 @@ class HotelViewBody extends StatelessWidget {
 
       children: [
 
-       HotelImagesList(pageController: pageController),
+       HotelImagesList(pageController: pageController,hotelData: hotelData,),
         Align(
           alignment: AlignmentDirectional.topCenter,
           child: Padding(
             padding: const EdgeInsets.only(top:25.0),
             child: SmoothPageIndicator(
-                controller:pageController , count: 3,
+                controller:pageController , count: hotelData.images.length,
                 effect:const  SlideEffect(
                     dotColor: greyColor,
                     dotHeight: 12,

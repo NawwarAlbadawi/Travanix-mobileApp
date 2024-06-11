@@ -49,7 +49,7 @@ class HotelsItem extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(7),
                       child: AspectRatio(
-                        aspectRatio: 2.3,
+                        aspectRatio: 2.2,
                         child: Image(
                           image: NetworkImage('http://$ip:8001 ${hotelsModel.data[index].images[0]}',),
                           fit: BoxFit.fill,
@@ -59,8 +59,7 @@ class HotelsItem extends StatelessWidget {
                      HotelsItemBar(
                     index: index,
                        hotelsModel: hotelsModel,
-
-                  ),
+                     ),
                   ],
                 ),
                 const SizedBox(height: 2,),
@@ -73,7 +72,8 @@ class HotelsItem extends StatelessWidget {
                 ),
                 Text(hotelsModel.data[index].cityName,
                   style: AppTextStyles.styleMedium14(context).copyWith(
-                      color: greyColor
+                      color: greyColor,
+                    fontWeight: FontWeight.w600
                   ),),
               ],
             ),

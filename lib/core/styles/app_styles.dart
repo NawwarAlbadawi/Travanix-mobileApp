@@ -1,13 +1,18 @@
 
  import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 
  final appTheme=   ThemeData(
 
 
     primarySwatch: buildMaterialColor(basicColor),
+    primaryColor: basicColor,
+
+    progressIndicatorTheme:const  ProgressIndicatorThemeData(
+      color: basicColor,
+
+    ),
+
 
     scaffoldBackgroundColor: Colors.white,
     appBarTheme:const AppBarTheme(

@@ -22,6 +22,7 @@ import 'package:travanix/Features/room/presentation/views/room_view.dart';
 
 import 'package:travanix/Features/splash_view/views/splash_view.dart';
 import 'package:travanix/Features/travanix_layout/presentation/views/travanix_layout_view.dart';
+import 'package:travanix/Features/trip/presentation/views/trip_view.dart';
 
 
 abstract class AppRouter
@@ -41,6 +42,7 @@ abstract class AppRouter
    static const String hotelView='/hotelView';
    static const String hotelsView='/hotelsView';
    static const String roomView='/roomView';
+   static const String tripView='/tripView';
 
 
    static List<String>routerName=[
@@ -173,6 +175,13 @@ abstract class AppRouter
           builder: (context,state)
           {
             return const  RoomView();
+          }
+      ),
+      GoRoute(
+          path:tripView,
+          builder: (context,state)
+          {
+            return const  TripView();
           }
       ),
 
