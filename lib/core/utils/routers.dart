@@ -12,11 +12,14 @@ import 'package:travanix/Features/authentication/presentation/views/rest_passwor
 
 import 'package:travanix/Features/home/presentation/views/home_view.dart';
 import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
+import 'package:travanix/Features/hotels/presentation/views/booking_hotel.dart';
 import 'package:travanix/Features/hotels/presentation/views/hotels_view.dart';
 import 'package:travanix/Features/hotels/presentation/views/hotel_view.dart';
 import 'package:travanix/Features/map/presentation/views/map_view.dart';
 
 import 'package:travanix/Features/on_boarding/presentation/views/on_boarding_view.dart';
+import 'package:travanix/Features/profile/data/models/ProfileModel.dart';
+import 'package:travanix/Features/profile/presentation/views/wallet_view.dart';
 import 'package:travanix/Features/room/presentation/views/room_view.dart';
 
 
@@ -43,6 +46,8 @@ abstract class AppRouter
    static const String hotelsView='/hotelsView';
    static const String roomView='/roomView';
    static const String tripView='/tripView';
+   static const String bookingHotelView='/bookingHotelView';
+   static const String walletView='/walletView' ;
 
 
    static List<String>routerName=[
@@ -184,7 +189,23 @@ abstract class AppRouter
             return const  TripView();
           }
       ),
+      GoRoute(
+          path:bookingHotelView,
+          builder: (context,state)
+          {
+            return const  BookingHotelView();
+          }
+      ),
 
+      GoRoute(
+          path:walletView,
+          builder: (context,state)
+          {
+            return   WalletView(
+            model: state.extra as ProfileModel,
+            );
+          }
+      ),
 
 
     ],

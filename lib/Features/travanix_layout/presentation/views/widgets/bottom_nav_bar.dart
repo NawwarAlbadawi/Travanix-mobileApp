@@ -2,6 +2,7 @@ import 'package:crystal_navigation_bar/crystal_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:iconly/iconly.dart';
 import 'package:travanix/Features/travanix_layout/presentation/views_models/cubits/change_bottom_nav_bar_cubit.dart';
 
 
@@ -37,7 +38,7 @@ class CustomNavBar extends StatelessWidget {
 
               /// Favourite
               CrystalNavigationBarItem(
-                icon:FontAwesomeIcons.solidHeart,
+                icon:IconlyBold.heart,
                 selectedColor: Colors.red,
 
 

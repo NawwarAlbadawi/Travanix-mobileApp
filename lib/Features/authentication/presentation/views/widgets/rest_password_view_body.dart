@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/authentication/presentation/views_models/cubit/reset_password/reset_password_cubit.dart';
+import 'package:travanix/constants.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
+import 'package:travanix/core/utils/cache_service.dart';
 import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/custom_material_button.dart';
 import 'package:travanix/core/widgets/custom_text_form_field.dart';
@@ -35,7 +37,9 @@ class _RestPasswordViewBodyState extends State<RestPasswordViewBody> {
             {
               const CustomToast().build(context: context, text:'Reset password successfully',
                   color: Colors.green);
-              GoRouter.of(context).pushReplacement(
+              CacheHelper.removeFromCacheHelper(key: 'token');
+              token=null;
+              GoRouter.of(context).go(
                   AppRouter.loginScreen);
             }
         },

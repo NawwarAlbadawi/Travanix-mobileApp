@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travanix/Features/profile/presentation/views/profile_item.dart';
+import 'package:travanix/Features/profile/presentation/views/widgets/profile_item.dart';
 import 'package:travanix/Features/profile/presentation/views_model/profile_cubit.dart';
 import 'package:travanix/constants.dart';
 import 'package:travanix/core/styles/app_colors.dart';
@@ -33,6 +33,7 @@ class ProfileViewBody extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 10,),
+
                       Text('${state.profileModel.touristName}',
                         style: AppTextStyles.styleSemiBold24(context),),
                       Text('${state.profileModel.emailAddress}',
@@ -55,17 +56,17 @@ class ProfileViewBody extends StatelessWidget {
 
                         ),
 
-                        child:const Column(
+                        child: Column(
                           children: [
-                            ProfileItem(text: 'See your Information', icon: Icons.perm_identity_outlined),
-                             Divider(
+                           const  ProfileItem(text: 'See your Information', icon: Icons.perm_identity_outlined),
+                             const Divider(
                                thickness: 3,
                              ),
-                            ProfileItem(text: 'See your Wallet', icon: Icons.wallet),
-                            Divider(
+                            ProfileItem(text: 'See your Wallet', icon: Icons.wallet,model:state.profileModel ,),
+                           const  Divider(
                               thickness: 3,
                             ),
-                            ProfileItem(text: 'Edit Your password', icon: Icons.password),
+                           const  ProfileItem(text: 'Edit Your password', icon: Icons.password),
                           ],
                         ) ,
                       )

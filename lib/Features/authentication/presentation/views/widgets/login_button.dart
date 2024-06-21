@@ -7,6 +7,7 @@ import 'package:travanix/Features/authentication/presentation/views/widgets/Cust
 import 'package:travanix/Features/authentication/presentation/views/widgets/login_screen_body.dart';
 import 'package:travanix/Features/authentication/presentation/views/widgets/password_form_field.dart';
 import 'package:travanix/Features/authentication/presentation/views_models/cubit/login_cubit/post_login_data_cubit.dart';
+import 'package:travanix/constants.dart';
 import 'package:travanix/core/utils/cache_service.dart';
 
 
@@ -37,6 +38,7 @@ class LoginButton extends StatelessWidget {
                 {
 
               const  CustomToast().build(context: context,color: Colors.green,text: 'Welcome Back');
+              token=state.model.accessToken;
                CacheHelper.setInCacheHelper(value: state.model.accessToken, key:'token').then((value) {
                  GoRouter.of(context).pushReplacement(AppRouter.travanixLayoutView);
                });

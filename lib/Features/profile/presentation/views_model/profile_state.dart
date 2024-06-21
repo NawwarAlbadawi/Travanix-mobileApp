@@ -1,6 +1,6 @@
 part of 'profile_cubit.dart';
 
-@immutable
+
 sealed class ProfileState {}
 
 final class ProfileInitial extends ProfileState {}
@@ -14,3 +14,10 @@ final class GetProfileDataSuccess extends ProfileState {
 
 }
 final class GetProfileDataFail extends ProfileState {}
+
+final class ChargeWalletLoading extends ProfileState{}
+
+final class ChargeWalletSuccess extends ProfileState{}
+
+
+final class ChargeWalletFail extends ProfileState{}

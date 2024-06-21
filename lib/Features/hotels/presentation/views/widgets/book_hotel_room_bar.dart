@@ -14,6 +14,7 @@ class BookHotelRoomBar extends StatelessWidget {
         padding: const EdgeInsets.only(left: 10.0,right: 10,
         bottom: 5),
         child: CustomMaterialButton(onPressed: (){
+
           GoRouter.of(context).push(AppRouter.roomView);
         }, text:'Book Now',
           radius: 15,

@@ -1,4 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +18,7 @@ class ReviewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller=TextEditingController();
+    double rate =0 ;
 
 
 
@@ -28,7 +30,23 @@ class ReviewBody extends StatelessWidget {
           if(state is PostCommentSuccess)
             {
 
-               buildAwesomeDialog(context).show();
+               buildAwesomeDialog(context:  context,
+               child: Column(
+                 children: [
+                   Text(
+                     'Please put your rate',
+                     style: AppTextStyles.styleSemiBold20(context),
+                   ),
+                   const SizedBox(height: 10,),
+                   CustomRatingBar(
+                     ratingFunction: (rating)
+                     {
+                       rate=rating;
+
+                     },
+                   )
+                 ],
+               )).show();
 
             }
 
@@ -67,30 +85,16 @@ class ReviewBody extends StatelessWidget {
     );
   }
 
-  AwesomeDialog buildAwesomeDialog(BuildContext context) {
-    double rate =0 ;
+  AwesomeDialog buildAwesomeDialog({required BuildContext context,
+   required Widget child}) {
+
     return AwesomeDialog(
                headerAnimationLoop: false,
 
               context: context,
               animType: AnimType.scale,
               dialogType: DialogType.noHeader,
-              body:  Center(child: Column(
-                children: [
-                   Text(
-                    'Please put your rate',
-                    style: AppTextStyles.styleSemiBold20(context),
-                  ),
-                  const SizedBox(height: 10,),
-                  CustomRatingBar(
-                    ratingFunction: (rating)
-                    {
-                      rate=rating;
-
-                    },
-                  )
-                ],
-              ),),
+              body:  Center(child: child,),
               title: 'This is Ignored',
               desc:   'This is also Ignored',
               btnOkColor: basicColor,
