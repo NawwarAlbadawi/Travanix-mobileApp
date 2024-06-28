@@ -7,11 +7,8 @@ import 'package:travanix/Features/profile/presentation/views/widgets/charge_wall
 import 'package:travanix/constants.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
-
 import 'package:travanix/generated/assets.dart';
-
 import '../../../data/models/ProfileModel.dart';
-
 class WalletViewBody extends StatelessWidget {
   const WalletViewBody({super.key, required this.model});
   final ProfileModel model;
@@ -23,15 +20,16 @@ class WalletViewBody extends StatelessWidget {
     return  Padding(
       padding: const EdgeInsets.symmetric(vertical: 20.0,horizontal: 10),
       child: SingleChildScrollView(
+        physics: const  BouncingScrollPhysics(),
         child: Column(
           children: [
-        
+
             AspectRatio(
               aspectRatio: 5/3,
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 8),
-        
-        
+
+
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(basicRadius),
                   gradient: LinearGradient(colors: [
@@ -43,7 +41,7 @@ class WalletViewBody extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-        
+
 
                   Align(
                     alignment: AlignmentDirectional.topEnd,
@@ -71,18 +69,18 @@ class WalletViewBody extends StatelessWidget {
                         color: Colors.white,
                       ),),
                     )
-        
-        
-        
-        
+
+
+
+
                 ],),
               ),
-        
+
             ),
             const SizedBox(height: 70,),
             const ChargeWalletSection()
 
-        
+
           ],
         ),
       ),

@@ -3,6 +3,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:travanix/Features/favorite/presentation/views_model/favorite_cubit.dart';
 import 'package:travanix/Features/hotels/data/repositories/get_hotels_repo.dart';
 import 'package:travanix/Features/hotels/presentation/views_models/cubits/get_all_hotel_cubit.dart';
 import 'package:travanix/Features/map/presentation/views_model/init_map_services_cubit.dart';
@@ -41,7 +42,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(create:(context)=> ChangeBottomNavBarCubit()),
           BlocProvider(create: (context)=>InitMapCubit()..initMapService()),
           BlocProvider(create: (context)=>GetAllHotelCubit(GetHotelsRepo())..getAllHotel()),
-          BlocProvider(create: (context)=>ProfileCubit()..getProfileData())
+          BlocProvider(create: (context)=>ProfileCubit()..getProfileData()),
+          BlocProvider(create: (context)=>FavoriteCubit())
         ],
         child: SafeArea(
           child: MaterialApp.router(
