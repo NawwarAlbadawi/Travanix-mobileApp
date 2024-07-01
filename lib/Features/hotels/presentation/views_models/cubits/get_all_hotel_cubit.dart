@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
+
 import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
 import 'package:travanix/Features/hotels/data/repositories/get_hotels_repo.dart';
-import 'package:travanix/Features/hotels/presentation/views_models/cubits/get_all_hotel_cubit.dart';
+
 
 part 'get_all_hotel_state.dart';
 
@@ -19,21 +19,23 @@ class GetAllHotelCubit extends Cubit<GetAllHotelState> {
   
   void getAllHotel ()
   {
+
+    emit(GetAllHotelLoading());
     
 
     
     repo.getHotels().fold(
         (error){
-          print(error.errMessage);
+
           emit(GetAllHotelFails());
         },
         (model)
         {
-          model.data.forEach((element) {
+          for (var element in model.data) {
             favorite.addAll({
               element.id:element.favorite
             });
-          });
+          }
           hotelsModel=model;
           emit(GetAllHotelSuccess());
         }
@@ -48,7 +50,7 @@ class GetAllHotelCubit extends Cubit<GetAllHotelState> {
     repo.changeHotelFavoriteStatus({
       'hotel_id':index
     }).fold((left) {
-      print(left.errMessage);
+
       emit(ChangeHotelFavoriteStatusFail());},
             (right) {
               favorite[index]=!favorite[index]!;

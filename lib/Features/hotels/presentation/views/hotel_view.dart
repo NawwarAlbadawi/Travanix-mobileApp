@@ -2,11 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-
-import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
 import 'package:travanix/Features/hotels/presentation/views/widgets/book_hotel_room_bar.dart';
 import 'package:travanix/Features/hotels/presentation/views/widgets/hotel_favorite_button.dart';
 import 'package:travanix/Features/hotels/presentation/views/widgets/hotel_view_body.dart';
+
+import '../../data/models/hotel_data_model.dart';
 
 class HotelView extends StatelessWidget {
   const HotelView({super.key, required this.hotelData});
@@ -23,7 +23,6 @@ class HotelView extends StatelessWidget {
           child: CircleAvatar(
             backgroundColor: Colors.white.withOpacity(0.2),
             foregroundColor: Colors.white,
-
             child: IconButton(
               icon:const  Icon(FontAwesomeIcons.arrowLeft),
               onPressed: (){
@@ -43,12 +42,11 @@ class HotelView extends StatelessWidget {
         ],
       ),
       extendBodyBehindAppBar: true,
-
       body: HotelViewBody(
         pageController: PageController(),
         hotelData: hotelData,
       ),
-      bottomNavigationBar: const BookHotelRoomBar(),
+      bottomNavigationBar: const BookHotelRoomButton(),
 
     );
   }

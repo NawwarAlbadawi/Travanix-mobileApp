@@ -63,7 +63,7 @@ class HotelsItem extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 2,),
-                Text(hotelsModel.data[index].hotelName,style: AppTextStyles.styleSemiBold24(context).copyWith(
+                Text(hotelsModel.data[index].name,style: AppTextStyles.styleSemiBold24(context).copyWith(
                     color: basicColor
                 ),),
                 Align(

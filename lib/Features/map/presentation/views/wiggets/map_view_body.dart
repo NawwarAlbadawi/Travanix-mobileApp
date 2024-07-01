@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
+
 import 'package:travanix/Features/map/presentation/views/wiggets/map_item_details.dart';
-import 'package:travanix/Features/map/presentation/views/wiggets/map_view_body.dart';
+
 
 import 'package:travanix/Features/map/presentation/views_model/init_map_services_cubit.dart';
 
@@ -17,7 +17,7 @@ class MapViewBody extends StatelessWidget {
    const MapViewBody({super.key, this.latitude, this.longitude, required this.controller, this.model});
   final double ? latitude;
   final double ? longitude;
-  final HotelData?model;
+  final dynamic model;
 
   final MapController controller ;
 

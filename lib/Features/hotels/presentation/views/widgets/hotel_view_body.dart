@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
 
-import 'package:travanix/Features/hotels/presentation/views/widgets/hotel_images_list.dart';
+import 'package:travanix/Features/favorite/presentation/views/widgets/custom_page_indicator.dart';
 import 'package:travanix/Features/hotels/presentation/views/widgets/hotel_info.dart';
-import 'package:travanix/core/styles/app_colors.dart';
+
+import 'package:travanix/core/widgets/custom_page_view.dart';
+
+import '../../../data/models/hotel_data_model.dart';
 
 class HotelViewBody extends StatelessWidget {
    const HotelViewBody({super.key, required this.hotelData, required this.pageController});
@@ -21,26 +22,16 @@ class HotelViewBody extends StatelessWidget {
 
       children: [
 
-       HotelImagesList(pageController: pageController,hotelData: hotelData,),
+        CustomPageView(pageController: pageController,images: hotelData.images,),
         Align(
           alignment: AlignmentDirectional.topCenter,
           child: Padding(
             padding: const EdgeInsets.only(top:25.0),
-            child: SmoothPageIndicator(
-                controller:pageController , count: hotelData.images.length,
-                effect:const  SlideEffect(
-                    dotColor: greyColor,
-                    dotHeight: 12,
-                    dotWidth: 12,
-                    activeDotColor: basicColor
-
-
-                ),
-              ),
+            child: CustomPageIndicator(count: hotelData.images.length,pageController: pageController,),
 
           ),
         ),
-          HotelInfo(hotelData: hotelData,)
+        HotelInfo(hotelData: hotelData,)
 
       ],
     );

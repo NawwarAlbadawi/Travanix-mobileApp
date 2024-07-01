@@ -12,7 +12,7 @@ class MapView extends StatelessWidget {
 
   final double ? latitude;
   final double ? longitude;
-  final HotelData ?model;
+  final dynamic model;
 
   @override
   Widget build(BuildContext context) {

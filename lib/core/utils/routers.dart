@@ -11,8 +11,7 @@ import 'package:travanix/Features/authentication/presentation/views/rest_passwor
 import 'package:travanix/Features/authentication/presentation/views/rest_password_view.dart';
 
 import 'package:travanix/Features/home/presentation/views/home_view.dart';
-import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
-import 'package:travanix/Features/hotels/presentation/views/booking_hotel.dart';
+
 import 'package:travanix/Features/hotels/presentation/views/hotels_view.dart';
 import 'package:travanix/Features/hotels/presentation/views/hotel_view.dart';
 import 'package:travanix/Features/map/presentation/views/map_view.dart';
@@ -26,6 +25,8 @@ import 'package:travanix/Features/room/presentation/views/room_view.dart';
 import 'package:travanix/Features/splash_view/views/splash_view.dart';
 import 'package:travanix/Features/travanix_layout/presentation/views/travanix_layout_view.dart';
 import 'package:travanix/Features/trip/presentation/views/trip_view.dart';
+
+import '../../Features/hotels/data/models/hotel_data_model.dart';
 
 
 abstract class AppRouter
@@ -189,13 +190,7 @@ abstract class AppRouter
             return const  TripView();
           }
       ),
-      GoRoute(
-          path:bookingHotelView,
-          builder: (context,state)
-          {
-            return const  BookingHotelView();
-          }
-      ),
+
 
       GoRoute(
           path:walletView,

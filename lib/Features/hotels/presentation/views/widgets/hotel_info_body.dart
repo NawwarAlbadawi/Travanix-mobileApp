@@ -11,6 +11,8 @@ import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/widgets/custom_text_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+
+import '../../../data/models/hotel_data_model.dart';
 class HotelInfoBody extends StatelessWidget {
   const HotelInfoBody({super.key, required this.hotelData});
   final HotelData hotelData;
@@ -35,10 +37,10 @@ class HotelInfoBody extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(hotelData.cityName,style: AppTextStyles.styleBold18(context),),
-          Text(hotelData.hotelName,
+          Text(hotelData.name,
             style: AppTextStyles.styleBold35(context),),
           const SizedBox(height: 10,),
-          CustomRating(rating: hotelData.hotelClass,),
+          CustomRating(rating: hotelData.rating,),
           const SizedBox(height: 20,),
           Text(hotelData.simpleDescriptionAboutHotel,
             style: AppTextStyles.styleMedium16(context),),

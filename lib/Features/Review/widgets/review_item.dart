@@ -24,7 +24,7 @@ class ReviewItem extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const  CustomRatingBar(rating: 4,),
+                    const  CustomRatingBar(rating: 4,ignoreTouch: true,),
                     const   Spacer(),
                     SizedBox(
                       height:50,
@@ -34,7 +34,7 @@ class ReviewItem extends StatelessWidget {
                   ],
                 ),
                 Text('Burj Al Arab Hotel is one of the finest, most luxurious and most beautiful hotels in the world. The Burj Al Arab Jumeirah Hotel is located on its own island and features suites with sea views, 8 distinct restaurants, a full-service spa and distinctive parking',
-                  style: AppTextStyles.styleSemiBold20(context),),
+                  style: AppTextStyles.styleMedium20(context),),
               ],
             ),
           )),

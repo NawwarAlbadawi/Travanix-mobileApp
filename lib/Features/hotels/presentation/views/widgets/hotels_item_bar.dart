@@ -26,7 +26,7 @@ class HotelsItemBar extends StatelessWidget {
               padding:const  EdgeInsets.all(8),
               child:  CustomRating(
                 color: Colors.yellow,
-                rating: hotelsModel.data[index].hotelClass  ,
+                rating: hotelsModel.data[index].rating  ,
               )),
           const Spacer(),
            HotelFavoriteButton(

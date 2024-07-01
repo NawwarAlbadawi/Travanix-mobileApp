@@ -14,7 +14,7 @@ import 'package:travanix/core/widgets/rating_bar.dart';
 
 class MapItemDetails extends StatelessWidget {
   const MapItemDetails({super.key, this.hotelData});
- final HotelData ?hotelData;
+ final dynamic hotelData;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class MapItemDetails extends StatelessWidget {
                           const SizedBox(width: 5,),
                           SizedBox(
                             width: MediaQuery.sizeOf(context).width*.4,
-                            child: Text(hotelData!.hotelName, style: AppTextStyles.styleSemiBold24(context).copyWith(color: basicColor,),
+                            child: Text(hotelData!.name, style: AppTextStyles.styleSemiBold24(context).copyWith(color: basicColor,),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,),
                           ),
@@ -84,7 +84,7 @@ class MapItemDetails extends StatelessWidget {
                            IgnorePointer(
                             ignoring: true,
                             child: CustomRatingBar(
-                              rating: hotelData!.hotelClass,
+                              rating: hotelData!.rating,
                             ),
                           )
                         ],

@@ -1,60 +1,37 @@
 
 import 'package:flutter/material.dart';
-
-import 'package:travanix/Features/favorite/presentation/views/widgets/custom_container_active_and_inactive.dart';
-import 'package:travanix/Features/favorite/presentation/views/widgets/custom_grid.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travanix/Features/favorite/data/repositories/get_favorite_repo.dart';
+import 'package:travanix/Features/favorite/data/repositories/post_favorite_repo.dart';
 import 'package:travanix/Features/favorite/presentation/views/widgets/favorite_category_list.dart';
+import 'package:travanix/Features/favorite/presentation/views/widgets/favorite_list.dart';
+import 'package:travanix/Features/favorite/presentation/views_model/favorite_cubit.dart';
 
 import 'package:travanix/core/styles/app_text_styles.dart';
-class FavoriteView extends StatefulWidget {
+class FavoriteView extends StatelessWidget {
   const FavoriteView({super.key});
 
   @override
-  State<FavoriteView> createState() => _FavoriteViewState();
-}
-
-class _FavoriteViewState extends State<FavoriteView> with SingleTickerProviderStateMixin {
-  late TabController tabController;
-  @override
-  void initState() {
-    super.initState();
-    tabController = TabController(length: 3, vsync: this);
-    tabController.addListener(() {
-      setState(() {});
-    });}
-
- int itemIndex=0;
-  @override
   Widget build(BuildContext context) {
-    return  CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-
-
-
-
-              children: [
-                Text('Favorite',style: AppTextStyles.styleBold35(context),) ,
-
-                const FavoriteCategoryList()
-
-
-
-
-
-              ],
+    return  BlocProvider(
+      create: (context)=>FavoriteCubit(GetFavoriteRepo(), PostFavoriteRepo())..getFavorite(),
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Favorite',style: AppTextStyles.styleBold35(context),) ,
+                  const FavoriteCategoryList(),
+                ],
+              ),
             ),
           ),
-        ),
-        const FavoriteCustomGrid()
-
-
-      ],
-
+        const FavoriteList()
+        ],
+      ),
     );
   }
 }

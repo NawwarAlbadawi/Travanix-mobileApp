@@ -44,6 +44,7 @@ class ReviewBody extends StatelessWidget {
                        rate=rating;
 
                      },
+                     rating: rate,
                    )
                  ],
                )).show();

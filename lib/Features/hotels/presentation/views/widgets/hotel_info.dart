@@ -7,6 +7,8 @@ import 'package:travanix/Features/hotels/presentation/views/widgets/hotel_info_b
 
 import 'package:travanix/constants.dart';
 
+import '../../../data/models/hotel_data_model.dart';
+
 
 class HotelInfo extends StatelessWidget {
   const HotelInfo({super.key, required this.hotelData});

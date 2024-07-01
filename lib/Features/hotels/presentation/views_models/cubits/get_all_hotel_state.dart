@@ -1,6 +1,6 @@
 part of 'get_all_hotel_cubit.dart';
 
-@immutable
+
 sealed class GetAllHotelState {}
 
 final class GetAllHotelInitial extends GetAllHotelState {}

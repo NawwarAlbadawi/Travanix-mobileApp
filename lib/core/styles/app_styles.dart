@@ -31,7 +31,7 @@ import 'package:travanix/core/styles/app_text_styles.dart';
       )
 
     ),
-   fontFamily: 'Exo',
+   fontFamily: 'outFit',
  visualDensity: VisualDensity.adaptivePlatformDensity,
 
 

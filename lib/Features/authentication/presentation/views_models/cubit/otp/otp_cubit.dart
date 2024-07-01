@@ -13,16 +13,16 @@ class OtpCubit extends Cubit<OtpState> {
   EmailOTP myAuth = EmailOTP();
 
   void sendOtp({required String email}) async {
-    myAuth.setConfig(
+    EmailOTP.config(
         appEmail: "nowar200342@gmail.com",
         appName: "Travanix",
-        userEmail: email,
         otpLength: 5,
-        otpType: OTPType.digitsOnly
+        otpType: OTPType.numeric,
+        emailTheme: EmailTheme.v1
     );
 
 
- if( await  myAuth.sendOTP()==true)
+ if( await  EmailOTP.sendOTP(email: email)==true)
    {
 
      emit(SendOTPSuccess());
@@ -30,7 +30,7 @@ class OtpCubit extends Cubit<OtpState> {
   }
   void verifyOTP({required String otp})async
   {
-  if(await myAuth.verifyOTP(otp: otp))
+  if(await EmailOTP.verifyOTP (otp: otp))
     {
 
       emit(VerifyOTPSuccess());
