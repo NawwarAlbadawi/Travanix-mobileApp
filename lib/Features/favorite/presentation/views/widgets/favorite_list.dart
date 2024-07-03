@@ -20,15 +20,15 @@ class FavoriteList extends StatelessWidget {
         if(cubit.favoriteModel==null){
           return const SliverToBoxAdapter (child: Center(child: CircularProgressIndicator()),);}
 
-        return cubit.favoriteListCount()==0?const SliverToBoxAdapter(child:CustomImage(
+        return cubit.getModel().length==0?const SliverToBoxAdapter(child:CustomImage(
           image: AssetImage(Assets.imagesEmpty),
           aspectRatio: 1,
         ) ,):
           SliverList.separated(
-            itemCount:cubit.favoriteListCount() ,
+            itemCount:cubit.getModel().length,
             itemBuilder:(context,index)=> Padding(
               padding: const  EdgeInsets.all( 8.0),
-              child:  FavoriteListItem(model:modelSent(cubit: cubit)[index],id:modelSent(cubit: cubit)[index].id ,index: index,),
+              child:  FavoriteListItem(model: cubit.getModel()[index] ,index: index,),
             ) ,
             separatorBuilder:(context,index)=> const Divider(color: greyColor,height: 4,indent: 30,endIndent: 30,thickness: 1.5,));
       },
@@ -37,15 +37,6 @@ class FavoriteList extends StatelessWidget {
   }
 
 
-  dynamic modelSent({required FavoriteCubit cubit})
-  {
-    if(cubit.favoriteCategoryIndex==1)
-      {
-        return cubit.favoriteModel!.hotels;
-      }
-    else if(cubit.favoriteCategoryIndex==2){
-      return cubit.favoriteModel!.resturants;}
-    return cubit.favoriteModel!.attractionActivities;
-  }
+
 
 }

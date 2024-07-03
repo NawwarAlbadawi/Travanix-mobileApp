@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../../core/styles/app_colors.dart';
 import '../../../../../core/styles/app_text_styles.dart';
 class CustomContainer extends StatelessWidget {
@@ -14,8 +13,6 @@ class CustomContainer extends StatelessWidget {
     return  isActive?CustomActiveContainer(text: text):CustomInActiveContainer(text: text);
   }
 }
-
-
 class CustomActiveContainer extends StatelessWidget {
   const CustomActiveContainer({super.key, required this.text});
 
@@ -24,14 +21,14 @@ class CustomActiveContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       padding:const  EdgeInsets.symmetric(horizontal: 15,vertical: 8),
 
       decoration: BoxDecoration(
           color: basicColor,
           borderRadius: BorderRadius.circular(50),
           border: Border.all(
-              color: basicColor
+              color: basicColor.withOpacity(0.5)
           ),
           boxShadow:const [
             BoxShadow(
@@ -40,23 +37,12 @@ class CustomActiveContainer extends StatelessWidget {
             )
           ]
       ),
-      child: Center(
-        child: Text(text,style: AppTextStyles.styleSemiBold16(context).copyWith(
-            color: Colors.white
-        ),),
-      ),
+      child: Center(child: Text(text,style: AppTextStyles.styleSemiBold16(context).copyWith(
+        color: Colors.white
+      ),)),
     );
   }
 }
-
-
-
-
-
-
-
-
-
 class CustomInActiveContainer extends StatelessWidget {
   const CustomInActiveContainer({super.key, required this.text});
 

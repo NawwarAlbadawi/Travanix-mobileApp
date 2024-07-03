@@ -1,12 +1,7 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
-
 import 'package:travanix/Features/hotels/presentation/views/widgets/hotel_info_body.dart';
-
-import 'package:travanix/constants.dart';
-
+import '../../../../../core/widgets/custom_decorated_container.dart';
+import '../../../../../core/widgets/custom_draggable_scroll_sheet.dart';
 import '../../../data/models/hotel_data_model.dart';
 
 
@@ -16,44 +11,15 @@ class HotelInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  DraggableScrollableSheet(
-      initialChildSize: 0.36,
-      expand: true,
-      maxChildSize: 0.8,
-        minChildSize: 0.36,
-
-
-        builder:(context,scroll)=> Container(
-              height: MediaQuery.sizeOf(context).height,
-              width: double.infinity,
-              decoration:   BoxDecoration(
-                  color: Colors.white,
-                  borderRadius:const  BorderRadius.only(
-                    topLeft:Radius.circular(25),
-                    topRight: Radius.circular(25),
-
-                  ),
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: basicRadius,
-
-                  )
-                ]
-
-              ),
-              child: CustomScrollView(
-                controller: scroll,
-                slivers:   [
-                  SliverToBoxAdapter(
-                    child: HotelInfoBody(
-                      hotelData: hotelData
-                    ),
-                  ),
-
-
-                ],
-              ),
-            ));
+    return  CustomDraggableScrollSheet(builder: (context,scrollController){
+      return CustomDecoratedContainer(
+        scrollController: scrollController,
+          child: SliverToBoxAdapter(
+        child: HotelInfoBody(
+            hotelData: hotelData
+        ),
+      ));
+    });
   }
 }
 

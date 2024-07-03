@@ -25,15 +25,14 @@ class _FavoriteCategoryListState extends State<FavoriteCategoryList> {
   Widget build(BuildContext context) {
     return BlocBuilder<FavoriteCubit,FavoriteState>(
       builder: (context,state) {
-
-
-
         var cubit=FavoriteCubit.get(context);
         return SizedBox(
           height: MediaQuery.sizeOf(context).height*0.1,
           width: double.infinity,
 
           child: ListView.builder(
+            padding: EdgeInsets.zero,
+            physics:const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             itemBuilder:(context,index)=>GestureDetector(
               onTap: (){

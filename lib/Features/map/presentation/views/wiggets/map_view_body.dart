@@ -14,10 +14,9 @@ import 'package:travanix/Features/map/presentation/views_model/init_map_services
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 class MapViewBody extends StatelessWidget {
-   const MapViewBody({super.key, this.latitude, this.longitude, required this.controller, this.model});
-  final double ? latitude;
-  final double ? longitude;
-  final dynamic model;
+   const MapViewBody({super.key,  required this.controller, this.model});
+
+  final dynamic  model;
 
   final MapController controller ;
 
@@ -34,7 +33,8 @@ class MapViewBody extends StatelessWidget {
               mapController: controller,
 
               options:  MapOptions(
-                initialCenter: LatLng( latitude??InitMapCubit.get(context).getLocation.latitude!, longitude?? InitMapCubit.get(context).getLocation.longitude!),
+                initialCenter: LatLng( model==null?InitMapCubit.get(context).getLocation.latitude!:model.coordinateX!
+                    , model==null? InitMapCubit.get(context).getLocation.longitude!:model.coordinateY!),
                 initialZoom: 9.2,
               ),
 
@@ -43,8 +43,8 @@ class MapViewBody extends StatelessWidget {
                   urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                   userAgentPackageName: 'com.example.app',),
                  MarkerLayer(markers: [
-                  if (latitude!=null)
-                    Marker(point:LatLng(latitude!, longitude!)
+                  if (model!=null)
+                    Marker(point:LatLng(model.coordinateX!!, model.coordinateY!!)
                       , child: IconButton(icon:const Icon(FontAwesomeIcons.mapPin,
                   color: basicColor,),
                       onPressed: (){

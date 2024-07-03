@@ -8,10 +8,12 @@ import 'package:travanix/Features/hotels/presentation/views/widgets/hotel_servic
 import 'package:travanix/Features/map/presentation/views/wiggets/map_view_body.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
+import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/custom_text_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
+import '../../../../../core/widgets/custom_item_box_location.dart';
 import '../../../data/models/hotel_data_model.dart';
 class HotelInfoBody extends StatelessWidget {
   const HotelInfoBody({super.key, required this.hotelData});
@@ -49,45 +51,7 @@ class HotelInfoBody extends StatelessWidget {
             services: hotelData.services,
           ),
           const SizedBox(height: 30,),
-          GestureDetector(
-            onTap: (){
-              GoRouter.of(context).pushNamed('mapView',
-              queryParameters: {
-                'x':hotelData.coordinateX.toString(),
-                'y':hotelData.coordinateY.toString()},
-              extra: hotelData);
-            },
-            child:   AspectRatio(
-              aspectRatio: 3,
-              child: Container(
-                height: MediaQuery.sizeOf(context).height*.15,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(
-                      color: greyColor,
-
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                          color: navyBlueColor.withOpacity(0.4),
-                          offset: const Offset(0,2),
-                          blurStyle: BlurStyle.normal,
-                          blurRadius: 15
-                      )
-                    ]
-
-                ),
-                width: double.infinity,
-
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child:  IgnorePointer(
-                        ignoring: true,
-                        child:  MapViewBody(controller: MapController(),
-                        latitude: hotelData.coordinateX,longitude: hotelData.coordinateY,))),
-              ),
-            ),
-          ),
+          CustomItemBoxLocation(model: hotelData),
           const SizedBox(height: 30,),
           Row(
             children: [
@@ -100,7 +64,6 @@ class HotelInfoBody extends StatelessWidget {
               ),
               CustomTextButton(text: hotelData.phoneNumber,
                   onPressed: () async{
-              
                 if(await canLaunchUrlString('tel:${hotelData.phoneNumber}'))
                   {
                     await launchUrl(Uri.parse('tel:${hotelData.phoneNumber}'));
@@ -132,6 +95,8 @@ class HotelInfoBody extends StatelessWidget {
 
 
 }
+
+
 
 
 

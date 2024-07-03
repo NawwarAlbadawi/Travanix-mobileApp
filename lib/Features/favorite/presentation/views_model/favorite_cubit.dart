@@ -7,6 +7,7 @@ import 'package:meta/meta.dart';
 
 import 'package:travanix/Features/favorite/data/repositories/get_favorite_repo.dart';
 import 'package:travanix/Features/favorite/data/repositories/post_favorite_repo.dart';
+import 'package:travanix/Features/hotels/presentation/views_models/cubits/get_all_hotel_cubit.dart';
 
 import '../../../hotels/data/models/hotel_data_model.dart';
 import '../../data/models/FavoriteModel.dart';
@@ -30,8 +31,8 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   final GetFavoriteRepo favoriteRepo ;
   FavoriteModel ?favoriteModel ;
   List<HotelData>hotels=[];
-  List<AttractionActivities>attractionActivity=[];
-  List<Resturants>restaurants=[];
+  List<AttractionActivitiesModel>attractionActivity=[];
+  List<RestaurantsModel>restaurants=[];
   Map<int,dynamic>categoriesMap={};
 
   void getFavorite ()
@@ -54,25 +55,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   }
 
 
-  int favoriteListCount ()
-  {
-    if(favoriteCategoryIndex==0)
-      {
-        return 0;
-      }
-    else if(favoriteCategoryIndex==1)
-    {
-      return favoriteModel!.hotels!.length;
 
-    }
-    else if(favoriteCategoryIndex==0)
-    {
-      return favoriteModel!.resturants!.length;
-    }
-    return favoriteModel!.attractionActivities!.length;
-
-
-  }
 
   final  PostFavoriteRepo postFavoriteRepo;
 
@@ -84,9 +67,12 @@ class FavoriteCubit extends Cubit<FavoriteState> {
       getFavoriteCategory():index
     }).fold((left) {
       print(left.errMessage);
-      emit(ChangeFavoriteStatusFail());},
+      emit(ChangeFavoriteStatusFail());
+
+      },
             (right) {
           emit(ChangeFavoriteStatusSuccess());
+        //  GetAllHotelCubit.get(context).favorite[id]=!GetAllHotelCubit.get(context).favorite[id];
           getFavorite();
         });
 
@@ -111,24 +97,19 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     return 'attraction_activity_id';
   }
 
-  String getName(int index)
+  dynamic getModel()
   {
     if(favoriteCategoryIndex==0)
-    {
-      return 'n';
-    }
+      {
+        return favoriteModel!.trips;
+      }
     else if(favoriteCategoryIndex==1)
     {
-      return favoriteModel!.hotels![index].name;
-
+      return favoriteModel!.hotels;
     }
-    else if(favoriteCategoryIndex==0)
-    {
-      return favoriteModel!.resturants![index].name!;
-    }
-    return favoriteModel!.attractionActivities![index].name!;
-
+    else if(favoriteCategoryIndex==2){
+      return favoriteModel!.resturants;}
+    return favoriteModel!.attractionActivities;
   }
-
 
 }

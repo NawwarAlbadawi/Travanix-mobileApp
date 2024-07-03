@@ -7,6 +7,7 @@ import 'package:travanix/Features/favorite/presentation/views/widgets/favorite_c
 import 'package:travanix/Features/favorite/presentation/views/widgets/favorite_list.dart';
 import 'package:travanix/Features/favorite/presentation/views_model/favorite_cubit.dart';
 
+
 import 'package:travanix/core/styles/app_text_styles.dart';
 class FavoriteView extends StatelessWidget {
   const FavoriteView({super.key});
@@ -23,8 +24,13 @@ class FavoriteView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Favorite',style: AppTextStyles.styleBold35(context),) ,
-                  const FavoriteCategoryList(),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0,left: 10),
+                    child: Text('Favorite',style: AppTextStyles.styleBold35(context),
+                    ),
+                  ) ,
+                 const  FavoriteCategoryList()
+
                 ],
               ),
             ),

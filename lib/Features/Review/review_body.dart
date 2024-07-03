@@ -20,8 +20,6 @@ class ReviewBody extends StatelessWidget {
     TextEditingController controller=TextEditingController();
     double rate =0 ;
 
-
-
     return  BlocProvider(
       create: (context)=>ReviewCubit(ReviewRepo()),
       child: BlocConsumer<ReviewCubit,ReviewState>(
@@ -49,9 +47,7 @@ class ReviewBody extends StatelessWidget {
                  ],
                )).show();
 
-            }
-
-        },
+            }},
         builder:(context,state) {
 
           return Column(
@@ -75,6 +71,7 @@ class ReviewBody extends StatelessWidget {
                     hintText: 'Enter your review'),
 
               ),
+              const SizedBox(height: 30,),
               const  ReviewList()
 
 

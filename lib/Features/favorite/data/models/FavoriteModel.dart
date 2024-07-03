@@ -1,4 +1,5 @@
 import 'package:travanix/Features/hotels/data/models/hotel_data_model.dart';
+import 'package:travanix/Features/trip/data/TripsModel.dart';
 
 /// status : 1
 /// message : "succes get  favorites"
@@ -11,7 +12,7 @@ class FavoriteModel {
   FavoriteModel({
       this.status, 
       this.message, 
-      //this.trips,
+      this.trips,
       this.hotels, 
       this.resturants, 
       this.attractionActivities,});
@@ -20,9 +21,9 @@ class FavoriteModel {
     status = json['status'];
     message = json['message'];
     if (json['trips'] != null) {
-    //  trips = [];
+     trips = [];
       json['trips'].forEach((v) {
-        //trips?.add(Trip.fromJson(v));
+        trips?.add(TripsModelData.fromJson(v));
       });
     }
     if (json['hotels'] != null) {
@@ -34,29 +35,29 @@ class FavoriteModel {
     if (json['resturants'] != null) {
       resturants = [];
       json['resturants'].forEach((v) {
-        resturants?.add(Resturants.fromJson(v));
+        resturants?.add(RestaurantsModel.fromJson(v));
       });
     }
     if (json['attraction_activities'] != null) {
       attractionActivities = [];
       json['attraction_activities'].forEach((v) {
-        attractionActivities?.add(AttractionActivities.fromJson(v));
+        attractionActivities?.add(AttractionActivitiesModel.fromJson(v));
       });
     }
   }
   int? status;
   String? message;
-  //List<dynamic>? trips;
+  List<TripsModelData>? trips;
   List<HotelData>? hotels;
-  List<Resturants>? resturants;
-  List<AttractionActivities>? attractionActivities;
+  List<RestaurantsModel>? resturants;
+  List<AttractionActivitiesModel>? attractionActivities;
 FavoriteModel copyWith({  int? status,
   String? message,
- // List<dynamic>? trips,
+  List<TripsModelData>? trips,
  
 }) => FavoriteModel(  status: status ?? this.status,
   message: message ?? this.message,
-  //trips: trips ?? this.trips,
+  trips: trips ?? this.trips,
   hotels: hotels ?? this.hotels,
   resturants: resturants ?? this.resturants,
   attractionActivities: attractionActivities ?? this.attractionActivities,
@@ -65,9 +66,9 @@ FavoriteModel copyWith({  int? status,
     final map = <String, dynamic>{};
     map['status'] = status;
     map['message'] = message;
-    // if (trips != null) {
-    //   map['trips'] = trips?.map((v) => v.toJson()).toList();
-    // }
+     if (trips != null) {
+       map['trips'] = trips?.map((v) => v.toJson()).toList();
+     }
     if (hotels != null) {
       map['hotels'] = hotels?.map((v) => v.toJson()).toList();
     }
@@ -95,8 +96,8 @@ FavoriteModel copyWith({  int? status,
 /// images : ["/images/attraction_activities/HASSAN1.jpg"]
 /// favorite : true
 
-class AttractionActivities {
-  AttractionActivities({
+class AttractionActivitiesModel {
+  AttractionActivitiesModel({
       this.id, 
       this.address, 
       this.coordinateY, 
@@ -110,7 +111,7 @@ class AttractionActivities {
       this.images, 
       this.favorite,});
 
-  AttractionActivities.fromJson(dynamic json) {
+  AttractionActivitiesModel.fromJson(dynamic json) {
     id = json['id'];
     address = json['address'];
     coordinateY = json['coordinate_y'];
@@ -137,7 +138,7 @@ class AttractionActivities {
   String? closingTime;
   List<String>? images;
   bool? favorite;
-AttractionActivities copyWith({  int? id,
+AttractionActivitiesModel copyWith({  int? id,
   String? address,
   int? coordinateY,
   int? coordinateX,
@@ -150,7 +151,7 @@ AttractionActivities copyWith({  int? id,
   String? closingTime,
   List<String>? images,
   bool? favorite,
-}) => AttractionActivities(  id: id ?? this.id,
+}) => AttractionActivitiesModel(  id: id ?? this.id,
   address: address ?? this.address,
   coordinateY: coordinateY ?? this.coordinateY,
   coordinateX: coordinateX ?? this.coordinateX,
@@ -198,8 +199,8 @@ AttractionActivities copyWith({  int? id,
 /// images : ["/images/resturants/HASSAN1.jpg"]
 /// favorite : true
 
-class Resturants {
-  Resturants({
+class RestaurantsModel {
+  RestaurantsModel({
       this.id, 
       this.address, 
       this.coordinateY, 
@@ -216,7 +217,7 @@ class Resturants {
       this.images, 
       this.favorite,});
 
-  Resturants.fromJson(dynamic json) {
+  RestaurantsModel.fromJson(dynamic json) {
     id = json['id'];
     address = json['address'];
     coordinateY = json['coordinate_y'];
@@ -248,7 +249,7 @@ class Resturants {
   String? closingTime;
   List<String>? images;
   bool? favorite;
-Resturants copyWith({  int? id,
+RestaurantsModel copyWith({  int? id,
   String? address,
   int? coordinateY,
   int? coordinateX,
@@ -263,7 +264,7 @@ Resturants copyWith({  int? id,
   String? closingTime,
   List<String>? images,
   bool? favorite,
-}) => Resturants(  id: id ?? this.id,
+}) => RestaurantsModel(  id: id ?? this.id,
   address: address ?? this.address,
   coordinateY: coordinateY ?? this.coordinateY,
   coordinateX: coordinateX ?? this.coordinateX,
@@ -314,4 +315,5 @@ Resturants copyWith({  int? id,
 /// images : ["/images/hotels/Jumeirah Beach Hotel1.jpg","/images/hotels/Jumeirah Beach Hotel2.jpg","/images/hotels/Jumeirah Beach Hotel3.jpg","/images/hotels/Jumeirah Beach Hotel4.jpg","/images/hotels/Jumeirah Beach Hotel5.jpg","/images/hotels/Jumeirah Beach Hotel6.jpg","/images/hotels/Jumeirah Beach Hotel7.jpg","/images/hotels/Jumeirah Beach Hotel8.jpg"]
 /// services : ["Free wifi","Parking free","Buffer dinner","Breakfast"]
 /// favorite : true
+
 

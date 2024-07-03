@@ -22,7 +22,7 @@ class HotelViewBody extends StatelessWidget {
 
       children: [
 
-        CustomPageView(pageController: pageController,images: hotelData.images,),
+        CustomPageView(pageController: pageController,images: hotelData.images,heightRatio: 0.558,),
         Align(
           alignment: AlignmentDirectional.topCenter,
           child: Padding(

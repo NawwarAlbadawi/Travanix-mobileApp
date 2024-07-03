@@ -8,10 +8,9 @@ import 'package:travanix/Features/map/presentation/views/wiggets/map_item_detail
 import 'package:travanix/Features/map/presentation/views/wiggets/map_view_body.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 class MapView extends StatelessWidget {
-  const MapView({super.key, this.latitude, this.longitude, this.model});
+  const MapView({super.key, this.model});
 
-  final double ? latitude;
-  final double ? longitude;
+
   final dynamic model;
 
   @override
@@ -31,7 +30,6 @@ class MapView extends StatelessWidget {
                 color: basicColor,
                 ),
                 onPressed: (){
-
                   GoRouter.of(context).pop();
                 },
               ),
@@ -42,8 +40,6 @@ class MapView extends StatelessWidget {
 
 
       body:  MapViewBody(controller: MapController(),
-      latitude: latitude,
-      longitude: longitude,
         model: model,
       ),
     );

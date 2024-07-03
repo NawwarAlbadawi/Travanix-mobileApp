@@ -1,39 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/home/presentation/views/widgets/category_list.dart';
 import 'package:travanix/Features/home/presentation/views/widgets/custom_search_bar.dart';
 import 'package:travanix/Features/home/presentation/views/widgets/trip_list.dart';
-import 'package:travanix/Features/map/presentation/views/wiggets/map_view_body.dart';
-import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
-import 'package:travanix/core/utils/routers.dart';
-
-
-
-class HomeViewBody extends StatefulWidget {
+import 'package:travanix/core/widgets/custom_item_box_location.dart';
+class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
-
-  @override
-  State<HomeViewBody> createState() => _HomeViewBodyState();
-}
-
-class _HomeViewBodyState extends State<HomeViewBody>  {
-
-
-
-  @override
-  void initState()  {
-    // TODO: implement initState
-
-
-
-    super.initState();
-  }
-
-
-
   @override
   Widget build(BuildContext context) {
     return  SingleChildScrollView(
@@ -44,7 +17,6 @@ class _HomeViewBodyState extends State<HomeViewBody>  {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
            // const SizedBox(height: 90,),
-
             Text('Explore and Find ',
            style: AppTextStyles.styleMedium24(context),),
             const SizedBox(height: 5,),
@@ -53,40 +25,7 @@ class _HomeViewBodyState extends State<HomeViewBody>  {
             const SizedBox(height: 20,),
             const CustomSearchBar(),
             const SizedBox(height: 30,),
-            GestureDetector(
-              onTap: (){
-                GoRouter.of(context).push(AppRouter.mapView);
-              },
-              child:   AspectRatio(
-                aspectRatio: 3,
-                child: Container(
-                  height: MediaQuery.sizeOf(context).height*.15,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(
-                        color: greyColor,
-
-                      ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: greyColor.withOpacity(0.4),
-                        offset: const Offset(0,2),
-                        blurStyle: BlurStyle.normal,
-                        blurRadius: 15
-                      )
-                    ]
-
-                  ),
-                  width: double.infinity,
-
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child:  IgnorePointer(
-                        ignoring: true,
-                          child:  MapViewBody(controller: MapController(),))),
-                ),
-              ),
-            ),
+            const CustomItemBoxLocation(),
             const SizedBox(height: 20,),
             Text('Category',style: AppTextStyles.styleBold18(context),),
             const SizedBox(height: 10,),

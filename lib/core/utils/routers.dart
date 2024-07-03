@@ -19,6 +19,7 @@ import 'package:travanix/Features/map/presentation/views/map_view.dart';
 import 'package:travanix/Features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:travanix/Features/profile/data/models/ProfileModel.dart';
 import 'package:travanix/Features/profile/presentation/views/wallet_view.dart';
+import 'package:travanix/Features/restaurant/presentation/restaurant_view.dart';
 import 'package:travanix/Features/room/presentation/views/room_view.dart';
 
 
@@ -49,6 +50,7 @@ abstract class AppRouter
    static const String tripView='/tripView';
    static const String bookingHotelView='/bookingHotelView';
    static const String walletView='/walletView' ;
+   static const  String restaurantView='/restaurantView';
 
 
    static List<String>routerName=[
@@ -60,9 +62,11 @@ abstract class AppRouter
    ];
 
   static final  GoRouter router =  GoRouter(
+
     routes: <RouteBase>[
       GoRoute(
         path: '/',
+
         builder: (BuildContext context, GoRouterState state) {
           return const SplashView();
         },
@@ -152,9 +156,7 @@ abstract class AppRouter
         builder: (BuildContext context, GoRouterState state) {
 
           return  MapView(
-            longitude: state.uri.queryParameters['y']!=null?double.parse( state.uri.queryParameters['y']!):null,
-             latitude: state.uri.queryParameters['x']!=null ?double.parse( state.uri.queryParameters['x']!):null,
-             model: state.extra !=null?state.extra as HotelData :null,
+             model: state.extra as dynamic ,
           );
         },
 
@@ -199,6 +201,13 @@ abstract class AppRouter
             return   WalletView(
             model: state.extra as ProfileModel,
             );
+          }
+      ),
+      GoRoute(
+          path:restaurantView,
+          builder: (context,state)
+          {
+            return const   RestaurantView();
           }
       ),
 

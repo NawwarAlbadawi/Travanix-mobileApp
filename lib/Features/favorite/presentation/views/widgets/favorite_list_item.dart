@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:travanix/Features/favorite/data/models/FavoriteModel.dart';
 import 'package:travanix/Features/favorite/presentation/views/widgets/favorite_icon_button.dart';
 import 'package:travanix/Features/favorite/presentation/views_model/favorite_cubit.dart';
 import 'package:travanix/Features/hotels/data/models/hotel_data_model.dart';
@@ -25,13 +26,17 @@ class FavoriteListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return  BlocBuilder<FavoriteCubit,FavoriteState>(
       builder: (context,state) {
-        var cubit=FavoriteCubit.get(context);
+
         return GestureDetector(
           onTap: (){
-            print('dfa');
             if(model is HotelData)
               {
                 GoRouter.of(context).push(AppRouter.hotelView,extra: model);
+              }
+            else if (model is RestaurantsModel)
+
+              {
+                GoRouter.of(context).push(AppRouter.restaurantView);
               }
           },
           child: SizedBox(
@@ -64,7 +69,7 @@ class FavoriteListItem extends StatelessWidget {
                 ],),
               ),
 
-              FavoriteIconButton(id: id,)
+              FavoriteIconButton(id: model.id,)
 
 
 
