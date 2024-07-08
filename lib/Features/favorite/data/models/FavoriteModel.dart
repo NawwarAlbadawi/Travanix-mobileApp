@@ -1,4 +1,5 @@
 import 'package:travanix/Features/hotels/data/models/hotel_data_model.dart';
+import 'package:travanix/Features/restaurant/data/models/restaurant_data.dart';
 import 'package:travanix/Features/trip/data/TripsModel.dart';
 
 /// status : 1
@@ -35,7 +36,7 @@ class FavoriteModel {
     if (json['resturants'] != null) {
       resturants = [];
       json['resturants'].forEach((v) {
-        resturants?.add(RestaurantsModel.fromJson(v));
+        resturants?.add(RestaurantData.fromJson(v));
       });
     }
     if (json['attraction_activities'] != null) {
@@ -49,7 +50,7 @@ class FavoriteModel {
   String? message;
   List<TripsModelData>? trips;
   List<HotelData>? hotels;
-  List<RestaurantsModel>? resturants;
+  List<RestaurantData>? resturants;
   List<AttractionActivitiesModel>? attractionActivities;
 FavoriteModel copyWith({  int? status,
   String? message,
@@ -199,108 +200,7 @@ AttractionActivitiesModel copyWith({  int? id,
 /// images : ["/images/resturants/HASSAN1.jpg"]
 /// favorite : true
 
-class RestaurantsModel {
-  RestaurantsModel({
-      this.id, 
-      this.address, 
-      this.coordinateY, 
-      this.coordinateX, 
-      this.cityName, 
-      this.nationName, 
-      this.typeOfFood, 
-      this.descreption, 
-      this.name, 
-      this.rating, 
-      this.phoneNumber, 
-      this.opiningTime, 
-      this.closingTime, 
-      this.images, 
-      this.favorite,});
 
-  RestaurantsModel.fromJson(dynamic json) {
-    id = json['id'];
-    address = json['address'];
-    coordinateY = json['coordinate_y'];
-    coordinateX = json['coordinate_x'];
-    cityName = json['city_name'];
-    nationName = json['nation_name'];
-    typeOfFood = json['type_of_food'];
-    descreption = json['descreption'];
-    name = json['resturant_name'];
-    rating = json['resturant_class'];
-    phoneNumber = json['phone_number'];
-    opiningTime = json['opining_time'];
-    closingTime = json['closing_time'];
-    images = json['images'] != null ? json['images'].cast<String>() : [];
-    favorite = json['favorite'];
-  }
-  int? id;
-  String? address;
-  int? coordinateY;
-  int? coordinateX;
-  String? cityName;
-  String? nationName;
-  String? typeOfFood;
-  String? descreption;
-  String? name;
-  double? rating;
-  String? phoneNumber;
-  String? opiningTime;
-  String? closingTime;
-  List<String>? images;
-  bool? favorite;
-RestaurantsModel copyWith({  int? id,
-  String? address,
-  int? coordinateY,
-  int? coordinateX,
-  String? cityName,
-  String? nationName,
-  String? typeOfFood,
-  String? descreption,
-  String? name,
-  double? rating,
-  String? phoneNumber,
-  String? opiningTime,
-  String? closingTime,
-  List<String>? images,
-  bool? favorite,
-}) => RestaurantsModel(  id: id ?? this.id,
-  address: address ?? this.address,
-  coordinateY: coordinateY ?? this.coordinateY,
-  coordinateX: coordinateX ?? this.coordinateX,
-  cityName: cityName ?? this.cityName,
-  nationName: nationName ?? this.nationName,
-  typeOfFood: typeOfFood ?? this.typeOfFood,
-  descreption: descreption ?? this.descreption,
-  name: name ?? this.name,
-  rating: rating ?? this.rating,
-  phoneNumber: phoneNumber ?? this.phoneNumber,
-  opiningTime: opiningTime ?? this.opiningTime,
-  closingTime: closingTime ?? this.closingTime,
-  images: images ?? this.images,
-  favorite: favorite ?? this.favorite,
-);
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['address'] = address;
-    map['coordinate_y'] = coordinateY;
-    map['coordinate_x'] = coordinateX;
-    map['city_name'] = cityName;
-    map['nation_name'] = nationName;
-    map['type_of_food'] = typeOfFood;
-    map['descreption'] = descreption;
-    map['resturant_name'] = name;
-    map['resturant_class'] = rating;
-    map['phone_number'] = phoneNumber;
-    map['opining_time'] = opiningTime;
-    map['closing_time'] = closingTime;
-    map['images'] = images;
-    map['favorite'] = favorite;
-    return map;
-  }
-
-}
 
 /// id : 2
 /// address : "Dubai"

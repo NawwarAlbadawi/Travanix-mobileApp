@@ -6,6 +6,7 @@ import 'package:travanix/Features/favorite/data/models/FavoriteModel.dart';
 import 'package:travanix/Features/favorite/presentation/views/widgets/favorite_icon_button.dart';
 import 'package:travanix/Features/favorite/presentation/views_model/favorite_cubit.dart';
 import 'package:travanix/Features/hotels/data/models/hotel_data_model.dart';
+import 'package:travanix/Features/restaurant/data/models/restaurant_data.dart';
 import 'package:travanix/constants.dart';
 
 import 'package:travanix/core/styles/app_colors.dart';
@@ -33,10 +34,10 @@ class FavoriteListItem extends StatelessWidget {
               {
                 GoRouter.of(context).push(AppRouter.hotelView,extra: model);
               }
-            else if (model is RestaurantsModel)
+            else if (model is RestaurantData)
 
               {
-                GoRouter.of(context).push(AppRouter.restaurantView);
+                GoRouter.of(context).push(AppRouter.restaurantView,extra: model);
               }
           },
           child: SizedBox(
@@ -48,7 +49,7 @@ class FavoriteListItem extends StatelessWidget {
 
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                  child:   CustomImage(image: NetworkImage(url+model.images[0]), aspectRatio: 1,fit: BoxFit.fill,)),
+                  child:   CustomImage(image: url+model.images[0], aspectRatio: 1,fit: BoxFit.fill,)),
               const SizedBox(width: 10,),
               Expanded(
                 child: Column(

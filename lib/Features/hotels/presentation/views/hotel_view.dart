@@ -34,10 +34,7 @@ class HotelView extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: HotelFavoriteButton(
-              hotelData: hotelData,
-              borderRadius: 100,
-            ),
+            child: HotelFavoriteButton(id: hotelData.id, borderRadius: 100,),
           ),
         ],
       ),

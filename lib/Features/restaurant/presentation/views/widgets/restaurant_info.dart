@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
 import 'package:travanix/Features/Review/review_body.dart';
-import 'package:travanix/Features/restaurant/presentation/views/widgets/restaurant_list_view.dart';
+import 'package:travanix/Features/restaurant/data/repositories/get_all_restaurants_repo.dart';
+import 'package:travanix/Features/restaurant/presentation/views/widgets/about_restaurant_list_view.dart';
+import 'package:travanix/Features/restaurant/presentation/views/widgets/restauratn_favorite_button.dart';
+import 'package:travanix/Features/restaurant/presentation/views_model/restaurant_cubit.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/widgets/custom_item_box_location.dart';
-class RestaurantInfo extends StatelessWidget {
-  const RestaurantInfo({super.key});
 
+import '../../../data/models/restaurant_data.dart';
+class RestaurantInfo extends StatelessWidget {
+  const RestaurantInfo({super.key, required this.model,});
+  final RestaurantData model;
   @override
   Widget build(BuildContext context) {
     return  Padding(
@@ -17,16 +23,16 @@ class RestaurantInfo extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text('Divella Bistro Restaurant',style: AppTextStyles.styleSemiBold24(context),),
+              Text(model.name,style: AppTextStyles.styleSemiBold24(context),),
               const Spacer(),
-              IconButton(onPressed: (){}, icon:const Icon(IconlyBold.heart,color: Colors.red,))
+              RestaurantFavoriteButton(id: model.id)
             ],
           ),
-          Text('Damascus',style: AppTextStyles.styleSemiBold20(context).copyWith(
+          Text(model.address,style: AppTextStyles.styleSemiBold20(context).copyWith(
               color: greyColor
           ),),
           const SizedBox(height: 30,),
-          const  RestaurantListView(),
+            AboutRestaurantListView(model: model,),
           const SizedBox(height: 40,),
           Row(
             children: [
@@ -36,19 +42,19 @@ class RestaurantInfo extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 5,),
-          Text('Mon-Sun/ 12.00-2.00',style: AppTextStyles.styleBold18(context).copyWith(
+          Text('Mon-Sun/ ${model.opiningTime}- ${model.closingTime}',style: AppTextStyles.styleBold18(context).copyWith(
               color: basicColor.withOpacity(0.7),
               fontWeight: FontWeight.w500
 
           ),),
           const SizedBox(height: 20,),
-          const CustomItemBoxLocation(aspectRatio: 2.3,),
+          CustomItemBoxLocation(aspectRatio: 2.3,model: model,),
           const SizedBox(height: 20,),
           Text('About restaurant',style: AppTextStyles.styleSemiBold24(context).copyWith(
               fontSize: 22
           ),),
           const SizedBox(height: 10,),
-          Text('In a striking building overlooking the Arabian Gulf, this sprawling beachfront hotel is 11 minutes walk from Burj Al Arab and 6 km from the Mall of the Emirates.\nUpscale rooms with gulf views feature decor ranging from modern to muted, plus floor-to-ceiling windows',
+          Text(model.description,
             style: AppTextStyles.styleMedium16(context),
 
           ),

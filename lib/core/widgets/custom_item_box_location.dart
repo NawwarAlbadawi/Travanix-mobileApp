@@ -3,9 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../Features/map/presentation/views/wiggets/map_view_body.dart';
-import '../styles/app_colors.dart';
 import '../utils/routers.dart';
 
 class CustomItemBoxLocation extends StatelessWidget {

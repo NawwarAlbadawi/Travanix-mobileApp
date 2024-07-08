@@ -7,7 +7,7 @@ import '../../../../core/utils/failure.dart';
 
 class PostFavoriteRepo {
 
-  Future<Either<Failure,bool>>changeHotelFavoriteStatus (Map<String,dynamic>data) async
+  Future<Either<Failure,bool>>changeFavoriteStatus (Map<String,dynamic>data) async
   {
     try{
       await DioHelper.postData(url: 'touristPutDeleteFavorite',data: data);

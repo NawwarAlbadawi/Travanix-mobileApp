@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/Review/review_body.dart';
-import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
 import 'package:travanix/Features/hotels/presentation/views/widgets/rating_bar.dart';
 import 'package:travanix/Features/hotels/presentation/views/widgets/hotel_services_list.dart';
-import 'package:travanix/Features/map/presentation/views/wiggets/map_view_body.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
-import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/custom_text_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-
 import '../../../../../core/widgets/custom_item_box_location.dart';
 import '../../../data/models/hotel_data_model.dart';
 class HotelInfoBody extends StatelessWidget {
@@ -43,8 +37,9 @@ class HotelInfoBody extends StatelessWidget {
             style: AppTextStyles.styleBold35(context),),
           const SizedBox(height: 10,),
           CustomRating(rating: hotelData.rating,),
+
           const SizedBox(height: 20,),
-          Text(hotelData.simpleDescriptionAboutHotel,
+          Text(hotelData.description,
             style: AppTextStyles.styleMedium16(context),),
           const SizedBox(height: 20,),
           HotelServicesList(

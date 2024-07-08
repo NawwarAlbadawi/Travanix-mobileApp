@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:travanix/Features/favorite/presentation/views/widgets/custom_page_indicator.dart';
 import 'package:travanix/core/widgets/custom_page_view.dart';
-import 'package:travanix/generated/assets.dart';
 class RestaurantPageView extends StatelessWidget {
   const RestaurantPageView({super.key});
 

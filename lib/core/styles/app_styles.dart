@@ -17,6 +17,7 @@ import 'package:travanix/core/styles/app_text_styles.dart';
     progressIndicatorTheme:const  ProgressIndicatorThemeData(
       color: basicColor,
 
+
     ),
 
 

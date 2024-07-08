@@ -10,3 +10,4 @@ final class InitMapServicesLoading extends InitMapState {}
 final class InitMapDataLoading extends InitMapState {}
 final class InitMapDataSuccess extends InitMapState {}
 
+final class ChangeTheLayerState extends InitMapState {}

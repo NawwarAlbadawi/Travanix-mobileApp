@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:travanix/Features/hotels/data/models/hotel_data_model.dart';
 import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
+import 'package:travanix/Features/restaurant/data/models/restaurant_data.dart';
 import 'package:travanix/constants.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
@@ -13,8 +15,8 @@ import 'package:travanix/core/widgets/rating_bar.dart';
 
 
 class MapItemDetails extends StatelessWidget {
-  const MapItemDetails({super.key, this.hotelData});
- final dynamic hotelData;
+  const MapItemDetails({super.key, this.modelData});
+ final dynamic modelData;
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +24,21 @@ class MapItemDetails extends StatelessWidget {
       padding: const EdgeInsets.all(15.0),
       child: GestureDetector(
         onTap: (){
-          if(hotelData!=null)
+          if(modelData!=null)
             {
-              GoRouter.of(context).push(AppRouter.hotelView,
-              extra: hotelData);
+              if(modelData is HotelData)
+                {
+              GoRouter.of(context).push(AppRouter.hotelView, extra: modelData);}
+
+              else if(modelData is RestaurantData)
+                {
+                  GoRouter.of(context).push(AppRouter.restaurantView, extra: modelData);
+                }
             }
         },
         child: Container(
           decoration: BoxDecoration(
-            color: navyBlueColor,
+            color: Colors.white,
             borderRadius: BorderRadius.circular(20),
           ),
           constraints: BoxConstraints(
@@ -39,71 +47,61 @@ class MapItemDetails extends StatelessWidget {
 
           width: double.infinity,
           child: ConditionalBuilder(
-            condition: hotelData !=null,
+            condition: modelData !=null,
             builder: (context) {
-              return SingleChildScrollView(
-                physics:const  BouncingScrollPhysics(),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 15),
-                  child: Row(
+              return Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.sizeOf(context).width*.35,
+                    height: MediaQuery.sizeOf(context).height*.2,
+                    child:  ClipRRect(
+                      borderRadius:const  BorderRadius.only(topLeft:  Radius.circular(12),bottomLeft: Radius.circular(12)),
+                      child:  Image(image: NetworkImage(
+                          'http://$ip:8001${modelData!.images[0]}'
+                      ), fit: BoxFit.fill,),
+                    ),
+                  ),
+                  const SizedBox(width: 5,),
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
+
                     children: [
-                      SizedBox(
-                        width: MediaQuery.sizeOf(context).width*.3,
-                        child:  AspectRatio(
-                          aspectRatio: 0.8,
-                          child:  ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child:  Image(image: NetworkImage(
-                                'http://$ip:8001${hotelData!.images[0]}'
-                            ), fit: BoxFit.fill,),
-                          ) ,
-                        ),
-                      ),
                       const SizedBox(width: 5,),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-
-                        children: [
-                          const SizedBox(width: 5,),
-                          SizedBox(
-                            width: MediaQuery.sizeOf(context).width*.4,
-                            child: Text(hotelData!.name, style: AppTextStyles.styleSemiBold24(context).copyWith(color: basicColor,),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,),
-                          ),
-                          const  SizedBox(height: 5,),
-                          SizedBox(
-                            width: MediaQuery.sizeOf(context).width*.4,
-                            child: Text(hotelData!.simpleDescriptionAboutHotel, style: AppTextStyles.styleSemiBold16(context).copyWith(color: greyColor,),
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,),
-                          ),
-                          const  SizedBox(height: 10,),
-                           IgnorePointer(
-                            ignoring: true,
-                            child: CustomRatingBar(
-                              rating: hotelData!.rating,
-                            ),
-                          )
-                        ],
+                      SizedBox(
+                        width: MediaQuery.sizeOf(context).width*.56,
+                        child: Text(modelData!.name, style: AppTextStyles.styleSemiBold24(context).copyWith(color: basicColor,fontSize: 22),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,),
                       ),
-
-
-
-
-
-
-
-
-
-
-
-
+                      const  SizedBox(height: 5,),
+                      SizedBox(
+                        width: MediaQuery.sizeOf(context).width*.55,
+                        child: Text(modelData!.description, style: AppTextStyles.styleSemiBold16(context).copyWith(color: greyColor,),
+                          maxLines: 4,
+                          overflow: TextOverflow.ellipsis,),
+                      ),
+                      const  Spacer(),
+                       CustomRatingBar(
+                         ignoreTouch: true,
+                         rating: modelData!.rating,
+                       )
                     ],
                   ),
-                ),
+
+
+
+
+
+
+
+
+
+
+
+
+                ],
               );
             },
             fallback: (context){

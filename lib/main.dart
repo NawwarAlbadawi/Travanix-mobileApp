@@ -10,6 +10,8 @@ import 'package:travanix/Features/hotels/data/repositories/get_hotels_repo.dart'
 import 'package:travanix/Features/hotels/presentation/views_models/cubits/get_all_hotel_cubit.dart';
 import 'package:travanix/Features/map/presentation/views_model/init_map_services_cubit.dart';
 import 'package:travanix/Features/profile/presentation/views_model/profile_cubit.dart';
+import 'package:travanix/Features/restaurant/data/repositories/get_all_restaurants_repo.dart';
+import 'package:travanix/Features/restaurant/presentation/views_model/restaurant_cubit.dart';
 
 import 'package:travanix/Features/travanix_layout/presentation/views_models/cubits/change_bottom_nav_bar_cubit.dart';
 import 'package:travanix/bloc_observer.dart';
@@ -45,6 +47,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context)=>InitMapCubit()..initMapService()),
           BlocProvider(create: (context)=>GetAllHotelCubit(GetHotelsRepo())..getAllHotel()),
           BlocProvider(create: (context)=>ProfileCubit()..getProfileData()),
+          BlocProvider(create: (context)=>RestaurantCubit(GetAllRestaurantsRepo())..getAllRestaurant()),
           //BlocProvider(create: (context)=>FavoriteCubit(GetFavoriteRepo(),PostFavoriteRepo())..getFavorite())
         ],
         child: SafeArea(

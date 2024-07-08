@@ -19,7 +19,9 @@ import 'package:travanix/Features/map/presentation/views/map_view.dart';
 import 'package:travanix/Features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:travanix/Features/profile/data/models/ProfileModel.dart';
 import 'package:travanix/Features/profile/presentation/views/wallet_view.dart';
-import 'package:travanix/Features/restaurant/presentation/restaurant_view.dart';
+import 'package:travanix/Features/restaurant/data/models/restaurant_data.dart';
+import 'package:travanix/Features/restaurant/presentation/views/restaurant_view.dart';
+import 'package:travanix/Features/restaurant/presentation/views/all_restaurant_view.dart';
 import 'package:travanix/Features/room/presentation/views/room_view.dart';
 
 
@@ -51,8 +53,7 @@ abstract class AppRouter
    static const String bookingHotelView='/bookingHotelView';
    static const String walletView='/walletView' ;
    static const  String restaurantView='/restaurantView';
-
-
+   static const String allRestaurantView='/allRestaurantView';
    static List<String>routerName=[
      'loginScreen',
      'registerScreen',
@@ -60,9 +61,7 @@ abstract class AppRouter
      'homeScreen',
     'restPasswordScreen'
    ];
-
   static final  GoRouter router =  GoRouter(
-
     routes: <RouteBase>[
       GoRoute(
         path: '/',
@@ -192,8 +191,6 @@ abstract class AppRouter
             return const  TripView();
           }
       ),
-
-
       GoRoute(
           path:walletView,
           builder: (context,state)
@@ -207,9 +204,19 @@ abstract class AppRouter
           path:restaurantView,
           builder: (context,state)
           {
-            return const   RestaurantView();
+            return    RestaurantView(
+              model: state.extra as RestaurantData,
+            );
           }
       ),
+      GoRoute(
+          path:allRestaurantView,
+          builder: (context,state)
+          {
+            return  const   AllRestaurantView();
+          }
+      ),
+
 
 
     ],

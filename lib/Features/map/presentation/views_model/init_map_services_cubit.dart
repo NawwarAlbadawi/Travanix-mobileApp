@@ -34,7 +34,13 @@ class InitMapCubit extends Cubit<InitMapState> {
 
   }
 
+  bool isWMS=false;
 
+  void toggleBetweenTheLayer() {
 
+    isWMS=!isWMS;
+    emit(ChangeTheLayerState());
+
+  }
 }
 

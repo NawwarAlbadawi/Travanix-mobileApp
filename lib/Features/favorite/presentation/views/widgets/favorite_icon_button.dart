@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconly/iconly.dart';
-import 'package:travanix/Features/favorite/presentation/views_model/favorite_cubit.dart';
 
-import '../../../../hotels/presentation/views_models/cubits/get_all_hotel_cubit.dart';
+import 'package:travanix/Features/favorite/presentation/views_model/favorite_cubit.dart';
+import 'package:travanix/core/widgets/custom_favorite_icon_button.dart';
+
+
 class FavoriteIconButton extends StatelessWidget {
   const FavoriteIconButton({super.key, this.id});
 
@@ -14,12 +15,12 @@ class FavoriteIconButton extends StatelessWidget {
     return  BlocBuilder<FavoriteCubit,FavoriteState>(
         builder: (context,state){
           var cubit=FavoriteCubit.get(context);
-          return IconButton(
+          return CustomFavoriteIconButton(
 
-              onPressed: (){
+              onPress: (){
                 cubit.changeFavoriteStatus(id!);
-                GetAllHotelCubit.get(context).getAllHotel();
-          }, icon:const Icon(IconlyBold.heart,color: Colors.red,));
+
+          }, color: Colors.red,);
         });
   }
 }

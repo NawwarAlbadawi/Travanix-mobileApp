@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:travanix/Features/restaurant/data/models/restaurant_data.dart';
 import 'package:travanix/Features/restaurant/presentation/views/widgets/restaurant_info.dart';
 import 'package:travanix/Features/restaurant/presentation/views/widgets/restaurant_page_view.dart';
 import 'package:travanix/core/widgets/custom_decorated_container.dart';
 import 'package:travanix/core/widgets/custom_draggable_scroll_sheet.dart';
 
 class RestaurantViewBody extends StatelessWidget {
-  const RestaurantViewBody({super.key});
+  const RestaurantViewBody({super.key, required this.model});
+  final RestaurantData model;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class RestaurantViewBody extends StatelessWidget {
          return   CustomDecoratedContainer(
            scrollController:scrollController ,
              borderRadius: 20,
-             child:const  SliverToBoxAdapter(child: RestaurantInfo()));
+             child:  SliverToBoxAdapter(child: RestaurantInfo(model: model,)));
         })
 
       ],

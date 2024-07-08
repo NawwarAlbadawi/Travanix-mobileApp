@@ -11,7 +11,7 @@ class HotelData {
     required this.name,
     required this.rating,
     required this.cityName,
-    required this.simpleDescriptionAboutHotel,
+    required this.description,
     required this.phoneNumber,
     required this.id,
     required this.favorite,
@@ -27,7 +27,7 @@ class HotelData {
   String name;
   double  rating;
   String cityName;
-  String simpleDescriptionAboutHotel;
+  String description;
   String phoneNumber;
   int id;
   bool favorite;
@@ -43,7 +43,7 @@ class HotelData {
     name: json["hotel_name"],
     rating: json["hotel_class"].toDouble(),
     cityName: json["city_name"],
-    simpleDescriptionAboutHotel: json["simple_description_about_hotel"],
+    description: json["simple_description_about_hotel"],
     phoneNumber: json["phone_number"],
     id: json["id"],
     favorite: json["favorite"],
@@ -60,7 +60,7 @@ class HotelData {
     "hotel_name": name,
     "hotel_class": rating,
     "city_name": cityName,
-    "simple_description_about_hotel": simpleDescriptionAboutHotel,
+    "simple_description_about_hotel": description,
     "phone_number": phoneNumber,
     "id": id,
     "favorite": favorite,

@@ -35,25 +35,48 @@ class MapViewBody extends StatelessWidget {
               options:  MapOptions(
                 initialCenter: LatLng( model==null?InitMapCubit.get(context).getLocation.latitude!:model.coordinateX!
                     , model==null? InitMapCubit.get(context).getLocation.longitude!:model.coordinateY!),
-                initialZoom: 9.2,
+                initialZoom: 13,
               ),
 
               children: [
-                TileLayer(
-                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                  userAgentPackageName: 'com.example.app',),
-                 MarkerLayer(markers: [
+
+                if(InitMapCubit.get(context).isWMS)
+                    TileLayer(
+
+                      //urlTemplate: 'https://{s}.s2maps-tiles.eu/wms/?',
+
+                      wmsOptions:  WMSTileLayerOptions(
+                        baseUrl: 'https://{s}.s2maps-tiles.eu/wms/?',
+                        layers: const ['s2cloudless-2021_3857'],
+                      ),
+                      userAgentPackageName: 'com.example.app',
+
+
+                      subdomains: const ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'],
+                    ),
+                if(!InitMapCubit.get(context).isWMS)
+                      TileLayer(
+
+                        urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                        userAgentPackageName: 'TravanixApp',
+
+
+            subdomains: const ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'],
+            ),
+                MarkerLayer(markers: [
                   if (model!=null)
                     Marker(point:LatLng(model.coordinateX!!, model.coordinateY!!)
-                      , child: IconButton(icon:const Icon(FontAwesomeIcons.mapPin,
-                  color: basicColor,),
+                      , child: IconButton(icon:const Icon(FontAwesomeIcons.mapPin, color: basicColor,),
                       onPressed: (){
                         showBottomSheet(
+                          sheetAnimationStyle: AnimationStyle(
+                            curve: Curves.easeInOut
+                          ),
                           backgroundColor: Colors.transparent,
                             enableDrag: true,
 
                             context: context, builder: (context)=> MapItemDetails(
-                          hotelData: model,
+                          modelData: model,
                         ));
                       },))
                  ]),
@@ -64,14 +87,14 @@ class MapViewBody extends StatelessWidget {
                       onTap: () => launchUrl(Uri.parse('https://openstreetmap.org/copyright')),
                     ),],
                 ),
-                  CircleLayer(circles: [
-                  CircleMarker(point:LatLng(InitMapCubit.get(context).getLocation.latitude!, InitMapCubit.get(context).getLocation.longitude!)
+                CircleLayer(circles: [CircleMarker(point:LatLng(InitMapCubit.get(context).getLocation.latitude!, InitMapCubit.get(context).getLocation.longitude!)
                       , radius:5,
                       color: navyBlueColor,
-                      borderStrokeWidth: 5,
-                      borderColor: basicColor
-                  )
-                ])
+                      borderStrokeWidth: 3,
+                      borderColor: Colors.blue
+                  ),]),
+
+
               ],
             );
           },
