@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:travanix/Features/Review/data/models/GetReviewModel.dart';
 import 'package:travanix/constants.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/widgets/rating_bar.dart';
 import 'package:travanix/generated/assets.dart';
 class ReviewItem extends StatelessWidget {
-  const ReviewItem({super.key});
+  const ReviewItem({super.key, required this.model});
+  final GetReviewModelData model;
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +24,22 @@ class ReviewItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
+                Text(model.comment!,
+                  style: AppTextStyles.styleSemiBold20(context),),
                 Row(
                   children: [
-                    const  CustomRatingBar(rating: 4,ignoreTouch: true,),
+                    CustomRatingBar(rating: model.rate!.toDouble(),ignoreTouch: true,size: 23,),
                     const   Spacer(),
                     SizedBox(
-                      height:50,
-                      width: 50,
+                      height:40,
+                      width: 40,
+
                       child: Image.asset(Assets.imagesLogo2,fit: BoxFit.fill,),
                     )
                   ],
                 ),
-                Text('Burj Al Arab Hotel is one of the finest, most luxurious and most beautiful hotels in the world. The Burj Al Arab Jumeirah Hotel is located on its own island and features suites with sea views, 8 distinct restaurants, a full-service spa and distinctive parking',
-                  style: AppTextStyles.styleMedium20(context),),
+                Text(model.touristName!,style: AppTextStyles.styleMedium16(context),)
               ],
             ),
           )),

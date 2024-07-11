@@ -20,12 +20,14 @@ class HomeViewBody extends StatelessWidget {
            // const SizedBox(height: 90,),
             Text('Explore and Find ',
            style: AppTextStyles.styleMedium24(context).copyWith(
-             color: basicColor
+             color: basicColor,
+             fontSize: 26
            ),),
             const SizedBox(height: 5,),
             Text('Your Best Journey ',
               style: AppTextStyles.styleSemiBold24(context).copyWith(
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold,
+                fontSize: 28
               ),),
             const SizedBox(height: 20,),
             const CustomSearchBar(padding: EdgeInsets.zero),

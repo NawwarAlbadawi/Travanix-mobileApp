@@ -21,7 +21,13 @@ class CustomSearchBar extends StatelessWidget {
                color: Colors.white,
                border: Border.all(
                  color: navyBlueColor
-               )
+               ),
+               boxShadow:  [
+                 BoxShadow(
+                   blurRadius: 5,
+                   color: greyColor.withOpacity(0.6)
+                 )
+               ]
              ),
              child: Row(
                children: [
@@ -40,7 +46,13 @@ class CustomSearchBar extends StatelessWidget {
               width: 55,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: basicColor
+                  color: basicColor,
+                boxShadow: const  [
+                  BoxShadow(
+                      blurRadius: 5,
+                      color: greyColor
+                  )
+                ]
               ),
               child: const Icon(Icons.tune_rounded,
                 color: Colors.white,

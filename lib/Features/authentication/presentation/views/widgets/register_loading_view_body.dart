@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/authentication/presentation/views_models/cubit/register_cubit/post_register_data_cubit.dart';
+import 'package:travanix/constants.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/utils/cache_service.dart';
@@ -28,6 +29,7 @@ class RegisterLoadingViewBody extends StatelessWidget {
             if(state is PostRegisterDataSuccess)
               {
                 const  CustomToast().build(context: context,color: Colors.green,text: 'Hello $name');
+                token=state.model.accessToken;
                 CacheHelper.setInCacheHelper(value: state.model.accessToken, key:'token').then((value) {
                   GoRouter.of(context).pushReplacement(AppRouter.travanixLayoutView);
                 });

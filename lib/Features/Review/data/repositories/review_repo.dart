@@ -1,6 +1,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:either_dart/either.dart';
+
 import 'package:travanix/core/utils/api_services.dart';
 import 'package:travanix/core/utils/failure.dart';
 
@@ -9,6 +10,8 @@ class ReviewRepo {
   Future<Either<Failure,bool>> postComment ({required String comment,required String category,required int  id}) async
   {
     try {
+
+
        await DioHelper.postData(url: 'touristPutComment',
        data: {
          category : id,
@@ -19,6 +22,7 @@ class ReviewRepo {
     }
     catch (error)
     {
+
       if (error is DioException) {
 
         return Left(ServerFailure.fromDioError(error));

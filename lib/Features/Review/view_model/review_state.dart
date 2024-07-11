@@ -12,3 +12,8 @@ final class PostCommentFail extends ReviewState {}
 final class PostRatingLoading extends ReviewState {}
 final class PostRatingSuccess extends ReviewState {}
 final class PostRatingFail extends ReviewState {}
+
+
+
+
+

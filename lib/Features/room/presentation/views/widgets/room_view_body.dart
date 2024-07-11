@@ -17,6 +17,8 @@ import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/widgets/custom_material_button.dart';
 import 'package:travanix/core/widgets/custom_toast.dart';
 
+import '../../../../../generated/assets.dart';
+
 class RoomViewBody extends StatelessWidget {
   const RoomViewBody({super.key});
 
@@ -39,7 +41,13 @@ class RoomViewBody extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children :[
-                     SizedBox(height: MediaQuery.sizeOf(context).height*0.18,),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(basicRadius),
+                      child: Image(image: AssetImage(
+                          Assets.imagesTest
+                      )),
+                    ),
+                     SizedBox(height: 20,),
                     const Row(
                     children: [
                        CheckInAndOutContainer(text: 'Check In') ,

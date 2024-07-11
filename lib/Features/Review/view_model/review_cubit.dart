@@ -2,6 +2,10 @@
 import 'package:either_dart/either.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travanix/Features/Review/data/repositories/review_repo.dart';
+import 'package:travanix/Features/Review/view_model/get_review_cubit.dart';
+
+import '../data/models/GetReviewModel.dart';
+import '../data/repositories/get_review_repo.dart';
 part 'review_state.dart';
 
 class ReviewCubit extends Cubit<ReviewState> {
@@ -10,14 +14,15 @@ class ReviewCubit extends Cubit<ReviewState> {
   static ReviewCubit get(context)=>BlocProvider.of(context);
 
 
-   ReviewRepo reviewRepo;
+   final ReviewRepo reviewRepo;
   void postComment({required String category,required int id,required String comment})
   {
-    reviewRepo=ReviewRepo();
+
     reviewRepo.postComment(comment: comment, category: category, id: id).fold(
 
         (error)
         {
+
           emit(PostCommentFail());
         },
         (value)
@@ -28,11 +33,11 @@ class ReviewCubit extends Cubit<ReviewState> {
 
   }
 
+double rate=0;
 
-
-  void postRate({required String category,required int id,required double rate})
+  void postRate({required String category,required int id})
   {
-    reviewRepo=ReviewRepo();
+
     reviewRepo.postRate(rate: rate, category: category, id: id).fold(
 
             (error)
@@ -41,11 +46,22 @@ class ReviewCubit extends Cubit<ReviewState> {
         },
             (value)
         {
+
           emit(PostRatingSuccess());
+
+
         }
     );
+    rate=0;
 
   }
+
+
+
+
+
+
+
 
 
 }

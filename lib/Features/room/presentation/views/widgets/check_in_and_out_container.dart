@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -5,6 +6,7 @@ import 'package:travanix/Features/room/presentation/views_model/select_room_cubi
 import 'package:travanix/constants.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
+import 'package:travanix/generated/assets.dart';
 class CheckInAndOutContainer extends StatelessWidget {
   const CheckInAndOutContainer({
     super.key,
@@ -24,6 +26,8 @@ class CheckInAndOutContainer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
           
             children: [
+
+
               Text(text,style: AppTextStyles.styleSemiBold20(context),),
               const SizedBox(height:2,),
               GestureDetector(
@@ -61,12 +65,12 @@ class CheckInAndOutContainer extends StatelessWidget {
                       border: Border.all(
                           color: navyBlueColor
                       ),
-                      boxShadow: [
+                      boxShadow: const  [
                         BoxShadow(
           
-                            blurRadius: basicRadius,
-                            color: greyColor,
-                            offset: const Offset(0, 4)
+                            blurRadius: 25,
+                            color: CupertinoColors.lightBackgroundGray,
+
                         )
                       ]
                   ),
@@ -76,10 +80,10 @@ class CheckInAndOutContainer extends StatelessWidget {
                       const Icon(Icons.date_range,color: basicColor,),
                       const SizedBox(width: 10,),
           
-                     text=='Check In'?Flexible(child: Text(cubit.checkInController.text.isEmpty?text:cubit.checkInController.text, style: AppTextStyles.styleSemiBold18(context),)):
+                     text=='Check In'?Flexible(child: Text(cubit.checkInController.text.isEmpty?text:cubit.checkInController.text, style: AppTextStyles.styleMedium18(context),)):
                      Flexible(
                        child: Text(cubit.checkOutController.text.isEmpty?text:cubit.checkOutController.text,
-                         style: AppTextStyles.styleSemiBold18(context),),
+                         style: AppTextStyles.styleMedium18(context),),
                      ),
                     ],
                   ),

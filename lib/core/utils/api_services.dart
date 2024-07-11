@@ -19,9 +19,10 @@ class DioHelper {
      required String url,
  String ?accessToken}) async
   {
+
     dio.options.headers=
     {
-      'Authorization' :  'Bearer ${accessToken??token}',
+      'Authorization' :  'Bearer $token',
       'Content-Type':'application/json',
       'Accept':'application/json'
     };
@@ -30,6 +31,7 @@ class DioHelper {
 
 
   static Future<Response<dynamic>>getData({Map <String,dynamic> ?data,
+    Map <String,dynamic> ?query,
   required String path}) async
   {
 
@@ -39,7 +41,7 @@ class DioHelper {
       'Content-Type':'application/json',
       'Accept':'application/json'
     };
-  return await  dio.get(path, data: data);
+  return await  dio.get(path, data: data,queryParameters: query);
 
   }
 
