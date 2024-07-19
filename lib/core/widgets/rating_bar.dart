@@ -1,6 +1,8 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:iconly/iconly.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 
 class CustomRatingBar extends StatelessWidget {
@@ -21,13 +23,12 @@ class CustomRatingBar extends StatelessWidget {
       ignoreGestures:ignoreTouch??false ,
       itemCount:rating !>5&&rating!=null? rating!.ceil():5,
       ratingWidget: RatingWidget(
-          full:  Icon(Icons.star,
-
+          full:  Icon(Icons.star_rounded,
             color:ratingColor?? basicColor,),
-          half:  Icon(Icons.star_half,
+          half:  Icon(Icons.star_half_rounded,
             color:ratingColor?? basicColor,),
-          empty:  Icon(Icons.star_border,
-              color:ratingColor??  basicColor.withOpacity(0.2))
+          empty:  Icon(IconlyBold.star,
+              color:ratingColor?.withOpacity(0.2)??  basicColor.withOpacity(0.2))
       ) ,
       itemSize:size??30,
 

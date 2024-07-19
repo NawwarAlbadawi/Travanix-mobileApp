@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travanix/Features/home/presentation/views/widgets/category_list.dart';
 import 'package:travanix/core/styles/app_colors.dart';
-import 'package:travanix/core/widgets/custom_search_bar.dart';
-import 'package:travanix/Features/home/presentation/views/widgets/trip_list.dart';
+import 'package:travanix/Features/trip/presentation/views/widgets/trip_list.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/widgets/custom_item_box_location.dart';
 class HomeViewBody extends StatelessWidget {
@@ -17,20 +17,48 @@ class HomeViewBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-           // const SizedBox(height: 90,),
-            Text('Explore and Find ',
-           style: AppTextStyles.styleMedium24(context).copyWith(
-             color: basicColor,
-             fontSize: 26
-           ),),
-            const SizedBox(height: 5,),
-            Text('Your Best Journey ',
-              style: AppTextStyles.styleSemiBold24(context).copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 28
-              ),),
             const SizedBox(height: 20,),
-            const CustomSearchBar(padding: EdgeInsets.zero),
+            Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Explore and Find ',
+                               style: AppTextStyles.styleMedium24(context).copyWith(
+                     color: basicColor,
+                     fontSize: 26
+                               ),),
+                    const SizedBox(height: 5,),
+                    Text('Your Best Journey ',
+                      style: AppTextStyles.styleSemiBold24(context).copyWith(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 28
+                      ),),
+
+                  ],
+                ),
+                const Spacer(),
+                Container(
+                  height:50 ,
+                  width: 50,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: basicColor,
+                      boxShadow: const  [
+                        BoxShadow(
+                            blurRadius: 5,
+                            color: greyColor
+                        )
+                      ]
+                  ),
+                  child: const Icon(FontAwesomeIcons.magnifyingGlass,
+                    color: Colors.white,
+                    size: 25,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20,),
             const SizedBox(height: 30,),
             const CustomItemBoxLocation(aspectRatio: 2.2,),
             const SizedBox(height: 20,),

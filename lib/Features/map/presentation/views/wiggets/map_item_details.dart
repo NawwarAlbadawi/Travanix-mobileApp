@@ -1,11 +1,11 @@
 
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/hotels/data/models/hotel_data_model.dart';
-import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
+
 import 'package:travanix/Features/restaurant/data/models/restaurant_data.dart';
 import 'package:travanix/constants.dart';
 import 'package:travanix/core/styles/app_colors.dart';
@@ -21,7 +21,7 @@ class MapItemDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.only(left:10,right: 10,bottom: 5),
       child: GestureDetector(
         onTap: (){
           if(modelData!=null)
@@ -64,30 +64,43 @@ class MapItemDetails extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 5,),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-
-                    children: [
-                      const SizedBox(width: 5,),
-                      SizedBox(
-                        width: MediaQuery.sizeOf(context).width*.56,
-                        child: Text(modelData!.name, style: AppTextStyles.styleSemiBold24(context).copyWith(color: basicColor,fontSize: 22),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,),
-                      ),
-                      const  SizedBox(height: 5,),
-                      SizedBox(
-                        width: MediaQuery.sizeOf(context).width*.55,
-                        child: Text(modelData!.description, style: AppTextStyles.styleSemiBold16(context).copyWith(color: greyColor,),
-                          maxLines: 4,
-                          overflow: TextOverflow.ellipsis,),
-                      ),
-                      const  Spacer(),
-                       CustomRatingBar(
-                         ignoreTouch: true,
-                         rating: modelData!.rating,
-                       )
-                    ],
+                  Expanded(
+                    child: CustomScrollView(
+                      slivers: [
+                        SliverToBoxAdapter(
+                          child:Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(width: 5,),
+                              SizedBox(
+                                width: MediaQuery.sizeOf(context).width*.56,
+                                child: Text(modelData!.name, style: AppTextStyles.styleSemiBold24(context).copyWith(color: basicColor,fontSize: 22),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,),
+                              ),
+                              const  SizedBox(height: 10,),
+                              SizedBox(
+                                width: MediaQuery.sizeOf(context).width*.55,
+                                child: Text(modelData!.description, style: AppTextStyles.styleSemiBold16(context).copyWith(color: greyColor,),
+                                  maxLines: 4,
+                                  overflow: TextOverflow.ellipsis,),
+                              ),],
+                          ) ,),
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                            const  Spacer(),
+                            CustomRatingBar(
+                              ignoreTouch: true,
+                              rating: modelData!.rating,
+                            )
+                          ],),
+                        )
+                      ],
+                      
+                    ),
                   ),
 
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travanix/Features/home/presentation/views/widgets/category_item.dart';
 import 'package:travanix/core/utils/routers.dart';
+import 'package:travanix/generated/assets.dart';
 
 import '../../../data/models/home_category_model.dart';
 class CategoryList extends StatefulWidget {
@@ -12,8 +13,8 @@ class CategoryList extends StatefulWidget {
 
 class _CategoryListState extends State<CategoryList> {
   List<HomeCategoryModel> list =const  [
-    HomeCategoryModel(categoryName: 'Hotels', categoryRoute: AppRouter.hotelsView),
-    HomeCategoryModel(categoryName: 'Restaurants', categoryRoute: AppRouter.allRestaurantView)
+    HomeCategoryModel(categoryName: 'Hotels', categoryRoute: AppRouter.hotelsView,image: Assets.imagesHotels),
+    HomeCategoryModel(categoryName: 'Restaurants', categoryRoute: AppRouter.allRestaurantView,image: Assets.imagesRestaurants)
   ];
   @override
   Widget build(BuildContext context) {

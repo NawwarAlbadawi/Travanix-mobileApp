@@ -17,9 +17,7 @@ class TripView extends StatelessWidget {
           },
         ),
       ),
-      body:const  TripViewBody(
-
-      ),
+      body:const  TripViewBody(),
     );
   }
 }

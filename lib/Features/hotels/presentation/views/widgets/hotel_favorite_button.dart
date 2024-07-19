@@ -16,6 +16,10 @@ class HotelFavoriteButton extends StatelessWidget {
     return BlocBuilder<GetAllHotelCubit,GetAllHotelState>(
       builder: (context,state) {
        var cubit=GetAllHotelCubit.get(context);
+       if(state is GetAllHotelLoading)
+         {
+           return const Center(child: CircularProgressIndicator(),);
+         }
 
              return Padding(
                padding: const EdgeInsets.all(8.0),

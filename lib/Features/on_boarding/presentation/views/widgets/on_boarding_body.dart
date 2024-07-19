@@ -1,16 +1,10 @@
 import 'package:expandable_page_view/expandable_page_view.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:go_router/go_router.dart';
-import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:travanix/Features/on_boarding/data/models.dart';
+import 'package:travanix/Features/on_boarding/presentation/views/widgets/on_boarding_circular_indicatio.dart';
 import 'package:travanix/Features/on_boarding/presentation/views/widgets/page_view_item.dart';
-
-
-import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
-
 import 'package:travanix/core/utils/cache_service.dart';
 import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/custom_text_button.dart';
@@ -31,8 +25,6 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
   ];
   PageController controller=PageController();
   int pageIndex=0;
-
-
   @override
   Widget build(BuildContext context) {
     return  Padding(
@@ -41,22 +33,15 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
 
           CustomScrollView(
             slivers: [
-
               SliverFillRemaining(
                hasScrollBody: false,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
-
-
                   children: [
                     ExpandablePageView(
                       controller:controller ,
-
-
-
-                      //physics:const NeverScrollableScrollPhysics(),
+                      physics:const  BouncingScrollPhysics(),
                       onPageChanged: (index){
-
                         setState(() {
                           pageIndex=index;
                         });
@@ -70,7 +55,6 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
 
                     ),
                    const  Spacer(),
-
                     Row(
                       children: [
                         CustomTextButton(text: 'Skip',
@@ -79,53 +63,10 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
                             },
                         textStyles:AppTextStyles.styleSemiBold16(context) ,),
                         const Spacer(),
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child:  SizedBox(
-                            height: 80,
-                            width: 80,
-                            child: CircularStepProgressIndicator(
-                              totalSteps: 3,
-                              selectedColor: basicColor,
-                              currentStep: pageIndex+1,
-                              width: 80,
-                              height: 80,
-                              child: FloatingActionButton(
-                                onPressed: () async {
-                                  if(pageIndex==2)
-                                  {
-                                   await setInCache(context);
-
-                                  }
-                                  else
-                                  {
-                                    controller.nextPage(duration:const Duration(
-                                        milliseconds: 100
-                                    ), curve: Curves.easeInOutCirc);}
-                                },
-                                shape:const  OvalBorder(),
-                                backgroundColor: Colors.transparent,
-                                foregroundColor:Colors.transparent ,
-                                elevation: 0,
-
-                                child:const Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: navyBlueColor,
-                                  size: 30,
-                                ),
-                              ),
-
-                            ),
-                          ),
-                        ),
+                        OnBoardingCircularIndicator(pageIndex: pageIndex,controller: controller,)
+                       
                       ],
                     )
-
-
-
-
-
-
                   ],
                 ),
               ),
@@ -133,19 +74,13 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
             ],
 
           ),
-
-
-
-
     );
   }
-
-  Future<void> setInCache(BuildContext context) async {
-     await CacheHelper.setInCacheHelper(value:true , key: 'onBoarding').then((value) {
-        GoRouter.of(context).pushReplacement(AppRouter.loginScreen);
-    } );
-  }
+ 
 }
 
-
-
+Future<void> setInCache(BuildContext context) async {
+  await CacheHelper.setInCacheHelper(value:true , key: 'onBoarding').then((value) {
+    GoRouter.of(context).pushReplacement(AppRouter.loginScreen);
+  } );
+}

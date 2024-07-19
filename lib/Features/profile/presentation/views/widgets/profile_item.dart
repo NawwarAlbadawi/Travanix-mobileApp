@@ -32,7 +32,7 @@ class ProfileItem extends StatelessWidget {
           children: [
             Icon(icon,
             color: basicColor,),
-            const Spacer(),
+            const SizedBox(width: 10,),
             Text(text,style: AppTextStyles.styleSemiBold24(context),),
             const Spacer(),
            const  Icon(Icons.arrow_forward_ios_rounded,

@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({super.key,  this.radius=20, required this.prefix, this.suffix, this.onChange, this.onFieldSubmitted, required this.controller,  this.isPassword=false,  this.hintText, this.validator,  this.textInputType=TextInputType.text, this.fillColor, this.labelText});
+  const CustomTextFormField({super.key,  this.radius=20, this.prefix, this.suffix, this.onChange, this.onFieldSubmitted, required this.controller,  this.isPassword=false,  this.hintText, this.validator,  this.textInputType=TextInputType.text, this.fillColor, this.labelText, this.textInputFormatter});
   final double radius;
-  final Widget prefix;
+  final Widget ? prefix;
   final Widget ? suffix;
   final Function (String ) ? onChange;
   final Function (String) ? onFieldSubmitted;
@@ -16,6 +17,7 @@ class CustomTextFormField extends StatelessWidget {
   final String ? labelText;
   final TextInputType textInputType;
   final Color? fillColor;
+  final List<TextInputFormatter> ? textInputFormatter;
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +34,9 @@ class CustomTextFormField extends StatelessWidget {
         labelText: hintText,
         hintText: labelText,
 
-        labelStyle: AppTextStyles.styleSemiBold16(context).copyWith(
-          color: Colors.black
+        labelStyle: AppTextStyles.styleMedium16(context).copyWith(
+
+
         ),
         focusedBorder: buildOutlineInputBorder(),
 
@@ -58,6 +61,7 @@ class CustomTextFormField extends StatelessWidget {
 
 
       },
+        inputFormatters: textInputFormatter
 
     );
   }

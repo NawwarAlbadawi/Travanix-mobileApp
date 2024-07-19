@@ -16,13 +16,13 @@ class RestaurantCubit extends Cubit<RestaurantState> {
   RestaurantModel ? restaurantModel;
   final GetAllRestaurantsRepo repo;
 
-  void getAllRestaurant ()
+  Future<void> getAllRestaurant () async
   {
     emit(GetAllRestaurantLoading());
-    repo.getRestaurant().fold(
+   await repo.getRestaurant().fold(
             (error){
 
-          emit(GetAllRestaurantFails());
+          emit(GetAllRestaurantFails(error: error.errMessage));
         },
             (model)
         {
@@ -39,11 +39,9 @@ class RestaurantCubit extends Cubit<RestaurantState> {
 
   }
 
-
-
-  void changeRestaurantFavoriteStatus(int index)
+ Future<void> changeRestaurantFavoriteStatus(int index) async
   {
-    repo.changeRestaurantFavoriteStatus({
+   await repo.changeRestaurantFavoriteStatus({
       'resturant_id':index
     }).fold((left) {
 

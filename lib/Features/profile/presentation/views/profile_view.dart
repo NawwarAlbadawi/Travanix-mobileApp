@@ -1,8 +1,8 @@
-import 'dart:ui';
+
 
 import 'package:flutter/material.dart';
 import 'package:travanix/Features/profile/presentation/views/widgets/profile_view_body.dart';
-import 'package:travanix/core/styles/app_colors.dart';
+
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 

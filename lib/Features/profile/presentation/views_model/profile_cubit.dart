@@ -13,6 +13,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   static ProfileCubit get(context)=>BlocProvider.of(context);
 
+  ProfileModel ? profileModel;
 
   void getProfileData()
   {
@@ -23,6 +24,7 @@ class ProfileCubit extends Cubit<ProfileState> {
           emit(GetProfileDataFail());
         },
         (model){
+          profileModel=model;
           emit(GetProfileDataSuccess(
             profileModel: model
           ));

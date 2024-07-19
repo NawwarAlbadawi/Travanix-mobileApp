@@ -7,8 +7,7 @@ import 'package:travanix/Features/Review/view_model/review_cubit.dart';
 import 'package:travanix/Features/Review/widgets/awesome_dialog_child.dart';
 import 'package:travanix/Features/Review/widgets/review_list.dart';
 import 'package:travanix/core/styles/app_colors.dart';
-
-
+import '../../core/functions/buildInputDecoration.dart';
 class ReviewBody extends StatelessWidget {
   const ReviewBody({super.key, required this.category, required this.id});
 
@@ -18,76 +17,75 @@ class ReviewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller=TextEditingController();
-
     return  MultiBlocProvider(
-      providers:[
-        BlocProvider(create: (context)=>ReviewCubit(ReviewRepo())),
-        BlocProvider(create: (context)=>GetReviewCubit()..getReview(category: category, id: id))
+      providers: [
+         BlocProvider(create:(context)=>ReviewCubit(ReviewRepo())),
+        BlocProvider(create:(context)=>GetReviewCubit()..getReview(category: category, id: id)),
       ],
-        child: Column(
-          children: [
-          BlocConsumer<ReviewCubit,ReviewState>(
-              listener: (context,state){
-                var cubit=ReviewCubit.get(context);
+      
+      child: BlocConsumer<ReviewCubit,ReviewState>(
 
-                if(state is PostCommentSuccess)
-                  {
+          listener: (context,state){
+    var cubit=ReviewCubit.get(context);
 
-                    AwesomeDialog(
-                      headerAnimationLoop: false,
+    if(state is PostCommentSuccess)
+    {
 
-                      context: context,
-                      animType: AnimType.scale,
-                      dialogType: DialogType.noHeader,
-                      body:  Center(child: AwesomeDialogChild(cubit: cubit),),
-                      title: 'This is Ignored',
-                      desc:   'This is also Ignored',
-                      btnOkColor: basicColor,
-                      btnOkOnPress: () {
-                        cubit.postRate(category: category, id: id);
+    AwesomeDialog(
+    headerAnimationLoop: false,
 
-                      },
-                    ).show();
+    context: context,
+    animType: AnimType.scale,
 
-                  }
-                if(state is PostRatingSuccess)
-                  {
-                    BlocListener<GetReviewCubit,GetReviewState>(
-                      listener: (context,state)=>GetReviewCubit.get(context).getReview(category: category,id:id),
-                    );
-                  }
+    dialogType: DialogType.noHeader,
+    body:  Center(child: AwesomeDialogChild(cubit: cubit),),
+    title: 'This is Ignored',
+    desc:   'This is also Ignored',
+    btnOkColor: basicColor,
+    btnOkOnPress: () {
+    cubit.postRate(category: category, id: id,);
+
+    },
+    ).show();
+
+    }
+    if(state is PostRatingSuccess)
+      {
+       GetReviewCubit.get(context).getReview(category: category, id: id);
+       controller.clear();
+      }
 
 
-                },
-              builder:(context,state) {
-                return TextField(
-                      controller: controller,
-                      cursorColor: navyBlueColor,
-                      decoration: InputDecoration(
-                          focusedBorder:const  UnderlineInputBorder(
-                              borderSide: BorderSide(color: basicColor)
-                          ) ,
-                          suffixIcon: IconButton(
-                            icon: const   Icon(Icons.send_outlined,
-                              color: basicColor,),
-                            onPressed: (){
-                              ReviewCubit.get(context).postComment(category: category, id: id,
-                                  comment: controller.text);
-                            },
-                          ),
 
-                          hintText: 'Enter your review'),
+    },
+          builder:(context,state) {
+            return Column(
+              children: [
+                TextField(
+                  controller: controller,
+                  cursorColor: navyBlueColor,
 
-                    );
-              }
-    ),
-          const SizedBox(height: 10,),
-          ReviewList(category: category,id: id)
+                  decoration: buildInputDecoration(context, controller,(){
 
-    ]
-        )
-        );
+                      ReviewCubit.get(context).postComment(category: category, id: id,
+                          comment: controller.text);
+
+                  }),
+
+                ),
+                const SizedBox(height: 20,),
+                ReviewList(category: category,id: id),
+              ],
+            );
+          }
+
+
+
+      ),
+    );
   }
+
+
 
 
 }

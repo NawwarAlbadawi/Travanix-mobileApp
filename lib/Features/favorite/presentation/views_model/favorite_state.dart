@@ -10,7 +10,11 @@ final class ChangeFavoriteCategoryIndex extends FavoriteState {}
 
 final class GetFavoriteLoading extends FavoriteState {}
 final class GetFavoriteSuccess extends FavoriteState {}
-final class GetFavoriteFail extends FavoriteState {}
+final class GetFavoriteFail extends FavoriteState {
+  final String error;
+
+  GetFavoriteFail({required this.error});
+}
 
 
 

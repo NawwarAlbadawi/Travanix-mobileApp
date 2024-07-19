@@ -9,11 +9,12 @@ import '../utils/routers.dart';
 class CustomItemBoxLocation extends StatelessWidget {
   const CustomItemBoxLocation({
     super.key,
-     this.model, this.aspectRatio,
+     this.model, this.aspectRatio, this.shadow,
   });
 
   final dynamic model;
   final double ? aspectRatio;
+  final BoxShadow ? shadow;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,9 @@ class CustomItemBoxLocation extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               //border: Border.all(color: ligh,),
-              boxShadow: const [BoxShadow(
+              boxShadow:   [
+
+                shadow??const BoxShadow(
                     color: CupertinoColors.lightBackgroundGray,
                     offset:  Offset(0,2),
                     blurStyle: BlurStyle.normal,

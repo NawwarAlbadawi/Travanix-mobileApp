@@ -1,7 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travanix/Features/authentication/presentation/views/login_screen.dart';
 import 'package:travanix/Features/authentication/presentation/views/register.dart';
 import 'package:travanix/Features/favorite/presentation/views/favorite_view.dart';
 import 'package:travanix/Features/home/presentation/views/home_view.dart';

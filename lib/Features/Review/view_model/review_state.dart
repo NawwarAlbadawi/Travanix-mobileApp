@@ -15,5 +15,13 @@ final class PostRatingFail extends ReviewState {}
 
 
 
-
+// final class GetReviewLoading extends ReviewState {}
+// final class GetReviewSuccess extends ReviewState {}
+// final class GetReviewFails extends ReviewState {
+//
+//   final String error;
+//
+//
+//   GetReviewFails({required this.error});
+// }
 

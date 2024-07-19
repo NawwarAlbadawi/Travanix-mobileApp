@@ -15,8 +15,10 @@ class CustomTextButton extends StatelessWidget {
     return TextButton(
       onPressed: onPressed,
 
+
       style: TextButton.styleFrom(
           shadowColor: Colors.black,
+
 
           foregroundColor: Colors.transparent,
           elevation: 0,
@@ -30,12 +32,7 @@ class CustomTextButton extends StatelessWidget {
       child: Text(text,
         style: textStyles ?? AppTextStyles.styleRegular14(context).copyWith(
             color: textColor ?? navyBlueColor.withOpacity(.7),
-          shadows: [
-            const BoxShadow(
-              offset: Offset(0,1),
-              color: greyColor
-            )
-          ]
+
         ),),
 
 

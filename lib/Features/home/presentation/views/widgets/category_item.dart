@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/home/data/models/home_category_model.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
-import 'package:travanix/generated/assets.dart';
+
 class CategoryItem extends StatelessWidget {
   const CategoryItem({super.key, required this.model});
   final HomeCategoryModel model;
@@ -22,15 +22,15 @@ class CategoryItem extends StatelessWidget {
                   aspectRatio: 2,
                   child: Container(
                     decoration:  BoxDecoration(
-                        color: Colors.green,
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
-                        image:const  DecorationImage(
+                        image:  DecorationImage(
                           //  fit: BoxFit.fill,
                             image: AssetImage(
-                              Assets.imagesTest2,
+                              model.image
 
                             ),
-                          fit: BoxFit.cover
+                          fit: BoxFit.fill
                         ),
                         boxShadow:const  [
                           BoxShadow(

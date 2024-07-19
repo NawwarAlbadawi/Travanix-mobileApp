@@ -15,19 +15,19 @@ class GetAllHotelCubit extends Cubit<GetAllHotelState> {
 
   Map<int,bool>favorite={};
   HotelsModel ? hotelsModel;
-   final GetHotelsRepo repo;
+  final GetHotelsRepo repo;
   
-  void getAllHotel ()
+  Future<void> getAllHotel () async
   {
 
     emit(GetAllHotelLoading());
     
 
     
-    repo.getHotels().fold(
+    await repo.getHotels().fold(
         (error){
 
-          emit(GetAllHotelFails());
+          emit(GetAllHotelFails(error: error.errMessage));
         },
         (model)
         {
@@ -43,11 +43,9 @@ class GetAllHotelCubit extends Cubit<GetAllHotelState> {
     
   }
 
-
-
-  void changeHotelFavoriteStatus(int index)
+  Future<void> changeHotelFavoriteStatus(int index) async
   {
-    repo.changeHotelFavoriteStatus({
+  await  repo.changeHotelFavoriteStatus({
       'hotel_id':index
     }).fold((left) {
 

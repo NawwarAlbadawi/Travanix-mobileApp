@@ -14,11 +14,11 @@ class GetReviewCubit extends Cubit<GetReviewState> {
  GetReviewModel?model;
 
 
- void getReview({required String category,required int id})
+  Future<void> getReview({required String category,required int id}) async
  {
    emit(GetReviewLoading());
    repo=GetReviewRepo();
-   repo.getReview(category: category, id: id).fold(
+   await repo.getReview(category: category, id: id).fold(
 
        (error){
          emit(GetReviewFails(error: error.errMessage));

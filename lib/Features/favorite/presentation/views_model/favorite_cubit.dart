@@ -1,8 +1,12 @@
 
 import 'package:either_dart/either.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travanix/Features/favorite/data/repositories/get_favorite_repo.dart';
 import 'package:travanix/Features/favorite/data/repositories/post_favorite_repo.dart';
+import 'package:travanix/Features/restaurant/presentation/views_model/cubits/restaurant_cubit.dart';
+import 'package:travanix/Features/trip/presentation/views_model/cubits/get_trips_cubit/get_trips_cubit.dart';
+import '../../../hotels/presentation/views_models/cubits/get_all_hotel_cubit.dart';
 import '../../data/models/FavoriteModel.dart';
 part 'favorite_state.dart';
 class FavoriteCubit extends Cubit<FavoriteState> {
@@ -23,11 +27,10 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   FavoriteModel ?favoriteModel ;
 
 
-  void getFavorite ()
+  Future<void> getFavorite () async
   {
     emit(GetFavoriteLoading());
-    favoriteRepo
-    .getFavorite().fold(
+   await favoriteRepo.getFavorite().fold(
 
         (model){
           favoriteModel=model;
@@ -37,25 +40,24 @@ class FavoriteCubit extends Cubit<FavoriteState> {
         {
           print(error.errMessage);
 
-          emit(GetFavoriteFail());
+          emit(GetFavoriteFail(error: error.errMessage));
         }
     );
 
   }
   final  PostFavoriteRepo postFavoriteRepo;
 
-  void changeFavoriteStatus(int index)
+  Future<void> changeFavoriteStatus(int index,BuildContext context) async
   {
-    postFavoriteRepo.changeFavoriteStatus({
+  await  postFavoriteRepo.changeFavoriteStatus({
 
       getFavoriteCategory():index
     }).fold((left) {
       emit(ChangeFavoriteStatusFail());},
             (right) {
           emit(ChangeFavoriteStatusSuccess());
-
-        //  GetAllHotelCubit.get(context).favorite[id]=!GetAllHotelCubit.get(context).favorite[id];
           getFavorite();
+          getCategoryCubit(context);
     });
   }
 
@@ -89,6 +91,22 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     else if(favoriteCategoryIndex==2){
       return favoriteModel!.resturants;}
     return favoriteModel!.attractionActivities;
+  }
+
+  getCategoryCubit (BuildContext context)
+  {
+    if(favoriteCategoryIndex==0)
+    {
+     GetTripsCubit.get(context).getTrips();
+    }
+    else if(favoriteCategoryIndex==1)
+    {
+      GetAllHotelCubit.get(context).getAllHotel();
+    }
+    else if(favoriteCategoryIndex==2){
+      RestaurantCubit.get(context).getAllRestaurant();
+    }
+
   }
 
 

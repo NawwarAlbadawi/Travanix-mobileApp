@@ -43,11 +43,11 @@ class RoomViewBody extends StatelessWidget {
                   children :[
                     ClipRRect(
                       borderRadius: BorderRadius.circular(basicRadius),
-                      child: Image(image: AssetImage(
+                      child: const Image(image: AssetImage(
                           Assets.imagesTest
                       )),
                     ),
-                     SizedBox(height: 20,),
+                    const  SizedBox(height: 20,),
                     const Row(
                     children: [
                        CheckInAndOutContainer(text: 'Check In') ,

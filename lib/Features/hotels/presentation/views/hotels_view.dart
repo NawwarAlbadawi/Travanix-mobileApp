@@ -1,8 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/hotels/presentation/views/widgets/hotels_view_body.dart';
-import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/widgets/back_row_Icon.dart';
 
@@ -14,7 +11,7 @@ class HotelsView extends StatelessWidget {
     return  Scaffold(
 
       appBar: AppBar(
-        
+
         leading:const BackRowIcon(),
         title: Text('Discover the hotels',style: AppTextStyles.styleSemiBold24(context),),
       ),

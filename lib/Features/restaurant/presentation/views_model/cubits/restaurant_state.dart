@@ -7,7 +7,12 @@ final class RestaurantInitial extends RestaurantState {}
 
 final class GetAllRestaurantLoading extends RestaurantState {}
 final class GetAllRestaurantSuccess extends RestaurantState {}
-final class GetAllRestaurantFails   extends RestaurantState {}
+final class GetAllRestaurantFails   extends RestaurantState {
+  final String error;
+
+  GetAllRestaurantFails({required this.error});
+
+}
 
 final class ChangeRestaurantFavoriteStatusSuccess extends RestaurantState{}
 

@@ -37,15 +37,15 @@ class ProfileViewBody extends StatelessWidget {
                       Text('${state.profileModel.touristName}',
                         style: AppTextStyles.styleSemiBold24(context),),
                       Text('${state.profileModel.emailAddress}',
-                        style: AppTextStyles.styleSemiBold20(context),),
+                        style: AppTextStyles.styleMedium20(context).copyWith(
+                          color:basicColor
+                        ),),
                      const SizedBox(height: 50,),
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(basicRadius),
-                          border: Border.all(
-                            color: navyBlueColor
-                          ),
+
                           boxShadow:const  [
                             BoxShadow(
                               color: greyColor,

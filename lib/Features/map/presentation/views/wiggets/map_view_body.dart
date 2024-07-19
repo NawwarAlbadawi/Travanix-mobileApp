@@ -9,6 +9,7 @@ import 'package:travanix/Features/map/presentation/views/wiggets/map_item_detail
 
 
 import 'package:travanix/Features/map/presentation/views_model/init_map_services_cubit.dart';
+import 'package:travanix/Features/trip/data/model/TripsModel.dart';
 
 
 import 'package:travanix/core/styles/app_colors.dart';
@@ -65,19 +66,20 @@ class MapViewBody extends StatelessWidget {
             ),
                 MarkerLayer(markers: [
                   if (model!=null)
+
                     Marker(point:LatLng(model.coordinateX!!, model.coordinateY!!)
                       , child: IconButton(icon:const Icon(FontAwesomeIcons.mapPin, color: basicColor,),
                       onPressed: (){
+                        if(model is !TripsModelData){
                         showBottomSheet(
                           sheetAnimationStyle: AnimationStyle(
                             curve: Curves.easeInOut
                           ),
                           backgroundColor: Colors.transparent,
                             enableDrag: true,
-
                             context: context, builder: (context)=> MapItemDetails(
                           modelData: model,
-                        ));
+                        ));}
                       },))
                  ]),
                 RichAttributionWidget(

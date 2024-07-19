@@ -2,7 +2,7 @@
 import 'package:dio/dio.dart';
 import 'package:either_dart/either.dart';
 import 'package:travanix/Features/profile/data/models/ProfileModel.dart';
-import 'package:travanix/Features/profile/presentation/views/profile_view.dart';
+
 import 'package:travanix/core/utils/api_services.dart';
 import 'package:travanix/core/utils/failure.dart';
 

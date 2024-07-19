@@ -46,7 +46,7 @@ class HotelInfoBody extends StatelessWidget {
             services: hotelData.services,
           ),
           const SizedBox(height: 30,),
-          CustomItemBoxLocation(model: hotelData),
+          CustomItemBoxLocation(model: hotelData,aspectRatio: 2.2,),
           const SizedBox(height: 30,),
           Row(
             children: [

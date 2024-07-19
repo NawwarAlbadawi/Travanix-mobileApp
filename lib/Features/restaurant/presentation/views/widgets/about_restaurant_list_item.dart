@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:iconly/iconly.dart';
+
 import 'package:travanix/Features/restaurant/data/models/restaurant_info_model.dart';
 
 import '../../../../../constants.dart';

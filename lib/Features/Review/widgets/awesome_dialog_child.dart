@@ -23,6 +23,7 @@ class AwesomeDialogChild extends StatelessWidget {
         ),
         const SizedBox(height: 10,),
         CustomRatingBar(
+          size: 40,
           ratingFunction: (rating)
           {
             cubit.rate=rating;

@@ -1,8 +1,8 @@
 
  import 'package:flutter/material.dart';
-import 'package:travanix/constants.dart';
+
 import 'package:travanix/core/styles/app_colors.dart';
-import 'package:travanix/core/styles/app_text_styles.dart';
+
 
  final appTheme=   ThemeData(
 

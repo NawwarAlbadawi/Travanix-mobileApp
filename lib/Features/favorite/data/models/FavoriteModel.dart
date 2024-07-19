@@ -1,6 +1,6 @@
 import 'package:travanix/Features/hotels/data/models/hotel_data_model.dart';
 import 'package:travanix/Features/restaurant/data/models/restaurant_data.dart';
-import 'package:travanix/Features/trip/data/TripsModel.dart';
+import 'package:travanix/Features/trip/data/model/TripsModel.dart';
 
 /// status : 1
 /// message : "succes get  favorites"
@@ -21,8 +21,10 @@ class FavoriteModel {
   FavoriteModel.fromJson(dynamic json) {
     status = json['status'];
     message = json['message'];
+
     if (json['trips'] != null) {
      trips = [];
+
       json['trips'].forEach((v) {
         trips?.add(TripsModelData.fromJson(v));
       });
@@ -42,7 +44,7 @@ class FavoriteModel {
     if (json['attraction_activities'] != null) {
       attractionActivities = [];
       json['attraction_activities'].forEach((v) {
-        attractionActivities?.add(AttractionActivitiesModel.fromJson(v));
+        attractionActivities?.add(AttractionActivitiesModelData.fromJson(v));
       });
     }
   }
@@ -51,7 +53,7 @@ class FavoriteModel {
   List<TripsModelData>? trips;
   List<HotelData>? hotels;
   List<RestaurantData>? resturants;
-  List<AttractionActivitiesModel>? attractionActivities;
+  List<AttractionActivitiesModelData>? attractionActivities;
 FavoriteModel copyWith({  int? status,
   String? message,
   List<TripsModelData>? trips,
@@ -97,8 +99,8 @@ FavoriteModel copyWith({  int? status,
 /// images : ["/images/attraction_activities/HASSAN1.jpg"]
 /// favorite : true
 
-class AttractionActivitiesModel {
-  AttractionActivitiesModel({
+class AttractionActivitiesModelData {
+  AttractionActivitiesModelData({
       this.id, 
       this.address, 
       this.coordinateY, 
@@ -112,7 +114,7 @@ class AttractionActivitiesModel {
       this.images, 
       this.favorite,});
 
-  AttractionActivitiesModel.fromJson(dynamic json) {
+  AttractionActivitiesModelData.fromJson(dynamic json) {
     id = json['id'];
     address = json['address'];
     coordinateY = json['coordinate_y'];
@@ -139,7 +141,7 @@ class AttractionActivitiesModel {
   String? closingTime;
   List<String>? images;
   bool? favorite;
-AttractionActivitiesModel copyWith({  int? id,
+AttractionActivitiesModelData copyWith({  int? id,
   String? address,
   int? coordinateY,
   int? coordinateX,
@@ -152,7 +154,7 @@ AttractionActivitiesModel copyWith({  int? id,
   String? closingTime,
   List<String>? images,
   bool? favorite,
-}) => AttractionActivitiesModel(  id: id ?? this.id,
+}) => AttractionActivitiesModelData(  id: id ?? this.id,
   address: address ?? this.address,
   coordinateY: coordinateY ?? this.coordinateY,
   coordinateX: coordinateX ?? this.coordinateX,

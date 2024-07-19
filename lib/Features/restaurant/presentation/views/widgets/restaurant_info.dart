@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
 import 'package:travanix/Features/Review/review_body.dart';
-import 'package:travanix/Features/restaurant/data/repositories/get_all_restaurants_repo.dart';
+
 import 'package:travanix/Features/restaurant/presentation/views/widgets/about_restaurant_list_view.dart';
 import 'package:travanix/Features/restaurant/presentation/views/widgets/restauratn_favorite_button.dart';
-import 'package:travanix/Features/restaurant/presentation/views_model/restaurant_cubit.dart';
+
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/widgets/custom_item_box_location.dart';
@@ -59,7 +58,7 @@ class RestaurantInfo extends StatelessWidget {
 
           ),
           const SizedBox(height: 30,),
-         const  ReviewBody(category: 'category', id:1)
+           ReviewBody(category: 'restaurant_id', id:model.id)
 
 
 

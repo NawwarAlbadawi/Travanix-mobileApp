@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 class BackRowIcon extends StatelessWidget {
@@ -10,6 +11,7 @@ class BackRowIcon extends StatelessWidget {
       icon:const  Icon(Icons.arrow_back_ios,
         color: basicColor,),
       onPressed: (){
+
         GoRouter.of(context).pop();
       },
     );

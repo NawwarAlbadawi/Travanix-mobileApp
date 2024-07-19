@@ -27,7 +27,11 @@ import 'package:travanix/Features/room/presentation/views/room_view.dart';
 
 import 'package:travanix/Features/splash_view/views/splash_view.dart';
 import 'package:travanix/Features/travanix_layout/presentation/views/travanix_layout_view.dart';
-import 'package:travanix/Features/trip/presentation/views/trip_view.dart';
+import 'package:travanix/Features/trip/data/model/TripsModel.dart';
+
+import 'package:travanix/Features/trip/presentation/views/widgets/add_names_fields.dart';
+import 'package:travanix/Features/trip/presentation/views/widgets/booking_trip_details.dart';
+import 'package:travanix/Features/trip/presentation/views/trip_info_view.dart';
 
 import '../../Features/hotels/data/models/hotel_data_model.dart';
 
@@ -49,11 +53,12 @@ abstract class AppRouter
    static const String hotelView='/hotelView';
    static const String hotelsView='/hotelsView';
    static const String roomView='/roomView';
-   static const String tripView='/tripView';
+   static const String tripInfo='/tripInfo';
    static const String bookingHotelView='/bookingHotelView';
    static const String walletView='/walletView' ;
    static const  String restaurantView='/restaurantView';
    static const String allRestaurantView='/allRestaurantView';
+   static const String tripAddNames='/tripAddNames';
    static List<String>routerName=[
      'loginScreen',
      'registerScreen',
@@ -185,10 +190,10 @@ abstract class AppRouter
           }
       ),
       GoRoute(
-          path:tripView,
+          path:tripInfo,
           builder: (context,state)
           {
-            return const  TripView();
+            return   TripInfoView(model: state.extra as TripsModelData);
           }
       ),
       GoRoute(
@@ -214,6 +219,17 @@ abstract class AppRouter
           builder: (context,state)
           {
             return  const   AllRestaurantView();
+          }
+      ),
+
+      GoRoute(
+          path:tripAddNames,
+          builder: (context,state)
+          {
+            return     BookingTripDetailsView(
+              model: state.extra as TripsModelData,
+
+            );
           }
       ),
 

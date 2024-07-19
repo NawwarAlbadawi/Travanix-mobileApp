@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/authentication/presentation/views/widgets/register_view_body.dart';
-import 'package:travanix/core/utils/routers.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});

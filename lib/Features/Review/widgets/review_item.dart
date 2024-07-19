@@ -6,8 +6,9 @@ import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/widgets/rating_bar.dart';
 import 'package:travanix/generated/assets.dart';
 class ReviewItem extends StatelessWidget {
-  const ReviewItem({super.key, required this.model});
+  const ReviewItem({super.key, required this.model, this.category});
   final GetReviewModelData model;
+  final String ? category;
 
   @override
   Widget build(BuildContext context) {
@@ -16,30 +17,40 @@ class ReviewItem extends StatelessWidget {
       child: Container(
 
           decoration: BoxDecoration(
+            color: Colors.white,
               borderRadius: BorderRadius.circular(basicRadius),
-              border: Border.all(color: navyBlueColor)
+
+              boxShadow:  [BoxShadow(
+                  color:  const  Color(0xFFD3D3D3).withOpacity(0.5),
+                  blurRadius: basicRadius
+                )]
+
           ),
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.only(left: 15,top: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
+               Text(model.touristName!,style: AppTextStyles.styleSemiBold20(context).copyWith(
+                 fontSize: 18
+               ),),
+                const SizedBox(height: 5,),
                 Text(model.comment!,
-                  style: AppTextStyles.styleSemiBold20(context),),
+                  style: AppTextStyles.styleSemiBold16(context).copyWith(
+                    color: greyColor
+                  ),),
+                const SizedBox(height: 5,),
                 Row(
                   children: [
-                    CustomRatingBar(rating: model.rate!.toDouble(),ignoreTouch: true,size: 23,),
+                    CustomRatingBar(rating: model.rate!.toDouble(),ignoreTouch: true,size: 20,),
                     const   Spacer(),
                     SizedBox(
                       height:40,
-                      width: 40,
-
                       child: Image.asset(Assets.imagesLogo2,fit: BoxFit.fill,),
                     )
                   ],
                 ),
-                Text(model.touristName!,style: AppTextStyles.styleMedium16(context),)
+
               ],
             ),
           )),

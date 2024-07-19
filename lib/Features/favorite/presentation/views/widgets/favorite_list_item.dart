@@ -1,12 +1,14 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:travanix/Features/favorite/data/models/FavoriteModel.dart';
+
 import 'package:travanix/Features/favorite/presentation/views/widgets/favorite_icon_button.dart';
 import 'package:travanix/Features/favorite/presentation/views_model/favorite_cubit.dart';
 import 'package:travanix/Features/hotels/data/models/hotel_data_model.dart';
 import 'package:travanix/Features/restaurant/data/models/restaurant_data.dart';
+import 'package:travanix/Features/trip/data/model/TripsModel.dart';
 import 'package:travanix/constants.dart';
 
 import 'package:travanix/core/styles/app_colors.dart';
@@ -39,11 +41,23 @@ class FavoriteListItem extends StatelessWidget {
               {
                 GoRouter.of(context).push(AppRouter.restaurantView,extra: model);
               }
+            else if(model is TripsModelData)
+              {
+                GoRouter.of(context).push(AppRouter.tripInfo,extra:model );
+              }
           },
-          child: SizedBox(
+          child: Container(
             height: MediaQuery.sizeOf(context).height*0.19,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(color: CupertinoColors.extraLightBackgroundGray,
+                blurRadius: basicRadius)
+              ]
+            ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
+
 
               children: [
 
@@ -66,7 +80,7 @@ class FavoriteListItem extends StatelessWidget {
                     color: greyColor
                   ),),
                   const Spacer(),
-                   CustomRatingBar(rating: model.rating,ratingColor: navyBlueColor,ignoreTouch: true,size: 25,)
+                   CustomRatingBar(rating: model.rating,ratingColor:  navyBlueColor,ignoreTouch: true,size: 25,)
                 ],),
               ),
 

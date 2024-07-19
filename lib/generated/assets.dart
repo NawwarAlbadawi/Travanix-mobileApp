@@ -13,9 +13,12 @@ class Assets {
   static const String imagesDestination = 'assets/images/Destination.png';
   static const String imagesEmail = 'assets/images/email.png';
   static const String imagesEmpty = 'assets/images/empty.png';
+  static const String imagesEmptyItem = 'assets/images/EmptyItem.png';
   static const String imagesFacebook = 'assets/images/facebook.png';
   static const String imagesGoogle = 'assets/images/google.png';
   static const String imagesHotel = 'assets/images/Hotel.png';
+  static const String imagesHotels = 'assets/images/Hotels.png';
+  static const String imagesImageNotFond = 'assets/images/image_not_fond.png';
   static const String imagesLogin = 'assets/images/login.png';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesLogo2 = 'assets/images/Logo2.png';
@@ -23,10 +26,12 @@ class Assets {
   static const String imagesMoment = 'assets/images/moment.png';
   static const String imagesOTP = 'assets/images/OTP.png';
   static const String imagesRestPassword = 'assets/images/restPassword.png';
+  static const String imagesRestaurants = 'assets/images/Restaurants.png';
   static const String imagesSignUp = 'assets/images/signUp.png';
   static const String imagesSplashViewImage = 'assets/images/splashViewImage.png';
   static const String imagesTest = 'assets/images/test.jpg';
   static const String imagesTest2 = 'assets/images/test2.jpg';
+  static const String imagesTouristPlace = 'assets/images/touristPlace.png';
   static const String imagesWorld = 'assets/images/World.png';
 
 }

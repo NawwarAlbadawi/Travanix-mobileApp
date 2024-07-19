@@ -4,6 +4,8 @@ import 'package:travanix/Features/room/presentation/views_model/select_room_cubi
 import 'package:travanix/constants.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
+
+import '../../../../../core/widgets/custom_selection_container.dart';
 class RoomsSelection extends StatelessWidget {
   const RoomsSelection({
     super.key, required this.rowIcon, required this.text, required this.containerLeftIcon, required this.containerRightIcon,
@@ -28,7 +30,7 @@ class RoomsSelection extends StatelessWidget {
             const Spacer(),
             Text(text,style: AppTextStyles.styleSemiBold18(context)),
             const Spacer(),
-            RoomsSelectionContainer(
+            CustomSelectionContainer(
               borderRadius: BorderRadius.circular(basicRadius),
               icon: containerLeftIcon,
               onPress: (){
@@ -47,7 +49,7 @@ class RoomsSelection extends StatelessWidget {
                   ),),
               ),
             ),
-            RoomsSelectionContainer(
+            CustomSelectionContainer(
               borderRadius: BorderRadius.circular(basicRadius),
               icon: containerRightIcon,
               onPress: (){
@@ -66,32 +68,3 @@ class RoomsSelection extends StatelessWidget {
   }
 }
 
-class RoomsSelectionContainer extends StatelessWidget {
-  const RoomsSelectionContainer({
-    super.key,
-    required this.borderRadius, required this.icon, required this.onPress,
-  });
-
-  final BorderRadius borderRadius;
-  final IconData icon;
-  final Function() onPress;
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-
-      decoration: BoxDecoration(
-        color: basicColor,
-        borderRadius:borderRadius,
-
-      ),
-      child: IconButton(
-        icon:  Icon(icon,
-          color: Colors.white,),
-        onPressed: onPress,
-      ),
-    );
-  }
-}

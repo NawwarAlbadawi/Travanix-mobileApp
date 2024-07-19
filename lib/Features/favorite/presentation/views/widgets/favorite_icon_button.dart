@@ -18,7 +18,7 @@ class FavoriteIconButton extends StatelessWidget {
           return CustomFavoriteIconButton(
 
               onPress: (){
-                cubit.changeFavoriteStatus(id!);
+                cubit.changeFavoriteStatus(id!,context);
 
           }, color: Colors.red,);
         });

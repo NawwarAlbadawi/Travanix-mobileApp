@@ -1,22 +1,19 @@
 import 'package:device_preview/device_preview.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:overlay_support/overlay_support.dart';
-import 'package:travanix/Features/Review/view_model/get_review_cubit.dart';
-import 'package:travanix/Features/favorite/data/repositories/get_favorite_repo.dart';
-import 'package:travanix/Features/favorite/data/repositories/post_favorite_repo.dart';
-import 'package:travanix/Features/favorite/presentation/views_model/favorite_cubit.dart';
 import 'package:travanix/Features/hotels/data/repositories/get_hotels_repo.dart';
 import 'package:travanix/Features/hotels/presentation/views_models/cubits/get_all_hotel_cubit.dart';
 import 'package:travanix/Features/map/presentation/views_model/init_map_services_cubit.dart';
 import 'package:travanix/Features/profile/presentation/views_model/profile_cubit.dart';
 import 'package:travanix/Features/restaurant/data/repositories/get_all_restaurants_repo.dart';
-import 'package:travanix/Features/restaurant/presentation/views_model/restaurant_cubit.dart';
-
+import 'package:travanix/Features/restaurant/presentation/views_model/cubits/restaurant_cubit.dart';
 import 'package:travanix/Features/travanix_layout/presentation/views_models/cubits/change_bottom_nav_bar_cubit.dart';
+import 'package:travanix/Features/trip/data/repositories/book_trip_repo.dart';
+import 'package:travanix/Features/trip/data/repositories/get_trip_repo.dart';
+import 'package:travanix/Features/trip/presentation/views_model/cubits/book_trip_cubit/book_trip_cubit.dart';
+import 'package:travanix/Features/trip/presentation/views_model/cubits/get_trips_cubit/get_trips_cubit.dart';
 import 'package:travanix/bloc_observer.dart';
-
 import 'package:travanix/core/styles/app_styles.dart';
 import 'package:travanix/core/utils/api_services.dart';
 import 'package:travanix/core/utils/cache_service.dart';
@@ -49,6 +46,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context)=>GetAllHotelCubit(GetHotelsRepo())..getAllHotel()),
           BlocProvider(create: (context)=>ProfileCubit()..getProfileData()),
           BlocProvider(create: (context)=>RestaurantCubit(GetAllRestaurantsRepo())..getAllRestaurant()),
+          BlocProvider(create: (context)=>GetTripsCubit(GetTripRepo())..getTrips()),
+          BlocProvider(create: (context)=>BookTripCubit(BookTripRepo())),
 
           //BlocProvider(create: (context)=>FavoriteCubit(GetFavoriteRepo(),PostFavoriteRepo())..getFavorite())
         ],
