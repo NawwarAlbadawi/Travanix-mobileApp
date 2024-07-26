@@ -14,8 +14,8 @@ class CustomPageView extends StatelessWidget {
         controller: pageController,
         itemBuilder: (context,index)=> ClipRRect(
           borderRadius: const BorderRadius.only(
-            topRight: Radius.circular(15),
-            topLeft: Radius.circular(15),
+            topRight: Radius.circular(10),
+            topLeft: Radius.circular(10),
           ),
           child: AspectRatio(
             aspectRatio: 16/9,

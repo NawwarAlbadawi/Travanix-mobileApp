@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:travanix/Features/hotels/data/models/hotel_data_model.dart';
 import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
 import 'package:travanix/constants.dart';
 import 'package:travanix/core/styles/app_colors.dart';
@@ -11,17 +12,17 @@ import 'package:travanix/core/widgets/rating_bar.dart';
 
 import 'hotel_favorite_button.dart';
 class HotelsItem extends StatelessWidget {
-  const HotelsItem({super.key, required this.hotelsModel, required this.index});
+  const HotelsItem({super.key, required this.hotelModel});
 
-  final HotelsModel hotelsModel;
-  final int index;
+  final HotelData hotelModel;
+
 
   @override
   Widget build(BuildContext context) {
     return  GestureDetector(
       onTap: (){
         GoRouter.of(context).push(AppRouter.hotelView,
-        extra: hotelsModel.data[index]);
+        extra: hotelModel);
       },
       child: Container(
 
@@ -51,12 +52,12 @@ class HotelsItem extends StatelessWidget {
                        topRight: Radius.circular(basicRadius) ),
                   child: CustomImage(
                     aspectRatio: 2.1,
-                    image: '$url${hotelsModel.data[index].images[0]}',
+                    image: '$url${hotelModel.images[0]}',
                     fit: BoxFit.fill,
                   ),
                 ),
                 HotelFavoriteButton(
-                  id: hotelsModel.data[index].id,
+                  id: hotelModel.id,
                 ),
               ],
             ),
@@ -70,7 +71,7 @@ class HotelsItem extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(hotelsModel.data[index].name,style: AppTextStyles.styleSemiBold24(context).copyWith(
+                      Text(hotelModel.name,style: AppTextStyles.styleSemiBold24(context).copyWith(
 
                           fontSize: 22
                       ),),
@@ -81,7 +82,7 @@ class HotelsItem extends StatelessWidget {
 
                         children: [
                          const  Icon(Icons.location_on_outlined,color: basicColor,size: 18,),
-                          Text(hotelsModel.data[index].cityName,
+                          Text(hotelModel.cityName,
                             style: AppTextStyles.styleMedium16(context).copyWith(
                                 color: greyColor,
                               fontWeight: FontWeight.w600
@@ -90,7 +91,7 @@ class HotelsItem extends StatelessWidget {
                       ),
                       const SizedBox(height: 8,),
 
-                      CustomRatingBar(rating: hotelsModel.data[index].rating,
+                      CustomRatingBar(rating: hotelModel.rating,
                       size: 20,),
                     ],
                   ),

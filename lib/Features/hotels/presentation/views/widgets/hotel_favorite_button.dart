@@ -31,7 +31,7 @@ class HotelFavoriteButton extends StatelessWidget {
 
                    child:
                    IconButton(
-                     color: cubit.favorite[id]!? Colors.red:Colors.grey,
+                     color: cubit.favorite[id]!? Colors.red:Colors.white,
                      icon: const  Icon(IconlyBold.heart,
                        size: 30,),
                      onPressed: (){

@@ -11,9 +11,9 @@ class AllRestaurantsViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CustomScrollView(
       slivers:[
-        SliverToBoxAdapter(
-          child: CustomSearchBar(padding: EdgeInsets.symmetric(horizontal: 20,vertical: 20),),
-        ),
+        // SliverToBoxAdapter(
+        //   child: CustomSearchBar(padding: EdgeInsets.symmetric(horizontal: 20,vertical: 20),),
+        // ),
         RestaurantList()
       ]
 

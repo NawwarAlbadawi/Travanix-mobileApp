@@ -39,7 +39,9 @@ class HotelInfoBody extends StatelessWidget {
           CustomRating(rating: hotelData.rating,),
 
           const SizedBox(height: 20,),
-          Text(hotelData.description,
+          Text(hotelData.description.trim()
+              .replaceAll(RegExp(r'\s+'), ' ')
+              .replaceAll(RegExp(r'\n'), ' '),
             style: AppTextStyles.styleMedium16(context),),
           const SizedBox(height: 20,),
           HotelServicesList(

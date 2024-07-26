@@ -33,10 +33,8 @@ class ReviewBody extends StatelessWidget {
 
     AwesomeDialog(
     headerAnimationLoop: false,
-
     context: context,
     animType: AnimType.scale,
-
     dialogType: DialogType.noHeader,
     body:  Center(child: AwesomeDialogChild(cubit: cubit),),
     title: 'This is Ignored',

@@ -11,8 +11,8 @@ import '../../../../../core/widgets/shimmer_place_holder.dart';
 
 
 
-class HotelSList extends StatelessWidget {
-  const HotelSList({super.key});
+class HotelsList extends StatelessWidget {
+  const HotelsList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,24 +24,25 @@ class HotelSList extends StatelessWidget {
 
         if(state is GetAllHotelLoading)
           {
-            return  ShimmerList(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ShimmerPlaceholder(aspectRatio: 2.1, padding:const EdgeInsets.all(8) ,
-                    borderRadius: BorderRadius.circular(basicRadius)),
+            return  SliverToBoxAdapter(
+              child: ShimmerList(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ShimmerPlaceholder(aspectRatio: 2.1, padding:const EdgeInsets.all(8) ,
+                      borderRadius: BorderRadius.circular(basicRadius)),
+                ),
               ),
             );
           }
         else if(state is GetAllHotelFails)
           {
-            return ErrorStateText(text: state.error);
+            return SliverToBoxAdapter(child: ErrorStateText(text: state.error));
           }
-       return   ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
+       return   SliverList.builder(
+              
               itemBuilder:(context,index)=>  Padding(
                 padding: const  EdgeInsets.symmetric(vertical: 16.0,horizontal: 15),
-                child:  HotelsItem(hotelsModel: cubit.hotelsModel!,index:index),
+                child:  HotelsItem(hotelModel: cubit.hotelsModel!.data[index]),
               ) ,
 
               itemCount: cubit.hotelsModel!.data.length);

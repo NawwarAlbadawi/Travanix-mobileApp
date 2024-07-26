@@ -8,6 +8,8 @@ import 'package:travanix/Features/map/presentation/views_model/init_map_services
 import 'package:travanix/Features/profile/presentation/views_model/profile_cubit.dart';
 import 'package:travanix/Features/restaurant/data/repositories/get_all_restaurants_repo.dart';
 import 'package:travanix/Features/restaurant/presentation/views_model/cubits/restaurant_cubit.dart';
+import 'package:travanix/Features/search/data/Repositories/search_repo.dart';
+import 'package:travanix/Features/search/presentation/views_models/search_cubit/search_cubit.dart';
 import 'package:travanix/Features/travanix_layout/presentation/views_models/cubits/change_bottom_nav_bar_cubit.dart';
 import 'package:travanix/Features/trip/data/repositories/book_trip_repo.dart';
 import 'package:travanix/Features/trip/data/repositories/get_trip_repo.dart';
@@ -18,6 +20,9 @@ import 'package:travanix/core/styles/app_styles.dart';
 import 'package:travanix/core/utils/api_services.dart';
 import 'package:travanix/core/utils/cache_service.dart';
 import 'package:travanix/core/utils/routers.dart';
+
+import 'Features/search/data/Repositories/search_for_hotel_repo.dart';
+import 'Features/search/presentation/views_models/search_for_hotel_cubit/search_for_hotel_cubit.dart';
 
 void main() async {
   Bloc.observer = MyBlocObserver();
@@ -48,11 +53,14 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context)=>RestaurantCubit(GetAllRestaurantsRepo())..getAllRestaurant()),
           BlocProvider(create: (context)=>GetTripsCubit(GetTripRepo())..getTrips()),
           BlocProvider(create: (context)=>BookTripCubit(BookTripRepo())),
+          BlocProvider(create: (context)=>SearchCubit(SearchRepo())),
+          BlocProvider(create: (context)=>SearchForHotelCubit(SearchForHotelRepo()))
 
           //BlocProvider(create: (context)=>FavoriteCubit(GetFavoriteRepo(),PostFavoriteRepo())..getFavorite())
         ],
         child: SafeArea(
           child: MaterialApp.router(
+
 
               locale: DevicePreview.locale(context),
               builder: DevicePreview.appBuilder,

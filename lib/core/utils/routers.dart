@@ -23,13 +23,13 @@ import 'package:travanix/Features/restaurant/data/models/restaurant_data.dart';
 import 'package:travanix/Features/restaurant/presentation/views/restaurant_view.dart';
 import 'package:travanix/Features/restaurant/presentation/views/all_restaurant_view.dart';
 import 'package:travanix/Features/room/presentation/views/room_view.dart';
+import 'package:travanix/Features/search/presentation/views/search_view.dart';
 
 
 import 'package:travanix/Features/splash_view/views/splash_view.dart';
 import 'package:travanix/Features/travanix_layout/presentation/views/travanix_layout_view.dart';
 import 'package:travanix/Features/trip/data/model/TripsModel.dart';
 
-import 'package:travanix/Features/trip/presentation/views/widgets/add_names_fields.dart';
 import 'package:travanix/Features/trip/presentation/views/widgets/booking_trip_details.dart';
 import 'package:travanix/Features/trip/presentation/views/trip_info_view.dart';
 
@@ -59,6 +59,7 @@ abstract class AppRouter
    static const  String restaurantView='/restaurantView';
    static const String allRestaurantView='/allRestaurantView';
    static const String tripAddNames='/tripAddNames';
+   static const String searchView='/searchView';
    static List<String>routerName=[
      'loginScreen',
      'registerScreen',
@@ -232,6 +233,14 @@ abstract class AppRouter
             );
           }
       ),
+      GoRoute(
+          path:searchView,
+       builder: (context,state)
+       {
+         return  SearchView(
+           searchBody: state.extra as Widget,
+         );
+       })
 
 
 

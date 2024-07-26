@@ -37,9 +37,7 @@ class _FavoriteCategoryListState extends State<FavoriteCategoryList> {
             itemBuilder:(context,index)=>GestureDetector(
               onTap: (){
                 cubit.changeFavoriteCategoryIndex(index);
-
-
-              },
+                },
               child:  Padding(
                 padding:const   EdgeInsets.all( 20.0),
                 child:  CustomContainer(text: list[index].category,isActive: cubit.favoriteCategoryIndex ==index,),

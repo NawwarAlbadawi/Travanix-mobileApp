@@ -1,11 +1,11 @@
-
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travanix/Features/home/presentation/views/widgets/category_list.dart';
+import 'package:travanix/Features/search/presentation/views/widgets/search_view_body.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/Features/trip/presentation/views/widgets/trip_list.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/widgets/custom_item_box_location.dart';
+import '../../../../../core/widgets/custom_search_icon.dart';
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
   @override
@@ -38,24 +38,7 @@ class HomeViewBody extends StatelessWidget {
                   ],
                 ),
                 const Spacer(),
-                Container(
-                  height:50 ,
-                  width: 50,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: basicColor,
-                      boxShadow: const  [
-                        BoxShadow(
-                            blurRadius: 5,
-                            color: greyColor
-                        )
-                      ]
-                  ),
-                  child: const Icon(FontAwesomeIcons.magnifyingGlass,
-                    color: Colors.white,
-                    size: 25,
-                  ),
-                ),
+                const CustomSearchIcon(searchBody: SearchViewBody(),),
               ],
             ),
             const SizedBox(height: 20,),
@@ -81,6 +64,8 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
+
+
 
 
 

@@ -93,7 +93,7 @@ class MapViewBody extends StatelessWidget {
                       , radius:5,
                       color: navyBlueColor,
                       borderStrokeWidth: 3,
-                      borderColor: Colors.blue
+                      borderColor: Colors.white
                   ),]),
 
 

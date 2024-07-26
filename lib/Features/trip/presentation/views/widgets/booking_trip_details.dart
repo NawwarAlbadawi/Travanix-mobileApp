@@ -15,9 +15,11 @@ class BookingTripDetailsView extends StatelessWidget {
     return  Scaffold(
       appBar: AppBar(
         leading:const  BackRowIcon(),
+
         title: Text('Booking trip details',style: AppTextStyles.styleSemiBold24(context),),
 
       ),
+
       body:   AddNamesFields(model:model ,),
 
 

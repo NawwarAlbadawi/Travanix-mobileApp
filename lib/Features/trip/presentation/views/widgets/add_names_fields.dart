@@ -33,10 +33,9 @@ class AddNamesFields extends StatelessWidget {
                 builder: (context, state) {
                   var cubit = BookTripCubit.get(context);
 
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 50),
-                    child: SingleChildScrollView(
+                  return SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 50),
                         child: Form(
                           key: formKey,
                           child: Column(
@@ -45,7 +44,7 @@ class AddNamesFields extends StatelessWidget {
                                 CustomTextFormField(
                                     controller:phoneController,prefix: const  Icon(Icons.phone_android),
                                 radius: basicRadius,
-                                hintText: 'Add phone number',
+                                hintText: 'Phone number ',
                                 validator: (value){
                                       if(value!.isEmpty)
                                         {
@@ -53,8 +52,9 @@ class AddNamesFields extends StatelessWidget {
                                         }
                                       return null;
                                 },),
-                                const SizedBox(height: 15,),
+                                const SizedBox(height: 20,),
                                 ListView.builder(
+                                  padding: EdgeInsets.zero,
                                     itemCount: cubit.personCount,
                                     shrinkWrap: true,
                                     physics: const NeverScrollableScrollPhysics(),
@@ -74,7 +74,7 @@ class AddNamesFields extends StatelessWidget {
                                                   prefix: const Icon(Icons
                                                       .drive_file_rename_outline),
                                                   controller: nameControllers[index],
-                                                  hintText: 'Enter the name',
+                                                  hintText: 'Enter the  name',
                                                   validator: (value) {
                                                     if (value!.isEmpty) {
                                                       return 'Required field';
@@ -129,8 +129,8 @@ class AddNamesFields extends StatelessWidget {
 
                               ]
                           ),
-                        )),
-                  );
+                        ),
+                      ));
                 }
             );
           }
