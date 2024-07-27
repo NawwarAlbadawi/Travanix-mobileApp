@@ -1,7 +1,6 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/authentication/presentation/views/login_screen.dart';
 import 'package:travanix/Features/authentication/presentation/views/otp.dart';
@@ -9,32 +8,27 @@ import 'package:travanix/Features/authentication/presentation/views/register_loa
 import 'package:travanix/Features/authentication/presentation/views/register.dart';
 import 'package:travanix/Features/authentication/presentation/views/rest_password_using_email.dart';
 import 'package:travanix/Features/authentication/presentation/views/rest_password_view.dart';
-
 import 'package:travanix/Features/home/presentation/views/home_view.dart';
-
 import 'package:travanix/Features/hotels/presentation/views/hotels_view.dart';
 import 'package:travanix/Features/hotels/presentation/views/hotel_view.dart';
 import 'package:travanix/Features/map/presentation/views/map_view.dart';
-
 import 'package:travanix/Features/on_boarding/presentation/views/on_boarding_view.dart';
-import 'package:travanix/Features/profile/data/models/ProfileModel.dart';
+import 'package:travanix/Features/profile/data/repositories/edit_profile_repo.dart';
+import 'package:travanix/Features/profile/presentation/views/edit_profile_view.dart';
+import 'package:travanix/Features/profile/presentation/views/update_email_otp_view.dart';
 import 'package:travanix/Features/profile/presentation/views/wallet_view.dart';
+import 'package:travanix/Features/profile/presentation/views_model/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:travanix/Features/restaurant/data/models/restaurant_data.dart';
 import 'package:travanix/Features/restaurant/presentation/views/restaurant_view.dart';
 import 'package:travanix/Features/restaurant/presentation/views/all_restaurant_view.dart';
 import 'package:travanix/Features/room/presentation/views/room_view.dart';
 import 'package:travanix/Features/search/presentation/views/search_view.dart';
-
-
 import 'package:travanix/Features/splash_view/views/splash_view.dart';
 import 'package:travanix/Features/travanix_layout/presentation/views/travanix_layout_view.dart';
 import 'package:travanix/Features/trip/data/model/TripsModel.dart';
-
 import 'package:travanix/Features/trip/presentation/views/widgets/booking_trip_details.dart';
 import 'package:travanix/Features/trip/presentation/views/trip_info_view.dart';
-
 import '../../Features/hotels/data/models/hotel_data_model.dart';
-
 
 abstract class AppRouter
 
@@ -60,6 +54,8 @@ abstract class AppRouter
    static const String allRestaurantView='/allRestaurantView';
    static const String tripAddNames='/tripAddNames';
    static const String searchView='/searchView';
+   static const String editProfileView='/editProfileView';
+   static const String updateEmailOtpView='/updateEmailOtpView';
    static List<String>routerName=[
      'loginScreen',
      'registerScreen',
@@ -201,9 +197,7 @@ abstract class AppRouter
           path:walletView,
           builder: (context,state)
           {
-            return   WalletView(
-            model: state.extra as ProfileModel,
-            );
+            return  const  WalletView();
           }
       ),
       GoRoute(
@@ -240,7 +234,19 @@ abstract class AppRouter
          return  SearchView(
            searchBody: state.extra as Widget,
          );
-       })
+       }),
+      GoRoute(
+          path:editProfileView,
+          builder: (context,state)
+          {
+            return const EditProfileView();
+          }),
+      GoRoute(
+          path:updateEmailOtpView,
+          builder: (context,state)
+          {
+            return const UpdateEmailOtpView();
+          })
 
 
 

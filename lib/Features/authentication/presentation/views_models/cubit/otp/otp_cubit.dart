@@ -12,7 +12,7 @@ class OtpCubit extends Cubit<OtpState> {
   static OtpCubit get(context)=>BlocProvider.of(context);
   EmailOTP myAuth = EmailOTP();
 
-  void sendOtp({required String email}) async {
+  Future<void> sendOtp({required String email}) async {
     EmailOTP.config(
         appEmail: "nowar200342@gmail.com",
         appName: "Travanix",

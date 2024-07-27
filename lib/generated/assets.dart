@@ -11,6 +11,7 @@ class Assets {
   static const String fontOutfitVariableFontWght = 'assets/font/Outfit-VariableFont_wght.ttf';
   static const String imagesBestPlace = 'assets/images/Best_place.png';
   static const String imagesDestination = 'assets/images/Destination.png';
+  static const String imagesEditprofile = 'assets/images/editprofile.png';
   static const String imagesEmail = 'assets/images/email.png';
   static const String imagesEmpty = 'assets/images/empty.png';
   static const String imagesEmptyItem = 'assets/images/EmptyItem.png';

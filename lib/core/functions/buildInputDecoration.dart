@@ -4,7 +4,7 @@ import 'package:travanix/core/styles/app_text_styles.dart';
 
 import '../styles/app_colors.dart';
 
-InputDecoration buildInputDecoration(BuildContext context, TextEditingController controller,Function () onPress) {
+InputDecoration buildInputDecoration(BuildContext context, TextEditingController controller,Function  () onPress) {
   return InputDecoration(
       focusedBorder:const  UnderlineInputBorder(
           borderSide: BorderSide(color: basicColor)

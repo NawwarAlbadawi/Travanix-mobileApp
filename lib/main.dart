@@ -5,6 +5,8 @@ import 'package:overlay_support/overlay_support.dart';
 import 'package:travanix/Features/hotels/data/repositories/get_hotels_repo.dart';
 import 'package:travanix/Features/hotels/presentation/views_models/cubits/get_all_hotel_cubit.dart';
 import 'package:travanix/Features/map/presentation/views_model/init_map_services_cubit.dart';
+import 'package:travanix/Features/profile/data/repositories/edit_profile_repo.dart';
+import 'package:travanix/Features/profile/presentation/views_model/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:travanix/Features/profile/presentation/views_model/profile_cubit.dart';
 import 'package:travanix/Features/restaurant/data/repositories/get_all_restaurants_repo.dart';
 import 'package:travanix/Features/restaurant/presentation/views_model/cubits/restaurant_cubit.dart';
@@ -54,7 +56,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context)=>GetTripsCubit(GetTripRepo())..getTrips()),
           BlocProvider(create: (context)=>BookTripCubit(BookTripRepo())),
           BlocProvider(create: (context)=>SearchCubit(SearchRepo())),
-          BlocProvider(create: (context)=>SearchForHotelCubit(SearchForHotelRepo()))
+          BlocProvider(create: (context)=>SearchForHotelCubit(SearchForHotelRepo())),
+          BlocProvider(create: (context)=>EditProfileCubit(EditProfileRepo()))
 
           //BlocProvider(create: (context)=>FavoriteCubit(GetFavoriteRepo(),PostFavoriteRepo())..getFavorite())
         ],

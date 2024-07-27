@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:travanix/Features/authentication/presentation/views/widgets/otp_item.dart';
 import 'package:travanix/Features/authentication/presentation/views_models/cubit/otp/otp_cubit.dart';
-import 'package:travanix/core/styles/app_colors.dart';
-import 'package:travanix/core/styles/app_text_styles.dart';
 import 'package:travanix/core/utils/routers.dart';
 import 'package:travanix/core/widgets/custom_material_button.dart';
 import 'package:travanix/core/widgets/custom_text_button.dart';
 import 'package:travanix/core/widgets/custom_toast.dart';
-import 'package:travanix/generated/assets.dart';
+import 'otp_ui.dart';
 
 class OTPBody extends StatefulWidget {
   const OTPBody({super.key, required this.email, required this.fromWhere, this.name, this.password});
@@ -84,36 +81,7 @@ class _OTPBodyState extends State<OTPBody> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  AspectRatio(aspectRatio:1.3 ,
-                    child: Container(
-                      decoration:const BoxDecoration(
-                          image: DecorationImage(
-                              image:AssetImage(
-                                  Assets.imagesOTP
-                              )
-                          )
-                      ),
-                    ),),
-                  Text('Verify your email',
-                    style: AppTextStyles.styleSemiBold24(context).copyWith(
-                        fontSize: 30
-                    ),),
-                  const SizedBox(height: 5),
-                  Text('We just sent the code to  ' ,
-                    style: AppTextStyles.styleSemiBold18(context),),
-                  const SizedBox(height: 5),
-                  Text(email ,
-                    style: AppTextStyles.styleMedium16(context).copyWith(
-                        color: basicColor
-                    ),),
-                  const SizedBox(height: 30,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: List.generate(5, (index) => OTPItem(
-                      controller:controllers[index] ,
-                      index: index,
-                    ) ),
-                  ),
+                  OtpUi(email: email, controllers: controllers),
                   const SizedBox(height: 40,),
                   SizedBox(
                     width: double.infinity,
@@ -148,3 +116,5 @@ class _OTPBodyState extends State<OTPBody> {
     );
   }
 }
+
+

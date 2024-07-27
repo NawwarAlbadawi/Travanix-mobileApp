@@ -22,8 +22,6 @@ class OTPItem extends StatelessWidget {
                 focusColor: basicColor,
                 hoverColor: basicColor,
                 fillColor: basicColor,
-
-
                 border: buildOutlineInputBorder(),
                 focusedBorder:buildOutlineInputBorder() ,
                 hintText: '0',
@@ -33,9 +31,8 @@ class OTPItem extends StatelessWidget {
 
 
             ),
-
             textAlign: TextAlign.center,
-
+            cursorColor: greyColor,
             controller:controller ,
             textInputAction: TextInputAction.next,
             style: AppTextStyles.styleMedium18(context),

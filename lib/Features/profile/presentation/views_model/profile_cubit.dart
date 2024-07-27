@@ -15,11 +15,11 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   ProfileModel ? profileModel;
 
-  void getProfileData()
+  Future<void> getProfileData() async
   {
     emit(GetProfileDataLoading());
     ProfileRepo profileRepo=ProfileRepo();
-    profileRepo.getProfile().fold(
+    await profileRepo.getProfile().fold(
         (error){
           emit(GetProfileDataFail());
         },
@@ -32,11 +32,11 @@ class ProfileCubit extends Cubit<ProfileState> {
     );
   }
 
-  void chargeWallet({required String code})
+  Future<void> chargeWallet({required String code}) async
   {
     emit(ChargeWalletLoading());
     ChargeWalletRepo chargeWalletRepo =ChargeWalletRepo();
-    chargeWalletRepo.chargeWallet(code: code).fold(
+   await chargeWalletRepo.chargeWallet(code: code).fold(
             (error){
           emit(ChargeWalletFail());
         },
