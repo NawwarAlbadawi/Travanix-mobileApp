@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart%20';
-import 'package:flutter/painting.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travanix/Features/favorite/presentation/views/widgets/favorite_list_item.dart';
 import 'package:travanix/Features/favorite/presentation/views_model/favorite_cubit.dart';
 import 'package:travanix/constants.dart';
-import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/widgets/error_state_text.dart';
 import 'package:travanix/core/widgets/shimmer_list.dart';
 import 'package:travanix/core/widgets/shimmer_place_holder.dart';

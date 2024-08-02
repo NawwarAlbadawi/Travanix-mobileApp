@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/profile/data/models/ProfileModel.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
-import 'package:travanix/core/utils/routers.dart';
+
 
 class ProfileItem extends StatelessWidget {
   const ProfileItem({super.key, required this.text, required this.icon, this.model, required this.router});

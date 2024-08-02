@@ -10,16 +10,19 @@ class CustomRating extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
-      children: [
-          Icon(FontAwesomeIcons.solidStar, color: color??navyBlueColor,size: iconSize,),
-        const SizedBox(width: 10,),
-        Text(rating!=null? '$rating' :'0',
-          style:AppTextStyles.styleMedium14(context).copyWith(
-              fontWeight: FontWeight.bold,
-              color: color??navyBlueColor
-          ),)
-      ],
+    return  FittedBox(
+      fit: BoxFit.scaleDown,
+      child: Row(
+        children: [
+            Icon(FontAwesomeIcons.solidStar, color: color??navyBlueColor,size: iconSize,),
+          const SizedBox(width: 10,),
+          Text(rating!=null? '$rating' :'0',
+            style:AppTextStyles.styleMedium14(context).copyWith(
+                fontWeight: FontWeight.bold,
+                color: color??navyBlueColor
+            ),)
+        ],
+      ),
     );
   }
 }

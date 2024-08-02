@@ -4,13 +4,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:meta/meta.dart';
-import 'package:travanix/Features/favorite/data/models/FavoriteModel.dart';
+
 import 'package:travanix/Features/trip/data/model/places_item_model.dart';
 import 'package:travanix/Features/restaurant/data/models/restaurant_data.dart';
 import 'package:travanix/Features/trip/data/repositories/get_places_repo.dart';
 import 'package:travanix/core/utils/routers.dart';
 
 import '../../../../../hotels/data/models/hotel_data_model.dart';
+import '../../../../../tourist_places/data/models/tourist_places_model_data.dart';
 
 part 'get_trip_places_state.dart';
 
@@ -98,7 +99,7 @@ class GetTripPlacesCubit extends Cubit<GetTripPlacesState> {
               title:'Tourist place',
               text: model.name!,
               icon:CupertinoIcons.map,
-              router: '',
+              router: AppRouter.touristPlacesView,
               model: model));
 
           emit(GetAttractionActivitiesSuccess() );

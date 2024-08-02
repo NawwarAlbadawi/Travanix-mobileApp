@@ -66,6 +66,7 @@ class FavoriteListItem extends StatelessWidget {
                   child:   CustomImage(image: url+model.images[0], aspectRatio: 1,fit: BoxFit.fill,)),
               const SizedBox(width: 10,),
               Expanded(
+                flex: 5,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -83,8 +84,10 @@ class FavoriteListItem extends StatelessWidget {
                    CustomRatingBar(rating: model.rating,ratingColor:  navyBlueColor,ignoreTouch: true,size: 25,)
                 ],),
               ),
+              const Spacer(),
 
-              FavoriteIconButton(id: model.id,)
+              FavoriteIconButton(id: model.id,),
+                const SizedBox(width: 10,)
 
 
 

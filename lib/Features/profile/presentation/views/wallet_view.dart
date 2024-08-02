@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:travanix/Features/profile/data/models/ProfileModel.dart';
+
 import 'package:travanix/Features/profile/presentation/views/widgets/wallet_view_body.dart';
 import 'package:travanix/core/widgets/back_row_Icon.dart';
 

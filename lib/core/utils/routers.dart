@@ -24,6 +24,9 @@ import 'package:travanix/Features/restaurant/presentation/views/all_restaurant_v
 import 'package:travanix/Features/room/presentation/views/room_view.dart';
 import 'package:travanix/Features/search/presentation/views/search_view.dart';
 import 'package:travanix/Features/splash_view/views/splash_view.dart';
+import 'package:travanix/Features/tourist_places/data/models/tourist_places_model_data.dart';
+import 'package:travanix/Features/tourist_places/presentation/views/all_tourist_places_view.dart';
+import 'package:travanix/Features/tourist_places/presentation/views/tourist_places_view.dart';
 import 'package:travanix/Features/travanix_layout/presentation/views/travanix_layout_view.dart';
 import 'package:travanix/Features/trip/data/model/TripsModel.dart';
 import 'package:travanix/Features/trip/presentation/views/widgets/booking_trip_details.dart';
@@ -56,6 +59,8 @@ abstract class AppRouter
    static const String searchView='/searchView';
    static const String editProfileView='/editProfileView';
    static const String updateEmailOtpView='/updateEmailOtpView';
+   static const String touristPlacesView='/touristPlacesView';
+   static const String allTouristPlacesView='/allTouristPlacesView';
    static List<String>routerName=[
      'loginScreen',
      'registerScreen',
@@ -65,8 +70,9 @@ abstract class AppRouter
    ];
   static final  GoRouter router =  GoRouter(
     routes: <RouteBase>[
+
       GoRoute(
-        path: '/',
+         path: '/',
 
         builder: (BuildContext context, GoRouterState state) {
           return const SplashView();
@@ -246,7 +252,21 @@ abstract class AppRouter
           builder: (context,state)
           {
             return const UpdateEmailOtpView();
-          })
+          }),
+
+      GoRoute(
+          path:touristPlacesView,
+          builder: (context,state)
+          {
+            return  TouristPlacesView(model: state.extra as AttractionActivitiesModelData,);
+          }),
+
+      GoRoute(
+          path:allTouristPlacesView,
+          builder: (context,state)
+          {
+            return const AllTouristPlacesView();
+          }),
 
 
 

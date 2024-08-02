@@ -10,26 +10,23 @@ class RestaurantPageView extends StatelessWidget {
     return  Stack(
       alignment: AlignmentDirectional.bottomCenter,
       children: [
-        SizedBox(
-          height: MediaQuery.sizeOf(context).height*0.41,
-          child: CustomPageView(
-            pageController: pageController,
-            images: const  [
-              //Assets.imagesTest2,
-              "/images/hotels/Burj Al Arab1.jpg",
-              "/images/hotels/Burj Al Arab2.jpg",
-              "/images/hotels/Burj Al Arab3.jpg",
-              "/images/hotels/Burj Al Arab4.jpg",
-              "/images/hotels/Burj Al Arab5.jpg",
-              "/images/hotels/Burj Al Arab6.jpg",
-              "/images/hotels/Burj Al Arab7.jpg",
-              "/images/hotels/Burj Al Arab8.jpg"
-            ],
-            heightRatio: 0.25,
-          ),
+        CustomPageView(
+          pageController: pageController,
+          images: const  [
+            //Assets.imagesTest2,
+            "/images/hotels/Burj Al Arab1.jpg",
+            "/images/hotels/Burj Al Arab2.jpg",
+            "/images/hotels/Burj Al Arab3.jpg",
+            "/images/hotels/Burj Al Arab4.jpg",
+            "/images/hotels/Burj Al Arab5.jpg",
+            "/images/hotels/Burj Al Arab6.jpg",
+            "/images/hotels/Burj Al Arab7.jpg",
+            "/images/hotels/Burj Al Arab8.jpg"
+          ],
+          heightRatio: 0.42,
         ),
         Padding(
-          padding: const EdgeInsets.only(bottom: 15.0),
+          padding: const EdgeInsets.only(bottom: 25.0),
           child: CustomPageIndicator(pageController: pageController, count: 6,),
         )
       ],

@@ -10,8 +10,12 @@ import 'package:travanix/Features/profile/presentation/views_model/edit_profile_
 import 'package:travanix/Features/profile/presentation/views_model/profile_cubit.dart';
 import 'package:travanix/Features/restaurant/data/repositories/get_all_restaurants_repo.dart';
 import 'package:travanix/Features/restaurant/presentation/views_model/cubits/restaurant_cubit.dart';
+import 'package:travanix/Features/search/data/Repositories/search_in_restaurant_repo.dart';
 import 'package:travanix/Features/search/data/Repositories/search_repo.dart';
 import 'package:travanix/Features/search/presentation/views_models/search_cubit/search_cubit.dart';
+import 'package:travanix/Features/search/presentation/views_models/search_for_restaurant_cubit/search_for_restaurant_cubit.dart';
+import 'package:travanix/Features/tourist_places/data/reposetories/tourist_places_repo.dart';
+import 'package:travanix/Features/tourist_places/presentation/views_models/get_tourist_places_cubit.dart';
 import 'package:travanix/Features/travanix_layout/presentation/views_models/cubits/change_bottom_nav_bar_cubit.dart';
 import 'package:travanix/Features/trip/data/repositories/book_trip_repo.dart';
 import 'package:travanix/Features/trip/data/repositories/get_trip_repo.dart';
@@ -57,7 +61,9 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context)=>BookTripCubit(BookTripRepo())),
           BlocProvider(create: (context)=>SearchCubit(SearchRepo())),
           BlocProvider(create: (context)=>SearchForHotelCubit(SearchForHotelRepo())),
-          BlocProvider(create: (context)=>EditProfileCubit(EditProfileRepo()))
+          BlocProvider(create: (context)=>EditProfileCubit(EditProfileRepo())),
+          BlocProvider(create: (context)=>SearchForRestaurantCubit(SearchForRestaurantRepo())),
+          BlocProvider(create: (context)=>GetTouristPlacesCubit(TouristPlacesRepo())..getTouristPlaces())
 
           //BlocProvider(create: (context)=>FavoriteCubit(GetFavoriteRepo(),PostFavoriteRepo())..getFavorite())
         ],

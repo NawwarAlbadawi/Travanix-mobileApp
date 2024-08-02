@@ -20,7 +20,7 @@ class CustomImage extends StatelessWidget {
          fit: fit??BoxFit.fill,
          errorWidget:(context,url,error)=> Container(
            decoration: BoxDecoration(
-             border: Border.all(color: navyBlueColor),
+             border: Border.all(color: navyBlueColor.withOpacity(0.5)),
              borderRadius: clipBorderRadius?? BorderRadius.circular(basicRadius)
 
            ),

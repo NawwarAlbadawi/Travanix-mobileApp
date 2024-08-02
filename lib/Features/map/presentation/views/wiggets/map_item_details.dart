@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/hotels/data/models/hotel_data_model.dart';
 
 import 'package:travanix/Features/restaurant/data/models/restaurant_data.dart';
+import 'package:travanix/Features/tourist_places/data/models/tourist_places_model_data.dart';
 import 'package:travanix/constants.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
@@ -34,6 +35,11 @@ class MapItemDetails extends StatelessWidget {
                 {
                   GoRouter.of(context).push(AppRouter.restaurantView, extra: modelData);
                 }
+              else if (modelData is AttractionActivitiesModelData)
+                {
+                  GoRouter.of(context).push(AppRouter.touristPlacesView, extra: modelData);
+                }
+
             }
         },
         child: Container(

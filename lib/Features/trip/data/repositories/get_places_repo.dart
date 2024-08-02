@@ -8,6 +8,7 @@ import 'package:travanix/Features/restaurant/data/models/restaurant_data.dart';
 import '../../../../core/utils/api_services.dart';
 import '../../../../core/utils/failure.dart';
 import '../../../favorite/data/models/FavoriteModel.dart';
+import '../../../tourist_places/data/models/tourist_places_model_data.dart';
 
 class GetPlacesRepo {
 

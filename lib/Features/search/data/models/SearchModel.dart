@@ -4,6 +4,8 @@ import 'package:travanix/Features/hotels/data/models/hotel_data_model.dart';
 import 'package:travanix/Features/restaurant/data/models/restaurant_data.dart';
 import 'package:travanix/Features/trip/data/model/TripsModel.dart';
 
+import '../../../tourist_places/data/models/tourist_places_model_data.dart';
+
 /// status : 1
 /// message : "succes   "
 /// trips : [{"id":8,"type_of_trip":"Funny","trip_name":"NawwarALbadawi","description":"trip to h","price_trip":11.2,"number_of_allSeat":44,"trip_start_time":"2024-06-03 20:55:41","trip_end_time":"2024-06-03 20:55:41","address":"trip","coordinate_y":43,"coordinate_x":34,"city_id":1,"city_name":"Damascus","nation_id":1,"nation_name":"Syrian Arab Republic","image":"/images/attraction_activities/Nawwar1.jpg","places":[{"hotel_id":1},{"attraction_activity_id":1}],"favorite":true,"number_of_seats_available":39}]

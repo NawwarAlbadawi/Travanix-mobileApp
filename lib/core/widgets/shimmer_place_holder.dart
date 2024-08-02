@@ -20,7 +20,7 @@ class ShimmerPlaceholder extends StatelessWidget {
       child: Container(
         padding: padding,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.4),
+          color: Colors.lightGreen,
           borderRadius: borderRadius,
         ),
       ),

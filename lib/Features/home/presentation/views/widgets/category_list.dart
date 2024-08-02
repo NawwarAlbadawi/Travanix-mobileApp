@@ -14,7 +14,8 @@ class CategoryList extends StatefulWidget {
 class _CategoryListState extends State<CategoryList> {
   List<HomeCategoryModel> list =const  [
     HomeCategoryModel(categoryName: 'Hotels', categoryRoute: AppRouter.hotelsView,image: Assets.imagesHotels),
-    HomeCategoryModel(categoryName: 'Restaurants', categoryRoute: AppRouter.allRestaurantView,image: Assets.imagesRestaurants)
+    HomeCategoryModel(categoryName: 'Restaurants', categoryRoute: AppRouter.allRestaurantView,image: Assets.imagesRestaurants),
+    HomeCategoryModel(categoryName: 'Tourist Places', categoryRoute: AppRouter.allTouristPlacesView,image: Assets.imagesTouristPlaces)
   ];
   @override
   Widget build(BuildContext context) {

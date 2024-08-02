@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travanix/core/widgets/custom_image.dart';
 
 import '../../constants.dart';
 class CustomPageView extends StatelessWidget {
@@ -12,24 +13,13 @@ class CustomPageView extends StatelessWidget {
       height: MediaQuery.sizeOf(context).height*heightRatio,
       child: PageView.builder(
         controller: pageController,
-        itemBuilder: (context,index)=> ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topRight: Radius.circular(10),
-            topLeft: Radius.circular(10),
-          ),
-          child: AspectRatio(
-            aspectRatio: 16/9,
-            child: Container(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                    colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.hue),
-                    fit: BoxFit.fill,
-                    image:  NetworkImage('http://$ip:8001 ${images[index]}',),
-                  )
+        itemBuilder: (context,index)=> CustomImage(
+          image:'http://$ip:8001 ${images[index]}' ,
+          clipBorderRadius:const BorderRadius.only(
+                topRight: Radius.circular(10),
+                topLeft: Radius.circular(10),
               ),
-
-            ),
-          ),
+          aspectRatio: 1,
         ),
         itemCount: images.length,),
     );

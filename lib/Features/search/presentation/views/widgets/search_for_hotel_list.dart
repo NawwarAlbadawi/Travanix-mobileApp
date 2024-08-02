@@ -7,6 +7,7 @@ import '../../../../../core/widgets/shimmer_list.dart';
 import '../../../../../core/widgets/shimmer_place_holder.dart';
 import '../../../../hotels/presentation/views/widgets/hotels_item.dart';
 import '../../views_models/search_for_hotel_cubit/search_for_hotel_cubit.dart';
+import 'empty_result_image.dart';
 
 class SearchForHotelList extends StatelessWidget {
   const SearchForHotelList({super.key});
@@ -16,11 +17,13 @@ class SearchForHotelList extends StatelessWidget {
     return BlocBuilder<SearchForHotelCubit,SearchForHotelState>(
       builder: (context,state)
       {
+
         if(state is SearchHotelSuccess)
         {
           return   SliverList.builder(
               
-              itemBuilder:(context,index)=>  Padding(
+              itemBuilder:(context,index)=> state.model.isEmpty? const EmptyResultImage():
+                  Padding(
                 padding: const  EdgeInsets.symmetric(vertical: 16.0,horizontal: 15),
 
                 child:  HotelsItem(hotelModel: state.model[index]),

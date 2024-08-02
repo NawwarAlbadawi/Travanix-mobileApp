@@ -8,6 +8,8 @@ class CustomFavoriteIconButton extends StatelessWidget {
   final Function ()onPress;
   @override
   Widget build(BuildContext context) {
-    return  IconButton(onPressed: onPress, icon: Icon(IconlyBold.heart,color: color,));
+    return  Flexible(
+      child: IconButton(onPressed: onPress, icon: Icon(IconlyBold.heart,color: color,)),
+    );
   }
 }

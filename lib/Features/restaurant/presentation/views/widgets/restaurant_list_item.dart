@@ -18,56 +18,52 @@ class RestaurantListItem extends StatelessWidget {
        onTap: (){
          GoRouter.of(context).push(AppRouter.restaurantView,extra: model);
        },
-      child: SizedBox(
-        height:MediaQuery.sizeOf(context).height*0.2,
-        child:  Container(
-          decoration:  BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(basicRadius),
-              boxShadow:const  [BoxShadow(
-                    color: CupertinoColors.extraLightBackgroundGray,
-                    blurRadius: 10
+      child: Container(
+        height: MediaQuery.sizeOf(context).height*0.17,
+        decoration:  BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(basicRadius),
+            boxShadow:const  [BoxShadow(
+                  color: CupertinoColors.extraLightBackgroundGray,
+                  blurRadius: 10
 
-                )]
-          ),
-
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: MediaQuery.sizeOf(context).width*0.39,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(basicRadius),
-                  child: CustomImage(aspectRatio: 0.9,image: url+model.images[0],),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0,left: 8,bottom: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                width: MediaQuery.sizeOf(context).width*0.4,
-                      child: Text(model.name,style: AppTextStyles.styleSemiBold24(context),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,),
-                    ),
-                    const SizedBox(height: 10,),
-                    Text(model.cityName,style: AppTextStyles.styleSemiBold16(context).copyWith(
-                        color: navyBlueColor.withOpacity(0.4)
-                    ),),
-                    const Spacer(),
-                     CustomRating(rating: model.rating,iconSize: 20,color: basicColor,),
-                    const SizedBox(height: 10 ,)
-                  ],),
-              ),
-              const Spacer(),
-               RestaurantFavoriteButton(id: model.id),
-
-            ],
-          ),
-
+              )]
         ),
+
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomImage(aspectRatio: 1,image: url+model.images[0],clipBorderRadius: BorderRadius.circular(basicRadius),),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0,left: 8,bottom: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                                width: MediaQuery.sizeOf(context).width*0.4,
+                    child: Text(model.name,style: AppTextStyles.styleSemiBold24(context).copyWith(
+                      fontSize: 22
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,),
+                  ),
+                 const  Flexible(child:  SizedBox(height: 10,)),
+                  Text(model.cityName,style: AppTextStyles.styleSemiBold16(context).copyWith(
+                      color: navyBlueColor.withOpacity(0.4)
+                  ),),
+                  const  Spacer(),
+
+                   CustomRating(rating: model.rating,iconSize: 20,color: basicColor,),
+                   const Flexible(child:  SizedBox(height: 5 ,))
+                ],),
+            ),
+            const Spacer(),
+             RestaurantFavoriteButton(id: model.id),
+            const SizedBox(width: 15,)
+
+          ],
+        ),
+
       ),
     );
   }

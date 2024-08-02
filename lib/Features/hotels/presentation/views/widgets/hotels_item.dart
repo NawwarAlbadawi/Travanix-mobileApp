@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:travanix/Features/hotels/data/models/hotel_data_model.dart';
-import 'package:travanix/Features/hotels/data/models/hotels_model.dart';
+
 import 'package:travanix/constants.dart';
 import 'package:travanix/core/styles/app_colors.dart';
 import 'package:travanix/core/styles/app_text_styles.dart';
